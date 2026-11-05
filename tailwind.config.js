@@ -7,45 +7,40 @@ export default {
   theme: {
     extend: {
       colors: {
-        space: {
-          950: '#030712',
-          900: '#070b19',
-          800: '#0d1527',
-          700: '#14213d',
+        dark: {
+          950: '#060608',
+          900: '#0a0a0e',
+          850: '#0f1015',
+          800: '#151720',
+          700: '#202432',
         },
-        cyan: {
-          glow: '#00f2fe',
-        },
-        solar: {
-          sun: '#ffaa00',
-          mercury: '#a8a29e',
-          venus: '#f59e0b',
-          earth: '#38bdf8',
-          mars: '#ef4444',
-          jupiter: '#f97316',
-          saturn: '#eab308',
-          uranus: '#06b6d4',
-          neptune: '#3b82f6',
+        brand: {
+          cyan: '#00f2fe',
+          blue: '#3b82f6',
+          lime: '#ccff00',
+          amber: '#f59e0b',
         }
       },
       fontFamily: {
-        mono: ['"JetBrains Mono"', 'monospace', 'Consolas'],
-        display: ['"Space Grotesk"', 'sans-serif'],
-        orbitron: ['"Orbitron"', 'sans-serif'],
+        clash: ['"Clash Display"', 'sans-serif'],
+        syne: ['"Syne"', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       animation: {
-        'pulse-glow': 'pulseGlow 2.5s infinite ease-in-out',
-        'orbit-slow': 'spin 60s linear infinite',
-        'float': 'float 4s ease-in-out infinite',
+        'marquee': 'marquee 25s linear infinite',
+        'marquee-reverse': 'marqueeReverse 25s linear infinite',
+        'spin-slow': 'spin 18s linear infinite',
+        'pulse-slow': 'pulse 4s ease-in-out infinite',
       },
       keyframes: {
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-          '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-6px)' },
+        marqueeReverse: {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
         }
       }
     },
