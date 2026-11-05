@@ -1,160 +1,129 @@
-import React, { useState, useEffect } from 'react';
-import EarthCanvas from './components/EarthCanvas';
-import Navbar from './components/Navbar';
-import HeroSection from './components/sections/HeroSection';
-import AboutSection from './components/sections/AboutSection';
-import SkillsSection from './components/sections/SkillsSection';
-import ProjectsSection from './components/sections/ProjectsSection';
-import ExperienceSection from './components/sections/ExperienceSection';
-import AchievementsSection from './components/sections/AchievementsSection';
-import ContactSection from './components/sections/ContactSection';
+import React, { useState } from 'react';
+import Badge3D from './components/Badge3D';
+import SocialHexGrid from './components/SocialHexGrid';
+import ProjectListCard from './components/ProjectListCard';
+import ProjectDetailModal from './components/ProjectDetailModal';
 import ResumeModal from './components/ResumeModal';
 import { personalInfo } from './data/portfolioData';
-import { Orbit, Compass, ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
-import { playTacticalClick } from './utils/audio';
+import { FileText, Volume2, VolumeX, Sparkles, Orbit } from 'lucide-react';
+import { toggleAudio, isMuted, playTacticalClick } from './utils/audio';
 
 export default function App() {
-  const [introCompleted, setIntroCompleted] = useState(false);
-  const [isInOrbitMode, setIsInOrbitMode] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [audioActive, setAudioActive] = useState(!isMuted());
 
-  // Keyboard shortcut listener
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
-
-      if (e.key === 'Escape') {
-        if (isResumeOpen) setIsResumeOpen(false);
-        else if (isInOrbitMode) setIsInOrbitMode(false);
-        else if (!introCompleted) setIntroCompleted(true);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isResumeOpen, isInOrbitMode, introCompleted]);
-
-  const handleIntroComplete = () => {
-    setIntroCompleted(true);
-  };
-
-  const handleReplayIntro = () => {
-    playTacticalClick();
-    setIntroCompleted(false);
-    setIsInOrbitMode(false);
-  };
-
-  const scrollTo = (id) => {
-    playTacticalClick();
-    setIsInOrbitMode(false);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleAudioToggle = () => {
+    const active = toggleAudio();
+    setAudioActive(active);
   };
 
   return (
-    <div className="relative min-h-screen bg-space-950 text-slate-100 font-display selection:bg-cyan-500 selection:text-black overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#060709] text-slate-100 flex flex-col justify-between p-3 sm:p-6 lg:p-8 overflow-x-hidden selection:bg-cyan-500 selection:text-black">
       
-      {/* 3D EARTH WEBGL CANVAS (Fixed background or Fullscreen Orbit) */}
-      <div 
-        className={`fixed inset-0 z-0 transition-opacity duration-700 ${
-          isInOrbitMode ? 'opacity-100 pointer-events-auto' : 'opacity-85 pointer-events-none'
-        }`}
-      >
-        <EarthCanvas
-          introCompleted={introCompleted}
-          onIntroComplete={handleIntroComplete}
-          isInOrbitMode={isInOrbitMode}
-          onToggleOrbitMode={() => setIsInOrbitMode(!isInOrbitMode)}
-        />
+      {/* VIBRANT AMBIENT AURORA GLOW (Exact gradient from the video screenshot!) */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Top-left emerald/cyan aurora blur */}
+        <div className="absolute -top-32 -left-32 w-[34rem] h-[34rem] bg-emerald-500/20 rounded-full blur-[140px]" />
+        {/* Top-center royal blue blur */}
+        <div className="absolute top-10 left-1/3 w-[30rem] h-[30rem] bg-blue-600/20 rounded-full blur-[160px]" />
+        {/* Right / bottom-right vibrant magenta/coral glow */}
+        <div className="absolute -bottom-32 -right-32 w-[38rem] h-[38rem] bg-gradient-to-tr from-pink-500/25 to-purple-600/25 rounded-full blur-[150px]" />
       </div>
 
-      {/* BACKGROUND COSMIC SCANLINES */}
-      <div className="fixed inset-0 pointer-events-none z-10 scanlines opacity-30" />
-
-      {/* FLOATING HUD NAVIGATION */}
-      {introCompleted && (
-        <Navbar
-          onOpenResume={() => setIsResumeOpen(true)}
-          isInOrbitMode={isInOrbitMode}
-          onToggleOrbitMode={() => setIsInOrbitMode(!isInOrbitMode)}
-          onReplayIntro={handleReplayIntro}
-        />
-      )}
-
-      {/* MAIN PORTFOLIO CONTENT (Scrollable over ambient 3D Earth) */}
-      {introCompleted && (
-        <main 
-          className={`relative z-20 transition-opacity duration-500 ${
-            isInOrbitMode ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
-          }`}
-        >
-          {/* 1. HERO SECTION */}
-          <HeroSection
-            onOpenResume={() => setIsResumeOpen(true)}
-            onExploreProjects={() => scrollTo('projects')}
-            onContactClick={() => scrollTo('contact')}
-          />
-
-          {/* 2. ABOUT ME */}
-          <AboutSection />
-
-          {/* 3. TECHNICAL SKILLS */}
-          <SkillsSection />
-
-          {/* 4. FEATURED PROJECTS */}
-          <ProjectsSection />
-
-          {/* 5. EXPERIENCE & LEADERSHIP */}
-          <ExperienceSection />
-
-          {/* 6. ACHIEVEMENTS */}
-          <AchievementsSection />
-
-          {/* 7. CONTACT AREA */}
-          <ContactSection onOpenResume={() => setIsResumeOpen(true)} />
-
-          {/* FOOTER */}
-          <footer className="relative py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-800/80 bg-space-950/80 backdrop-blur-md text-xs font-mono text-slate-400">
-            <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center space-x-2">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 inline-block" />
-                <span className="font-orbitron font-bold text-slate-200">AYUSH SHUKLA</span>
-                <span>— DIGITAL IDENTITY // 2026</span>
-              </div>
-
-              <div className="flex items-center space-x-4">
-                <button
-                  onClick={() => scrollTo('home')}
-                  className="flex items-center space-x-1 text-slate-400 hover:text-cyan-300 transition-colors"
-                >
-                  <ArrowUp className="w-3.5 h-3.5" />
-                  <span>BACK TO ORBIT</span>
-                </button>
-                <span>•</span>
-                <a
-                  href={personalInfo.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-cyan-300 transition-colors"
-                >
-                  GitHub
-                </a>
-                <span>•</span>
-                <a
-                  href={personalInfo.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-blue-400 transition-colors"
-                >
-                  LinkedIn
-                </a>
-              </div>
+      {/* TOP HEADER BAR */}
+      <header className="relative z-10 w-full max-w-7xl mx-auto flex items-center justify-between py-2 px-1">
+        <div className="flex items-center space-x-3">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-400 to-blue-600 p-[1.5px] shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+            <div className="w-full h-full rounded-xl bg-[#090a0f] flex items-center justify-center font-orbitron font-bold text-xs text-cyan-300">
+              AS
             </div>
-          </footer>
-        </main>
-      )}
+          </div>
+          <div>
+            <div className="font-orbitron font-bold text-sm tracking-wide text-white">
+              AYUSH SHUKLA
+            </div>
+            <div className="text-[10px] font-mono text-cyan-400">
+              Full-Stack Software Engineer • CSE @ ABESEC
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2">
+          {/* Resume Modal Button */}
+          <button
+            onClick={() => { playTacticalClick(); setIsResumeOpen(true); }}
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 transition-colors"
+          >
+            <FileText className="w-3.5 h-3.5 text-amber-400" />
+            <span className="hidden sm:inline">OFFICIAL RESUME</span>
+          </button>
+
+          {/* Web Audio Toggle */}
+          <button
+            onClick={handleAudioToggle}
+            className={`p-2 rounded-xl border transition-all ${
+              audioActive
+                ? 'bg-cyan-500/20 border-cyan-400 text-cyan-300 shadow-[0_0_10px_rgba(56,189,248,0.3)]'
+                : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
+            }`}
+            title={audioActive ? "Mute Web Audio SFX" : "Enable Web Audio SFX"}
+          >
+            {audioActive ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+          </button>
+        </div>
+      </header>
+
+      {/* MAIN BENTO GRID CONTAINER (Matching the exact video screenshot!) */}
+      <main className="relative z-10 w-full max-w-7xl mx-auto my-auto py-4 sm:py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-stretch">
+          
+          {/* LEFT COLUMN (6 COLS): 3D Digital ID Pass Card with cross-grid */}
+          <div className="lg:col-span-6 rounded-3xl bg-[#0f1014] border border-white/10 backdrop-blur-2xl shadow-2xl p-6 sm:p-8 flex flex-col items-center justify-between relative overflow-hidden cross-grid">
+            <Badge3D />
+          </div>
+
+          {/* RIGHT COLUMN (6 COLS): Social Hexagon Grid on Top + Latest Projects on Bottom */}
+          <div className="lg:col-span-6 flex flex-col gap-5 sm:gap-6">
+            
+            {/* Top Right Card: Honeycomb / Circular Social Grid */}
+            <SocialHexGrid
+              onOpenResume={() => setIsResumeOpen(true)}
+              onOpenContact={() => {}}
+            />
+
+            {/* Bottom Right Card: Latest Projects & Engineering Showcase */}
+            <ProjectListCard
+              onSelectProject={(project) => setSelectedProject(project)}
+            />
+
+          </div>
+
+        </div>
+      </main>
+
+      {/* FOOTER */}
+      <footer className="relative z-10 w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between py-2 px-1 text-[11px] font-mono text-slate-500 gap-2">
+        <div>
+          © 2026 Ayush Shukla • Built with 3D WebGL, React & Tailwind CSS
+        </div>
+        <div className="flex items-center space-x-3 text-slate-400">
+          <a href={personalInfo.github} target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors">
+            github.com/{personalInfo.githubUsername}
+          </a>
+          <span>•</span>
+          <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors">
+            linkedin.com/in/{personalInfo.linkedinHandle}
+          </a>
+        </div>
+      </footer>
+
+      {/* PROJECT DETAIL MODAL */}
+      <ProjectDetailModal
+        project={selectedProject}
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
 
       {/* OFFICIAL RESUME MODAL */}
       <ResumeModal

@@ -8,7 +8,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           three: ['three'],
-          gsap: ['gsap'],
           vendor: ['react', 'react-dom', 'lucide-react']
         }
       }
