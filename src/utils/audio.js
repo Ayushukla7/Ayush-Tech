@@ -1,6 +1,6 @@
 // Web Audio API Synthesizer for F1 Telemetry, Race Comms & High-Performance UI
 let audioCtx = null;
-let isAudioMuted = true; // default muted for accessible user experience
+let isAudioMuted = false; // Enabled for maximum cinematic impact
 
 const getAudioContext = () => {
   if (!audioCtx) {
@@ -116,30 +116,27 @@ export const playEngineRev = () => {
   const filter = ctx.createBiquadFilter();
   const gain = ctx.createGain();
 
-  // Sawtooth waveform for aggressive engine harmonic growl
   osc1.type = 'sawtooth';
   osc2.type = 'triangle';
 
-  // Pitch ramp up: idle RPM (110Hz) to full-throttle spool (380Hz) and gearshift drop
   osc1.frequency.setValueAtTime(110, now);
   osc1.frequency.exponentialRampToValueAtTime(360, now + 0.35);
   osc1.frequency.exponentialRampToValueAtTime(260, now + 0.42);
-  osc1.frequency.exponentialRampToValueAtTime(420, now + 0.7);
+  osc1.frequency.exponentialRampToValueAtTime(440, now + 0.7);
 
   osc2.frequency.setValueAtTime(55, now);
   osc2.frequency.exponentialRampToValueAtTime(180, now + 0.35);
   osc2.frequency.exponentialRampToValueAtTime(130, now + 0.42);
-  osc2.frequency.exponentialRampToValueAtTime(210, now + 0.7);
+  osc2.frequency.exponentialRampToValueAtTime(220, now + 0.7);
 
-  // Bandpass filter for racecar exhaust resonance
   filter.type = 'lowpass';
   filter.frequency.setValueAtTime(400, now);
   filter.frequency.exponentialRampToValueAtTime(2800, now + 0.35);
   filter.frequency.exponentialRampToValueAtTime(1800, now + 0.42);
   filter.frequency.exponentialRampToValueAtTime(3400, now + 0.7);
 
-  gain.gain.setValueAtTime(0.02, now);
-  gain.gain.linearRampToValueAtTime(0.12, now + 0.35);
+  gain.gain.setValueAtTime(0.03, now);
+  gain.gain.linearRampToValueAtTime(0.14, now + 0.35);
   gain.gain.exponentialRampToValueAtTime(0.001, now + 0.85);
 
   osc1.connect(filter);
@@ -151,4 +148,76 @@ export const playEngineRev = () => {
   osc2.start(now);
   osc1.stop(now + 0.85);
   osc2.stop(now + 0.85);
+};
+
+// High-Adrenaline Crazy Launch Sound FX: Starter Crank, Twin-Turbo Spool, Tire Screech & Sonic Flyby!
+export const playCrazyLaunchFX = () => {
+  if (isAudioMuted) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  const now = ctx.currentTime;
+
+  // 1. Starter Motor Crank
+  const crankOsc = ctx.createOscillator();
+  const crankGain = ctx.createGain();
+  crankOsc.type = 'square';
+  crankOsc.frequency.setValueAtTime(70, now);
+  crankOsc.frequency.exponentialRampToValueAtTime(140, now + 0.3);
+  crankGain.gain.setValueAtTime(0.06, now);
+  crankGain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+  crankOsc.connect(crankGain);
+  crankGain.connect(ctx.destination);
+  crankOsc.start(now);
+  crankOsc.stop(now + 0.35);
+
+  // 2. Twin-Turbo High Pitch Spool Whistle
+  const turboOsc = ctx.createOscillator();
+  const turboGain = ctx.createGain();
+  turboOsc.type = 'sine';
+  turboOsc.frequency.setValueAtTime(1200, now + 0.2);
+  turboOsc.frequency.exponentialRampToValueAtTime(4800, now + 0.9);
+  turboGain.gain.setValueAtTime(0.001, now + 0.2);
+  turboGain.gain.linearRampToValueAtTime(0.08, now + 0.7);
+  turboGain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+  turboOsc.connect(turboGain);
+  turboGain.connect(ctx.destination);
+  turboOsc.start(now + 0.2);
+  turboOsc.stop(now + 1.2);
+
+  // 3. Brutal V6 Exhaust Ignition Roar + Flyby
+  const roarOsc1 = ctx.createOscillator();
+  const roarOsc2 = ctx.createOscillator();
+  const roarFilter = ctx.createBiquadFilter();
+  const roarGain = ctx.createGain();
+
+  roarOsc1.type = 'sawtooth';
+  roarOsc2.type = 'sawtooth';
+
+  roarOsc1.frequency.setValueAtTime(90, now + 0.3);
+  roarOsc1.frequency.exponentialRampToValueAtTime(540, now + 1.0);
+  roarOsc1.frequency.exponentialRampToValueAtTime(180, now + 1.4);
+
+  roarOsc2.frequency.setValueAtTime(45, now + 0.3);
+  roarOsc2.frequency.exponentialRampToValueAtTime(270, now + 1.0);
+  roarOsc2.frequency.exponentialRampToValueAtTime(90, now + 1.4);
+
+  roarFilter.type = 'lowpass';
+  roarFilter.frequency.setValueAtTime(250, now + 0.3);
+  roarFilter.frequency.exponentialRampToValueAtTime(4500, now + 1.0);
+  roarFilter.frequency.exponentialRampToValueAtTime(300, now + 1.5);
+
+  roarGain.gain.setValueAtTime(0.01, now + 0.3);
+  roarGain.gain.linearRampToValueAtTime(0.18, now + 0.95);
+  roarGain.gain.exponentialRampToValueAtTime(0.001, now + 1.5);
+
+  roarOsc1.connect(roarFilter);
+  roarOsc2.connect(roarFilter);
+  roarFilter.connect(roarGain);
+  roarGain.connect(ctx.destination);
+
+  roarOsc1.start(now + 0.3);
+  roarOsc2.start(now + 0.3);
+  roarOsc1.stop(now + 1.5);
+  roarOsc2.stop(now + 1.5);
 };

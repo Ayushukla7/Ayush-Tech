@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import { 
   X, 
   Printer, 
@@ -8,39 +9,79 @@ import {
   Mail, 
   MapPin, 
   FileText, 
-  Award, 
-  CheckCircle2, 
-  ArrowRight,
-  Eye,
-  Github,
-  Linkedin
+  Eye, 
+  Github, 
+  Linkedin,
+  ArrowDown
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { playTacticalClick } from '../utils/audio';
 
 export default function ResumeModal({ isOpen, onClose }) {
   const [viewMode, setViewMode] = useState('dossier'); // 'dossier' or 'pdf'
+  const [isRendered, setIsRendered] = useState(false);
+  const sheetRef = useRef(null);
+  const backdropRef = useRef(null);
 
-  if (!isOpen) return null;
+  // Smooth slide-up transition when opening, slide-down when closing
+  useEffect(() => {
+    if (isOpen) {
+      setIsRendered(true);
+      // Wait for DOM mount then slide in
+      requestAnimationFrame(() => {
+        if (backdropRef.current && sheetRef.current) {
+          gsap.fromTo(backdropRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+          gsap.fromTo(sheetRef.current, 
+            { y: '100%', opacity: 0.5 }, 
+            { y: '0%', opacity: 1, duration: 0.5, ease: 'power4.out' }
+          );
+        }
+      });
+    }
+  }, [isOpen]);
+
+  const handleSmoothClose = () => {
+    playTacticalClick();
+    if (backdropRef.current && sheetRef.current) {
+      gsap.to(backdropRef.current, { opacity: 0, duration: 0.3 });
+      gsap.to(sheetRef.current, {
+        y: '100%',
+        duration: 0.4,
+        ease: 'power3.in',
+        onComplete: () => {
+          setIsRendered(false);
+          onClose();
+        }
+      });
+    } else {
+      onClose();
+    }
+  };
 
   const handlePrint = () => {
     playTacticalClick();
     window.print();
   };
 
+  if (!isOpen && !isRendered) return null;
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/90 backdrop-blur-xl overflow-y-auto">
-      
-      {/* FULL RESUME CONTAINER */}
+    <div 
+      ref={backdropRef}
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6 bg-black/85 backdrop-blur-xl overflow-hidden"
+      onClick={handleSmoothClose}
+    >
+      {/* SLIDING COMMAND SHEET CONTAINER */}
       <div 
-        className="relative w-full max-w-5xl bg-dark-900 border border-white/20 rounded-2xl shadow-[0_0_80px_rgba(0,0,0,0.95)] flex flex-col my-auto h-[94vh] overflow-hidden"
+        ref={sheetRef}
+        className="relative w-full max-w-5xl bg-dark-900 border-t sm:border border-white/20 rounded-t-3xl sm:rounded-2xl shadow-[0_0_80px_rgba(0,0,0,0.95)] flex flex-col h-[95vh] sm:h-[92vh] overflow-hidden will-change-transform"
         onClick={(e) => e.stopPropagation()}
       >
         
         {/* ========================================================================= */}
-        {/* TOP COMMAND BAR (DOWNLOAD, PRINT, VIEW TOGGLES, CLOSE) */}
+        {/* TOP COMMAND BAR (SLIDE CONTROLS, DOWNLOAD, VIEW TABS) */}
         {/* ========================================================================= */}
-        <div className="p-3 sm:p-4 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 bg-black/90 z-20 font-mono text-xs">
+        <div className="p-3 sm:p-4 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 bg-black/95 z-20 font-mono text-xs">
           
           <div className="flex items-center space-x-3">
             <span className="w-2.5 h-2.5 rounded-sm bg-red-500 animate-pulse" />
@@ -49,12 +90,12 @@ export default function ResumeModal({ isOpen, onClose }) {
                 OFFICIAL RESUME DOSSIER // AYUSH SHUKLA
               </span>
               <span className="text-[10px] text-slate-400 hidden sm:block">
-                VERIFIED B.TECH CSE • FULL-STACK SOFTWARE ENGINEER
+                VERIFIED B.TECH CSE • FULL-STACK SYSTEMS ARCHITECT
               </span>
             </div>
           </div>
 
-          {/* VIEW MODE TABS: DOSSIER vs EMBEDDED PDF */}
+          {/* VIEW MODE TABS: DOSSIER vs EMBEDDED ORIGINAL PDF */}
           <div className="flex items-center bg-white/10 rounded-lg p-1 border border-white/15">
             <button
               onClick={() => { playTacticalClick(); setViewMode('dossier'); }}
@@ -77,11 +118,11 @@ export default function ResumeModal({ isOpen, onClose }) {
               }`}
             >
               <Eye className="w-3.5 h-3.5" />
-              <span>Original PDF Embed</span>
+              <span>Original PDF</span>
             </button>
           </div>
 
-          {/* ACTIONS: DOWNLOAD PDF, PRINT, EXPLORE PORTFOLIO */}
+          {/* ACTIONS: DOWNLOAD PDF, PRINT, SLIDE CLOSE */}
           <div className="flex items-center space-x-2">
             
             {/* Direct PDF Download button */}
@@ -103,7 +144,7 @@ export default function ResumeModal({ isOpen, onClose }) {
               rel="noreferrer"
               onClick={playTacticalClick}
               className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-200 border border-white/15 transition-all"
-              title="Open PDF in New Tab"
+              title="Open PDF in New Window"
             >
               <ExternalLink className="w-4 h-4" />
             </a>
@@ -118,19 +159,11 @@ export default function ResumeModal({ isOpen, onClose }) {
               <span>Print</span>
             </button>
 
-            {/* Explore Portfolio / Close button */}
+            {/* Slide Down & Close Button */}
             <button
-              onClick={() => { playTacticalClick(); onClose(); }}
-              className="px-3.5 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white font-mono text-xs font-bold flex items-center space-x-1.5 transition-all shadow-md"
-              title="Enter Interactive F1 Portfolio"
-            >
-              <span>ENTER PORTFOLIO</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-
-            <button
-              onClick={() => { playTacticalClick(); onClose(); }}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+              onClick={handleSmoothClose}
+              className="p-1.5 rounded-lg bg-red-600/30 hover:bg-red-600 border border-red-500/50 text-white transition-colors"
+              title="Slide Down & Close"
             >
               <X className="w-5 h-5" />
             </button>
@@ -139,13 +172,13 @@ export default function ResumeModal({ isOpen, onClose }) {
         </div>
 
         {/* ========================================================================= */}
-        {/* MAIN BODY: EITHER EMBEDDED ORIGINAL PDF OR CRISP HIGH-RES DOSSIER */}
+        {/* SLIDEABLE & SCROLLABLE MAIN BODY */}
         {/* ========================================================================= */}
-        <div className="flex-1 overflow-y-auto bg-slate-100 text-slate-900 p-4 sm:p-8 md:p-10 select-text">
+        <div className="flex-1 overflow-y-auto bg-slate-100 text-slate-900 p-4 sm:p-8 select-text">
           
           {viewMode === 'pdf' ? (
             /* EMBEDDED ORIGINAL PDF VIEWER */
-            <div className="w-full h-full min-h-[78vh] flex flex-col bg-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+            <div className="w-full h-full min-h-[75vh] flex flex-col bg-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
               <iframe
                 src="/Ayush_Shukla_Resume.pdf#view=FitH"
                 className="w-full flex-1 rounded-xl"

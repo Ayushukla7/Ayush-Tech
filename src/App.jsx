@@ -42,16 +42,16 @@ export default function App() {
     };
   }, []);
 
-  // When F1 Car finishes running across the black screen, automatically open the full resume!
+  // When Crazy F1 Car Launch finishes, reveal the Hero Portfolio directly (NO auto-resume popup!)
   const handleIntroComplete = () => {
     setShowIntro(false);
-    setIsResumeOpen(true);
+    setIsResumeOpen(false); // Keeps user on the exciting Hero portfolio!
   };
 
   return (
     <div className="relative min-h-screen bg-dark-950 text-slate-100 font-sans selection:bg-red-500 selection:text-white">
       
-      {/* 1. CINEMATIC F1 CAR BLACK SCREEN LAUNCH INTRO */}
+      {/* 1. HIGH-ADRENALINE F1 TURBO BURN & FLYBY LAUNCH INTRO */}
       {showIntro && (
         <CarLaunchIntro onComplete={handleIntroComplete} />
       )}
@@ -104,7 +104,7 @@ export default function App() {
         onClose={() => setSelectedProject(null)}
       />
 
-      {/* 2. OFFICIAL FULL RESUME DOSSIER & EMBEDDED ORIGINAL PDF */}
+      {/* 2. OFFICIAL FULL RESUME DOSSIER & EMBEDDED ORIGINAL PDF (SLIDES SMOOTHLY ON DEMAND) */}
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
