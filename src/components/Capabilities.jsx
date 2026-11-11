@@ -1,122 +1,141 @@
 import React, { useState } from 'react';
 import { skillsData } from '../data/portfolioData';
-import { Cpu, Zap, Activity, ChevronRight, Terminal, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { Cpu, Zap, Activity, Layers, Database, Terminal, ShieldCheck } from 'lucide-react';
 import { playTacticalClick, playTelemetryBlip } from '../utils/audio';
 
-const SUBSYSTEM_CODES = [
-  'SUBSYSTEM 01 // POWERTRAIN & COMPUTE',
-  'SUBSYSTEM 02 // AERO & COCKPIT INTERFACES',
-  'SUBSYSTEM 03 // TRANSMISSION & PIPELINES',
-  'SUBSYSTEM 04 // DATA STORAGE & TELEMETRY',
-  'SUBSYSTEM 05 // PITWALL & DIAGNOSTIC TOOLS'
-];
+const ICONS = [Cpu, Zap, Activity, Database, Terminal];
 
 export default function Capabilities() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(0);
 
   return (
-    <section id="skills" className="relative py-28 px-4 sm:px-6 lg:px-8 border-b border-white/10 racing-grid">
-      <div className="max-w-7xl mx-auto space-y-16">
+    <section id="skills" className="relative py-20 px-3 sm:px-6 lg:px-8 border-b border-white/10 racing-grid">
+      <div className="max-w-7xl mx-auto space-y-10">
         
-        {/* HEADER */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
-          <div className="space-y-3">
-            <div className="flex items-center space-x-2">
-              <span className="w-2.5 h-2.5 rounded-sm bg-cyan-400 animate-pulse" />
-              <span className="text-xs font-mono tracking-widest uppercase text-cyan-400 font-bold">
-                SUBSYSTEM DIAGNOSTICS // POWERTRAIN MATRIX
-              </span>
+        {/* HEADER (20% TEXT) */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
+          <div className="space-y-1">
+            <div className="flex items-center space-x-2 text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-widest">
+              <span className="w-2 h-2 rounded-sm bg-cyan-400 animate-pulse" />
+              <span>SUBSYSTEM MATRIX // 05 RIGS</span>
             </div>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-clash font-extrabold text-white tracking-tight uppercase">
-              POWERTRAIN <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-white">MATRIX</span>
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-clash font-extrabold text-white uppercase tracking-tight">
+              POWERTRAIN <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-300 to-white">STACK</span>
             </h2>
           </div>
-          <p className="max-w-md text-xs sm:text-sm text-slate-300 font-mono leading-relaxed">
-            Full-spectrum telemetry matrix across algorithmic computation, aerodynamic client architectures, backend transmission pipelines, and high-throughput databases.
-          </p>
+          <span className="text-xs font-mono text-slate-400">
+            [ ALL HARDWARE & SOFTWARE SUBSYSTEMS CALIBRATED ]
+          </span>
         </div>
 
-        {/* ACCORDION SUBSYSTEM DIAGNOSTICS */}
-        <div className="divide-y divide-white/10">
-          {skillsData.map((category, index) => {
-            const isActive = activeTab === index;
-            const subCode = SUBSYSTEM_CODES[index] || `SUBSYSTEM 0${index + 1}`;
+        {/* 70% VISUAL INTERACTIVE CHIPS & TELEMETRY GAUGES */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          {/* LEFT 4 COLS: Visual Subsystem Selector Tabs */}
+          <div className="lg:col-span-5 space-y-2 font-mono">
+            {skillsData.map((cat, idx) => {
+              const isSelected = activeIdx === idx;
+              const IconComp = ICONS[idx] || Cpu;
 
-            return (
-              <div
-                key={category.category}
-                onClick={() => {
-                  playTacticalClick();
-                  playTelemetryBlip(index * 60);
-                  setActiveTab(isActive ? -1 : index);
-                }}
-                className={`py-6 sm:py-8 transition-all duration-300 cursor-pointer group rounded-xl ${
-                  isActive ? 'bg-white/[0.03] px-4 sm:px-6 border border-white/10 my-2 shadow-[0_10px_30px_rgba(0,0,0,0.6)]' : 'hover:px-3'
-                }`}
-                data-cursor="DIAGNOSTIC"
-              >
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                  <div className="flex items-center space-x-4 sm:space-x-6">
-                    <span className="font-mono text-xs sm:text-sm text-red-500 font-bold px-2 py-0.5 rounded bg-red-600/10 border border-red-500/30">
-                      0{index + 1}
-                    </span>
+              return (
+                <button
+                  key={cat.category}
+                  onClick={() => {
+                    playTacticalClick();
+                    playTelemetryBlip(idx * 75);
+                    setActiveIdx(idx);
+                  }}
+                  className={`w-full p-4 rounded-xl border text-left flex items-center justify-between transition-all ${
+                    isSelected
+                      ? 'bg-red-600/20 border-red-500/70 shadow-[0_0_25px_rgba(225,6,0,0.25)]'
+                      : 'bg-dark-900/80 hover:bg-dark-850 border-white/10 text-slate-400 hover:text-white'
+                  }`}
+                  data-cursor="SUBSYSTEM"
+                >
+                  <div className="flex items-center space-x-3.5">
+                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center border ${
+                      isSelected 
+                        ? 'bg-red-600 text-white border-red-400 shadow-md' 
+                        : 'bg-black/60 border-white/10 text-slate-400'
+                    }`}>
+                      <IconComp className="w-4 h-4" />
+                    </div>
+
                     <div>
-                      <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest block">
-                        {subCode}
+                      <span className="text-[10px] text-slate-500 uppercase tracking-widest block font-bold">
+                        SUBSYSTEM 0{idx + 1}
                       </span>
-                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-clash font-extrabold text-white group-hover:text-red-400 transition-colors uppercase">
-                        {category.category}
-                      </h3>
+                      <span className="font-clash font-extrabold text-lg text-white uppercase tracking-wide">
+                        {cat.category}
+                      </span>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-4">
-                    <span className="text-xs font-mono text-slate-400 hidden sm:inline">
-                      {category.description}
+                  <div className="text-right">
+                    <span className={`text-[10px] font-bold block ${isSelected ? 'text-emerald-400' : 'text-slate-500'}`}>
+                      {isSelected ? '● ACTIVE' : 'CALIBRATED'}
                     </span>
-                    <div className={`w-8 h-8 rounded-lg border flex items-center justify-center font-mono text-xs font-bold transition-all ${
-                      isActive 
-                        ? 'bg-red-600 text-white border-red-400 shadow-[0_0_15px_#ef4444]' 
-                        : 'bg-black/60 border-white/20 text-slate-400 group-hover:border-red-400 group-hover:text-white'
-                    }`}>
-                      {isActive ? '−' : '+'}
-                    </div>
+                    <span className="text-[9px] text-slate-400">{cat.skills.length} MODULES</span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* RIGHT 7 COLS: 70% VISUAL COMPONENT TILES WITH LIVE METERS */}
+          <div className="lg:col-span-7 p-6 rounded-2xl bg-black/90 border border-white/15 backdrop-blur-2xl shadow-2xl space-y-6 relative overflow-hidden">
+            
+            {/* CORNER BRACKETS */}
+            <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-red-500/80" />
+            <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-red-500/80" />
+
+            {/* TOP DIAGNOSTIC BAR */}
+            <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono text-xs">
+              <div className="flex items-center space-x-2">
+                <span className="px-2 py-0.5 rounded bg-red-600/20 border border-red-500/40 text-red-400 font-bold uppercase">
+                  {skillsData[activeIdx].category}
+                </span>
+                <span className="text-slate-400 hidden sm:inline">// HARDWARE BENCHMARK</span>
+              </div>
+              <span className="text-emerald-400 font-bold flex items-center space-x-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>100% OPERATIONAL</span>
+              </span>
+            </div>
+
+            {/* VISUAL COMPONENT TILES */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {skillsData[activeIdx].skills.map((skill, i) => (
+                <div 
+                  key={skill.name}
+                  className="p-4 rounded-xl bg-dark-900 border border-white/10 hover:border-red-500/50 transition-all space-y-2 relative overflow-hidden group"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-clash font-extrabold text-base text-white tracking-wide">
+                      {skill.name}
+                    </span>
+                    <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-white/10 text-cyan-300 border border-white/15">
+                      {skill.badge}
+                    </span>
+                  </div>
+
+                  <p className="text-[11px] font-mono text-slate-300 leading-normal">
+                    {skill.level}
+                  </p>
+
+                  {/* VISUAL TELEMETRY STATUS BAR (PURE VISUAL) */}
+                  <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mt-1">
+                    <div 
+                      className="h-full bg-gradient-to-r from-red-500 to-cyan-400 rounded-full group-hover:shadow-[0_0_8px_#00f2fe] transition-all"
+                      style={{ width: `${88 + (i % 3) * 5}%` }}
+                    />
                   </div>
                 </div>
+              ))}
+            </div>
 
-                {/* EXPANDED TELEMETRY COMPONENT TILES */}
-                {isActive && (
-                  <div className="mt-6 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-fadeIn">
-                    {category.skills.map((skill) => (
-                      <div 
-                        key={skill.name}
-                        className="p-4 rounded-xl bg-dark-900 border border-white/10 space-y-2 hover:border-red-500/50 hover:bg-dark-850 transition-all relative overflow-hidden"
-                      >
-                        {/* Micro telemetry indicator */}
-                        <div className="absolute top-2 right-2 flex items-center space-x-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                          <span className="text-[8px] font-mono text-emerald-400 uppercase">ONLINE</span>
-                        </div>
+          </div>
 
-                        <div className="space-y-1">
-                          <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-wider block">
-                            SPEC: {skill.badge}
-                          </span>
-                          <h4 className="font-clash font-extrabold text-lg text-white">
-                            {skill.name}
-                          </h4>
-                        </div>
-
-                        <p className="text-xs font-mono text-slate-400 border-t border-white/[0.06] pt-2">
-                          {skill.level}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            );
-          })}
         </div>
 
       </div>
