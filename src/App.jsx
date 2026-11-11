@@ -13,12 +13,14 @@ import AboutSection from './components/AboutSection';
 import FooterCTA from './components/FooterCTA';
 import ProjectDetailModal from './components/ProjectDetailModal';
 import ResumeModal from './components/ResumeModal';
+import CarLaunchIntro from './components/CarLaunchIntro';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showIntro, setShowIntro] = useState(true);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
-  // Initialize Lenis Smooth Inertial Scrolling (Trionn award-winning smooth scroll)
+  // Initialize Lenis Smooth Inertial Scrolling
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -40,46 +42,57 @@ export default function App() {
     };
   }, []);
 
+  // When F1 Car finishes running across the black screen, automatically open the full resume!
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+    setIsResumeOpen(true);
+  };
+
   return (
-    <div className="relative min-h-screen bg-dark-950 text-slate-100 font-sans selection:bg-cyan-400 selection:text-black">
+    <div className="relative min-h-screen bg-dark-950 text-slate-100 font-sans selection:bg-red-500 selection:text-white">
       
-      {/* INTERACTIVE AMBIENT FLUID CANVAS BACKGROUND (Liquid Cursor Waves) */}
+      {/* 1. CINEMATIC F1 CAR BLACK SCREEN LAUNCH INTRO */}
+      {showIntro && (
+        <CarLaunchIntro onComplete={handleIntroComplete} />
+      )}
+
+      {/* INTERACTIVE AMBIENT FLUID CANVAS BACKGROUND (F1 Red & Cyan Liquid Waves) */}
       <FluidCanvas />
 
-      {/* TRIONN CINEMATIC NOISE GRAIN OVERLAY */}
+      {/* CINEMATIC NOISE GRAIN OVERLAY */}
       <div className="fixed inset-0 z-30 grain-overlay pointer-events-none" />
 
-      {/* CUSTOM TRAILING CURSOR */}
+      {/* ZERO-LATENCY HIGH-PRECISION F1 TELEMETRY CURSOR */}
       <CustomCursor />
 
-      {/* FIXED FLOATING HEADER */}
+      {/* FIXED FLOATING PITWALL HEADER */}
       <Header onOpenResume={() => setIsResumeOpen(true)} />
 
       {/* MAIN SECTIONS */}
       <main className="relative z-10">
         
-        {/* HERO SECTION WITH ENTRANCE TIMELINE */}
+        {/* HERO SECTION: MASSIVE CENTRAL CAR TELEMETRY HUD & TACHOMETER */}
         <Hero onOpenResume={() => setIsResumeOpen(true)} />
 
-        {/* KINETIC MARQUEE TYPOGRAPHY TICKER */}
+        {/* HIGH-VELOCITY MARQUEE TICKER */}
         <MarqueeTicker />
 
-        {/* SELECTED WORKS (04) WITH 3D TILT CARDS */}
+        {/* PADDOCK BUILDS (70% VISUAL CHASSIS SPECIFICATIONS) */}
         <Works onSelectProject={(project) => setSelectedProject(project)} />
 
-        {/* CAPABILITIES / TECHNICAL MATRIX */}
+        {/* POWERTRAIN & COMPONENT MATRIX (70% VISUAL LIVE TELEMETRY TILES) */}
         <Capabilities />
 
-        {/* TRAJECTORY / LEADERSHIP & EXPERIENCE */}
+        {/* RACE STRATEGY & CAREER LAPS (LEADERSHIP TIMELINE) */}
         <Trajectory />
 
-        {/* RECOGNITION & AWARDS */}
+        {/* CHAMPIONSHIP PODIUM STAND (3-STEP VISUAL PODIUM) */}
         <Recognition />
 
-        {/* ABOUT & PHILOSOPHY */}
+        {/* FIA DRIVER DOSSIER PASS (3D VISUAL PADDOCK PASS) */}
         <AboutSection />
 
-        {/* FOOTER CTA & CONTACT */}
+        {/* PITWALL DIRECT RADIO COMMS (FOOTER CTA) */}
         <FooterCTA onOpenResume={() => setIsResumeOpen(true)} />
 
       </main>
@@ -91,7 +104,7 @@ export default function App() {
         onClose={() => setSelectedProject(null)}
       />
 
-      {/* PRINTABLE OFFICIAL RESUME DOSSIER */}
+      {/* 2. OFFICIAL FULL RESUME DOSSIER & EMBEDDED ORIGINAL PDF */}
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
