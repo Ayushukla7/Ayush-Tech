@@ -21,7 +21,7 @@ export const personalInfo = {
   githubUsername: "Ayushukla7",
   linkedin: "https://www.linkedin.com/in/ayushstech/",
   linkedinHandle: "ayushstech",
-  portfolio: "https://ayush-portfolio.vercel.app",
+  portfolio: "https://ayush-tech-dev.vercel.app",
   stats: [
     { label: "DSA Problems Solved", value: "250+", detail: "LeetCode & GFG in Java / C++", icon: "Code2" },
     { label: "API Latency Slashed", value: "45%", detail: "420ms to 180ms via Aggregation", icon: "Zap" },
@@ -132,7 +132,7 @@ export const projectsData = [
     ],
     contribution: "Architected the full-stack MERN workflow, integrated national ABHA standards and Twilio OTP 2FA verification, and optimized frontend performance to achieve sub-1.2s load speeds.",
     github: "https://github.com/Ayushukla7",
-    live: "https://ayush-portfolio.vercel.app",
+    live: "https://ayush-tech-dev.vercel.app",
     award: "National Hackathon Runner-Up (1st in Healthcare)",
     accentColor: "#00f2fe"
   },
@@ -151,7 +151,7 @@ export const projectsData = [
     ],
     contribution: "Designed the system architecture, structured the verification logic and cryptographic hash verification flow, and developed the interactive React user interface prototype.",
     github: "https://github.com/Ayushukla7",
-    live: "https://ayush-portfolio.vercel.app",
+    live: "https://ayush-tech-dev.vercel.app",
     award: "Engineering Innovation Concept",
     accentColor: "#38bdf8"
   },
@@ -170,7 +170,7 @@ export const projectsData = [
     ],
     contribution: "Sole architect and developer: engineered the custom 3D WebGL shaders, camera interpolation timelines, audio synthesis engine, and responsive HUD design system.",
     github: "https://github.com/Ayushukla7",
-    live: "https://ayush-portfolio.vercel.app",
+    live: "https://ayush-tech-dev.vercel.app",
     award: "Digital Identity 2026",
     accentColor: "#2563eb"
   },
@@ -188,7 +188,7 @@ export const projectsData = [
     ],
     contribution: "Architected the delay forecasting algorithms, built the real-time risk dashboard, and optimized MongoDB multi-stage aggregation queries.",
     github: "https://github.com/Ayushukla7",
-    live: "https://ayush-portfolio.vercel.app",
+    live: "https://ayush-tech-dev.vercel.app",
     award: "Production Analytics Platform",
     accentColor: "#06b6d4"
   }

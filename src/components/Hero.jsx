@@ -27,8 +27,8 @@ const SUBSYSTEMS = [
     sub: 'Java & C++ STL',
     desc: 'High-throughput algorithmic core & memory optimization.',
     tags: ['Algorithms', 'Java', 'C++', 'OOP'],
-    x: '72%',
-    y: '50%'
+    x: '64%',
+    y: '40%'
   },
   {
     id: 'telemetry',
@@ -37,8 +37,8 @@ const SUBSYSTEMS = [
     sub: '420ms → 180ms',
     desc: 'Predictive delay engine with 88% forecast accuracy.',
     tags: ['MongoDB Agg', 'Node.js', 'JWT', 'REST'],
-    x: '52%',
-    y: '46%'
+    x: '46%',
+    y: '35%'
   },
   {
     id: 'cockpit',
@@ -47,8 +47,8 @@ const SUBSYSTEMS = [
     sub: '98+ Lighthouse',
     desc: 'Zero layout-shift reactive client architecture.',
     tags: ['React.js', 'Tailwind', 'GSAP', 'WebGL'],
-    x: '34%',
-    y: '52%'
+    x: '18%',
+    y: '45%'
   },
   {
     id: 'transmission',
@@ -57,8 +57,8 @@ const SUBSYSTEMS = [
     sub: 'ABHA & Twilio 2FA',
     desc: 'Healthcare vaccination platform cutting clinical errors by 95%.',
     tags: ['Express', 'Node', 'ABHA', 'SQL'],
-    x: '64%',
-    y: '64%'
+    x: '78%',
+    y: '50%'
   },
   {
     id: 'podium',
@@ -67,8 +67,8 @@ const SUBSYSTEMS = [
     sub: 'National Hackathon',
     desc: '1st in Healthcare Innovation & 2nd Runner-Up.',
     tags: ['Hackathon P3', '1st Health', 'HackerRank 3★'],
-    x: '88%',
-    y: '38%'
+    x: '92%',
+    y: '25%'
   }
 ];
 
@@ -272,11 +272,11 @@ export default function Hero({ onOpenResume }) {
               {/* UNDERGLOW UNDER CAR */}
               <div className="absolute inset-x-12 bottom-6 h-12 bg-red-600/25 blur-[40px] rounded-full pointer-events-none" />
 
-              {/* HIGH-RES F1 HORIZONTAL CAR SCHEMATIC */}
+              {/* HIGH-RES F1 HORIZONTAL CAR SCHEMATIC (TRANSPARENT - ZERO BOX) */}
               <img 
-                src="/f1-horizontal.jpg" 
+                src="/f1-car-transparent.png" 
                 alt="F1 High-Performance Engineering Telemetry Chassis AS-2026"
-                className="w-full h-auto max-h-[380px] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.95)] pointer-events-none select-none transition-transform duration-500 hover:scale-[1.01]"
+                className="w-full h-auto max-h-[380px] object-contain filter drop-shadow-[0_25px_45px_rgba(225,6,0,0.4)] pointer-events-none select-none transition-transform duration-500 hover:scale-[1.01]"
               />
 
               {/* 5 INTERACTIVE PULSING HOTSPOT TARGETS ON CAR */}

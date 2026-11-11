@@ -1,6 +1,26 @@
-// Web Audio API Synthesizer for F1 Telemetry, Race Comms & High-Performance UI
+// Web Audio API & HTML5 Audio Engine for Real Authentic F1 Racing Car Sounds
 let audioCtx = null;
-let isAudioMuted = false; // Enabled for maximum cinematic impact
+let isAudioMuted = false;
+let realF1Audio = null;
+
+export const playRealF1EngineSound = () => {
+  try {
+    if (!realF1Audio) {
+      realF1Audio = new Audio('/f1-sound.ogg');
+      realF1Audio.volume = 0.85;
+    }
+    realF1Audio.currentTime = 0;
+    const playPromise = realF1Audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Fallback to synthesized engine rev if browser autoplay blocked
+        playEngineRev();
+      });
+    }
+  } catch (err) {
+    playEngineRev();
+  }
+};
 
 const getAudioContext = () => {
   if (!audioCtx) {
@@ -19,11 +39,13 @@ export const isMuted = () => isAudioMuted;
 
 export const setMuted = (muted) => {
   isAudioMuted = muted;
+  if (realF1Audio) realF1Audio.muted = muted;
   return isAudioMuted;
 };
 
 export const toggleAudio = () => {
   isAudioMuted = !isAudioMuted;
+  if (realF1Audio) realF1Audio.muted = isAudioMuted;
   if (!isAudioMuted) {
     playRadioBeep();
   }
@@ -102,15 +124,23 @@ export const playTelemetryBlip = (freqOffset = 0) => {
   osc.stop(now + 0.06);
 };
 
-// Exhilarating F1 Turbo-Hybrid V6 Throttle Rev Sound synthesized via Web Audio!
+// High-Adrenaline F1 Throttle Acceleration Roar
 export const playEngineRev = () => {
+  // If real audio file is loaded, play it
+  if (realF1Audio) {
+    try {
+      realF1Audio.currentTime = 0;
+      realF1Audio.play().catch(() => {});
+      return;
+    } catch (e) {}
+  }
+
+  // Synthesizer fallback
   if (isAudioMuted) return;
   const ctx = getAudioContext();
   if (!ctx) return;
 
   const now = ctx.currentTime;
-  
-  // Dual-oscillator engine roar
   const osc1 = ctx.createOscillator();
   const osc2 = ctx.createOscillator();
   const filter = ctx.createBiquadFilter();
@@ -120,23 +150,23 @@ export const playEngineRev = () => {
   osc2.type = 'triangle';
 
   osc1.frequency.setValueAtTime(110, now);
-  osc1.frequency.exponentialRampToValueAtTime(360, now + 0.35);
+  osc1.frequency.exponentialRampToValueAtTime(380, now + 0.35);
   osc1.frequency.exponentialRampToValueAtTime(260, now + 0.42);
-  osc1.frequency.exponentialRampToValueAtTime(440, now + 0.7);
+  osc1.frequency.exponentialRampToValueAtTime(460, now + 0.7);
 
   osc2.frequency.setValueAtTime(55, now);
-  osc2.frequency.exponentialRampToValueAtTime(180, now + 0.35);
+  osc2.frequency.exponentialRampToValueAtTime(190, now + 0.35);
   osc2.frequency.exponentialRampToValueAtTime(130, now + 0.42);
-  osc2.frequency.exponentialRampToValueAtTime(220, now + 0.7);
+  osc2.frequency.exponentialRampToValueAtTime(230, now + 0.7);
 
   filter.type = 'lowpass';
   filter.frequency.setValueAtTime(400, now);
-  filter.frequency.exponentialRampToValueAtTime(2800, now + 0.35);
-  filter.frequency.exponentialRampToValueAtTime(1800, now + 0.42);
-  filter.frequency.exponentialRampToValueAtTime(3400, now + 0.7);
+  filter.frequency.exponentialRampToValueAtTime(3200, now + 0.35);
+  filter.frequency.exponentialRampToValueAtTime(1900, now + 0.42);
+  filter.frequency.exponentialRampToValueAtTime(3800, now + 0.7);
 
   gain.gain.setValueAtTime(0.03, now);
-  gain.gain.linearRampToValueAtTime(0.14, now + 0.35);
+  gain.gain.linearRampToValueAtTime(0.15, now + 0.35);
   gain.gain.exponentialRampToValueAtTime(0.001, now + 0.85);
 
   osc1.connect(filter);
@@ -148,76 +178,4 @@ export const playEngineRev = () => {
   osc2.start(now);
   osc1.stop(now + 0.85);
   osc2.stop(now + 0.85);
-};
-
-// High-Adrenaline Crazy Launch Sound FX: Starter Crank, Twin-Turbo Spool, Tire Screech & Sonic Flyby!
-export const playCrazyLaunchFX = () => {
-  if (isAudioMuted) return;
-  const ctx = getAudioContext();
-  if (!ctx) return;
-
-  const now = ctx.currentTime;
-
-  // 1. Starter Motor Crank
-  const crankOsc = ctx.createOscillator();
-  const crankGain = ctx.createGain();
-  crankOsc.type = 'square';
-  crankOsc.frequency.setValueAtTime(70, now);
-  crankOsc.frequency.exponentialRampToValueAtTime(140, now + 0.3);
-  crankGain.gain.setValueAtTime(0.06, now);
-  crankGain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
-  crankOsc.connect(crankGain);
-  crankGain.connect(ctx.destination);
-  crankOsc.start(now);
-  crankOsc.stop(now + 0.35);
-
-  // 2. Twin-Turbo High Pitch Spool Whistle
-  const turboOsc = ctx.createOscillator();
-  const turboGain = ctx.createGain();
-  turboOsc.type = 'sine';
-  turboOsc.frequency.setValueAtTime(1200, now + 0.2);
-  turboOsc.frequency.exponentialRampToValueAtTime(4800, now + 0.9);
-  turboGain.gain.setValueAtTime(0.001, now + 0.2);
-  turboGain.gain.linearRampToValueAtTime(0.08, now + 0.7);
-  turboGain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
-  turboOsc.connect(turboGain);
-  turboGain.connect(ctx.destination);
-  turboOsc.start(now + 0.2);
-  turboOsc.stop(now + 1.2);
-
-  // 3. Brutal V6 Exhaust Ignition Roar + Flyby
-  const roarOsc1 = ctx.createOscillator();
-  const roarOsc2 = ctx.createOscillator();
-  const roarFilter = ctx.createBiquadFilter();
-  const roarGain = ctx.createGain();
-
-  roarOsc1.type = 'sawtooth';
-  roarOsc2.type = 'sawtooth';
-
-  roarOsc1.frequency.setValueAtTime(90, now + 0.3);
-  roarOsc1.frequency.exponentialRampToValueAtTime(540, now + 1.0);
-  roarOsc1.frequency.exponentialRampToValueAtTime(180, now + 1.4);
-
-  roarOsc2.frequency.setValueAtTime(45, now + 0.3);
-  roarOsc2.frequency.exponentialRampToValueAtTime(270, now + 1.0);
-  roarOsc2.frequency.exponentialRampToValueAtTime(90, now + 1.4);
-
-  roarFilter.type = 'lowpass';
-  roarFilter.frequency.setValueAtTime(250, now + 0.3);
-  roarFilter.frequency.exponentialRampToValueAtTime(4500, now + 1.0);
-  roarFilter.frequency.exponentialRampToValueAtTime(300, now + 1.5);
-
-  roarGain.gain.setValueAtTime(0.01, now + 0.3);
-  roarGain.gain.linearRampToValueAtTime(0.18, now + 0.95);
-  roarGain.gain.exponentialRampToValueAtTime(0.001, now + 1.5);
-
-  roarOsc1.connect(roarFilter);
-  roarOsc2.connect(roarFilter);
-  roarFilter.connect(roarGain);
-  roarGain.connect(ctx.destination);
-
-  roarOsc1.start(now + 0.3);
-  roarOsc2.start(now + 0.3);
-  roarOsc1.stop(now + 1.5);
-  roarOsc2.stop(now + 1.5);
 };
