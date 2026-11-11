@@ -3,22 +3,25 @@ import gsap from 'gsap';
 import { 
   playRealF1EngineSound, 
   stopRealF1EngineSound, 
+  playF1LaunchRoar,
   playTacticalClick,
   toggleAudio,
+  unlockAudio,
   isMuted
 } from '../utils/audio';
-import { ArrowRight, Volume2, VolumeX } from 'lucide-react';
+import { ArrowRight, Volume2, VolumeX, Sparkles } from 'lucide-react';
 
 export default function CarLaunchIntro({ onComplete }) {
   const [carArrived, setCarArrived] = useState(false);
   const [muted, setMutedState] = useState(isMuted());
+  const [soundStarted, setSoundStarted] = useState(false);
   const containerRef = useRef(null);
   const carRef = useRef(null);
   const buttonRef = useRef(null);
 
   useEffect(() => {
-    // Play minimal, soft, subdued engine sound (low volume 0.10 - never loud or startling)
-    playRealF1EngineSound(0.10);
+    // Attempt playback immediately
+    playRealF1EngineSound(0.12);
 
     // Car drives smoothly into dead center of pitch-black screen
     if (carRef.current) {
@@ -58,15 +61,29 @@ export default function CarLaunchIntro({ onComplete }) {
     };
   }, []);
 
+  // Screen-wide click/touch handler to unlock audio if browser autoplay blocked it
+  const handleBackdropInteraction = () => {
+    if (!soundStarted) {
+      unlockAudio();
+      playRealF1EngineSound(0.12);
+      setSoundStarted(true);
+    }
+  };
+
   const handleMuteToggle = (e) => {
     e.stopPropagation();
     const newMuted = toggleAudio();
     setMutedState(newMuted);
+    if (!newMuted) {
+      setSoundStarted(true);
+    }
   };
 
-  const handleOpenPortfolio = () => {
-    playTacticalClick();
-    stopRealF1EngineSound();
+  const handleOpenPortfolio = (e) => {
+    e.stopPropagation();
+    
+    // Play the exhilarating F1 launch throttle rev as the car accelerates!
+    playF1LaunchRoar();
 
     // Car smoothly drives forward out & screen fades smoothly to reveal portfolio
     if (carRef.current && containerRef.current) {
@@ -79,7 +96,7 @@ export default function CarLaunchIntro({ onComplete }) {
       gsap.to(containerRef.current, {
         opacity: 0,
         duration: 0.5,
-        delay: 0.4,
+        delay: 0.45,
         ease: 'power2.out',
         onComplete: () => {
           if (onComplete) onComplete();
@@ -93,11 +110,12 @@ export default function CarLaunchIntro({ onComplete }) {
   return (
     <div 
       ref={containerRef}
-      className="fixed inset-0 z-50 bg-black flex flex-col items-center justify-between p-4 sm:p-6 overflow-hidden select-none"
+      onClick={handleBackdropInteraction}
+      className="fixed inset-0 z-50 bg-black flex flex-col items-center justify-between p-4 sm:p-6 overflow-hidden select-none cursor-pointer"
     >
-      {/* TOP CONTROLS: SUBTLE MUTE TOGGLE */}
+      {/* TOP CONTROLS: SUBTLE AUDIO TOGGLE & STATUS */}
       <div className="w-full max-w-5xl flex justify-between items-center z-20 font-mono text-xs">
-        <span className="text-[10px] text-slate-600 uppercase tracking-widest">
+        <span className="text-[10px] text-slate-500 uppercase tracking-widest">
           AYUSH SHUKLA // CHASSIS AS-26
         </span>
 
@@ -106,13 +124,13 @@ export default function CarLaunchIntro({ onComplete }) {
           className="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 hover:text-white transition-all flex items-center space-x-1.5"
           title={muted ? "Unmute Sound" : "Mute Sound"}
         >
-          {muted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-cyan-400" />}
-          <span className="text-[10px] hidden sm:inline">{muted ? "MUTED" : "AUDIO"}</span>
+          {muted ? <VolumeX className="w-3.5 h-3.5 text-red-400" /> : <Volume2 className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />}
+          <span className="text-[10px] hidden sm:inline">{muted ? "MUTED" : "AUDIO ON"}</span>
         </button>
       </div>
 
-      {/* PURE BLACK SCREEN - ONLY ISOLATED CAR IN CENTER WITH ZERO RECTANGULAR BOX */}
-      <div className="relative w-full max-w-4xl flex flex-col items-center justify-center my-auto space-y-8">
+      {/* PURE BLACK SCREEN - ONLY PRISTINE CAR IN CENTER WITH ZERO RECTANGULAR BOX */}
+      <div className="relative w-full max-w-4xl flex flex-col items-center justify-center my-auto space-y-6">
         
         {/* CAR GLIDING IN SMOOTHLY ON BLACK BACKGROUND */}
         <div 
@@ -121,13 +139,13 @@ export default function CarLaunchIntro({ onComplete }) {
           style={{ transform: 'translateX(-130%)' }}
         >
           {/* Subtle soft shadow under car */}
-          <div className="absolute inset-x-16 bottom-0 h-4 bg-black/80 blur-sm pointer-events-none" />
+          <div className="absolute inset-x-16 bottom-2 h-6 bg-black/90 blur-md pointer-events-none" />
 
-          {/* CLEAN TRANSPARENT CAR (ZERO GREY BOX, ZERO BORDERS) */}
+          {/* CLEAN PRISTINE TRANSPARENT CAR (ZERO GREY BOX, 100% SOLID TIRES & BODY) */}
           <img 
             src="/f1-car-transparent.png" 
             alt="F1 Racing Car" 
-            className="w-full max-w-2xl sm:max-w-3xl h-auto object-contain pointer-events-none select-none filter drop-shadow-[0_20px_40px_rgba(225,6,0,0.35)]"
+            className="w-full max-w-2xl sm:max-w-3xl h-auto object-contain pointer-events-none select-none filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)]"
           />
         </div>
 
@@ -136,22 +154,24 @@ export default function CarLaunchIntro({ onComplete }) {
           <button
             onClick={handleOpenPortfolio}
             className="group px-8 py-3.5 rounded-full bg-white text-black font-clash font-bold text-sm tracking-wider uppercase flex items-center space-x-2.5 shadow-[0_0_30px_rgba(255,255,255,0.25)] hover:bg-red-600 hover:text-white hover:shadow-[0_0_35px_rgba(225,6,0,0.6)] transition-all duration-300 transform hover:scale-105"
-            data-cursor="ENTER"
+            data-cursor="LAUNCH"
           >
             <span>CLICK TO OPEN PORTFOLIO</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
           </button>
 
-          <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
-            SCUDERIA AS-26 • TOUCH TO ENTER
+          <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest flex items-center space-x-1.5">
+            <span>SCUDERIA AS-26</span>
+            <span>•</span>
+            <span className="text-cyan-400">TAP ANYWHERE FOR F1 SOUND</span>
           </span>
         </div>
 
       </div>
 
-      {/* FOOTER PADDOCK BADGE */}
+      {/* FOOTER PADDOCK STATUS */}
       <div className="w-full text-center z-20 font-mono text-[10px] text-slate-600">
-        <span>MINIMAL AMBIENT AUDIO ACTIVE</span>
+        <span>F1 V8 TELEMETRY ENGINE // TOUCH TO UNLOCK</span>
       </div>
 
     </div>

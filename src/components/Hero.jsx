@@ -269,14 +269,14 @@ export default function Hero({ onOpenResume }) {
             {/* ======================================================= */}
             <div className="relative w-full max-w-4xl py-2 flex items-center justify-center my-auto">
               
-              {/* UNDERGLOW UNDER CAR */}
-              <div className="absolute inset-x-12 bottom-6 h-12 bg-red-600/25 blur-[40px] rounded-full pointer-events-none" />
+              {/* SUBTLE AERO GROUND SHADOW */}
+              <div className="absolute inset-x-12 bottom-4 h-8 bg-black/90 blur-xl rounded-full pointer-events-none" />
 
-              {/* HIGH-RES F1 HORIZONTAL CAR SCHEMATIC (TRANSPARENT - ZERO BOX) */}
+              {/* HIGH-RES F1 HORIZONTAL CAR SCHEMATIC (PRISTINE - ZERO BOX) */}
               <img 
                 src="/f1-car-transparent.png" 
                 alt="F1 High-Performance Engineering Telemetry Chassis AS-2026"
-                className="w-full h-auto max-h-[380px] object-contain filter drop-shadow-[0_25px_45px_rgba(225,6,0,0.4)] pointer-events-none select-none transition-transform duration-500 hover:scale-[1.01]"
+                className="w-full h-auto max-h-[380px] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)] pointer-events-none select-none transition-transform duration-500 hover:scale-[1.01]"
               />
 
               {/* 5 INTERACTIVE PULSING HOTSPOT TARGETS ON CAR */}
