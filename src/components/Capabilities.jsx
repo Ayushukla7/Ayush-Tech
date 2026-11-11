@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { skillsData } from '../data/portfolioData';
 import { Cpu, Zap, Activity, Layers, Database, Terminal, ShieldCheck } from 'lucide-react';
-import { playTacticalClick, playTelemetryBlip } from '../utils/audio';
+import { playTacticalClick, playTouchSelect } from '../utils/audio';
 
 const ICONS = [Cpu, Zap, Activity, Database, Terminal];
 
@@ -42,7 +42,7 @@ export default function Capabilities() {
                   key={cat.category}
                   onClick={() => {
                     playTacticalClick();
-                    playTelemetryBlip(idx * 75);
+                    playTouchSelect();
                     setActiveIdx(idx);
                   }}
                   className={`w-full p-4 rounded-xl border text-left flex items-center justify-between transition-all ${

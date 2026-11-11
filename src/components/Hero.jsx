@@ -14,7 +14,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
-import { playTacticalClick, playTelemetryBlip, playEngineRev } from '../utils/audio';
+import { playTacticalClick, playTelemetryBlip, playEngineRev, playTouchSelect } from '../utils/audio';
 import MagneticButton from './MagneticButton';
 import Counter from './Counter';
 
@@ -114,7 +114,7 @@ export default function Hero({ onOpenResume }) {
 
   const selectSpot = (sub, idx) => {
     setActiveSubsystem(sub);
-    playTelemetryBlip(idx * 70);
+    playTouchSelect();
   };
 
   return (

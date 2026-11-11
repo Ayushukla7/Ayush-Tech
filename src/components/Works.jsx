@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projectsData } from '../data/portfolioData';
 import { ArrowUpRight, Github, ExternalLink, Trophy, Activity, ShieldCheck, Cpu, Terminal } from 'lucide-react';
-import { playTacticalClick, playTelemetryBlip } from '../utils/audio';
+import { playTacticalClick, playTouchSelect } from '../utils/audio';
 import TiltCard from './TiltCard';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -61,7 +61,7 @@ export default function Works({ onSelectProject }) {
               <TiltCard
                 onClick={() => {
                   playTacticalClick();
-                  playTelemetryBlip(idx * 70);
+                  playTouchSelect();
                   onSelectProject(project);
                 }}
                 maxTilt={4}
