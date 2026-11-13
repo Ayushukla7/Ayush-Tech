@@ -9,35 +9,72 @@ import {
 } from '../utils/audio';
 
 export default function CarLaunchIntro({ onComplete }) {
-  const [isRunning, setIsRunning] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [secondsLeft, setSecondsLeft] = useState(6);
   const containerRef = useRef(null);
   const carRef = useRef(null);
-  const speedLinesRef = useRef(null);
-  const promptRef = useRef(null);
   const timelineRef = useRef(null);
 
-  // Starts the synchronized sound + car motion sequence
-  const startSequence = () => {
-    if (hasStarted) return;
+  useEffect(() => {
     setHasStarted(true);
-    setIsRunning(true);
-
     unlockAudio();
-    playRealF1EngineSound(0.22);
+    playRealF1EngineSound(0.25);
 
-    // Fade out any prompt immediately
-    if (promptRef.current) {
-      gsap.to(promptRef.current, { opacity: 0, duration: 0.3 });
-    }
+    // 1. CAR GLIDES INTO DEAD CENTER (1.4s)
+    const tl = gsap.timeline();
+    timelineRef.current = tl;
 
-    // Master animation timeline: Sound starts -> Car enters -> Glides -> Roars out with end sound -> Resume opens
-    const tl = gsap.timeline({
-      onComplete: () => {
-        // Fade out screen cleanly as car exits
+    tl.fromTo(carRef.current,
+      { x: '-135%', opacity: 0 },
+      { 
+        x: '0%', 
+        opacity: 1, 
+        duration: 1.4, 
+        ease: 'power2.out',
+        onComplete: () => {
+          // Subtle gentle float animation during 6s pause
+          gsap.to(carRef.current, {
+            y: '-=3',
+            duration: 1.2,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+          });
+        }
+      }
+    );
+
+    // Countdown timer for the 6 seconds pause
+    let remaining = 6;
+    const interval = setInterval(() => {
+      remaining -= 1;
+      setSecondsLeft(Math.max(0, remaining));
+      if (remaining <= 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    // 2. WAIT 6 FULL SECONDS IN CENTER WHILE ENGINE SOUND REVS
+    // 3. AS SOUND IS ABOUT TO FINISH, CAR ACCELERATES & ROARS OUT
+    const exitTimer = setTimeout(() => {
+      // Fire launch throttle roar right as car exits
+      playF1LaunchRoar();
+
+      if (carRef.current) {
+        gsap.to(carRef.current, {
+          x: '150%',
+          opacity: 1,
+          scale: 1.02,
+          duration: 0.95,
+          ease: 'power3.in'
+        });
+      }
+
+      if (containerRef.current) {
         gsap.to(containerRef.current, {
           opacity: 0,
-          duration: 0.45,
+          duration: 0.5,
+          delay: 0.45,
           ease: 'power2.out',
           onComplete: () => {
             stopRealF1EngineSound();
@@ -45,127 +82,57 @@ export default function CarLaunchIntro({ onComplete }) {
           }
         });
       }
-    });
-
-    timelineRef.current = tl;
-
-    // 1. CAR ENTERS with initial engine sound (0.0s to 1.7s)
-    tl.fromTo(carRef.current,
-      { x: '-140%', opacity: 0.7, scale: 0.98 },
-      { x: '0%', opacity: 1, scale: 1, duration: 1.7, ease: 'power2.out' }
-    );
-
-    // 2. SPEED STREAKS illuminate subtly across the black background
-    if (speedLinesRef.current) {
-      tl.fromTo(speedLinesRef.current,
-        { opacity: 0 },
-        { opacity: 0.25, duration: 0.6, ease: 'sine.inOut' },
-        '-=1.2'
-      );
-    }
-
-    // 3. BRIEF HIGH-VELOCITY GLIDE IN CENTER (1.7s to 2.3s)
-    tl.to(carRef.current, {
-      y: '-=4',
-      duration: 0.6,
-      ease: 'sine.inOut',
-      yoyo: true,
-      repeat: 1
-    });
-
-    // 4. ENGINE THROTTLES UP & CAR ACCELERATES OUT with end sound (2.3s to 3.3s)
-    tl.call(() => {
-      playF1LaunchRoar();
-    });
-
-    tl.to(carRef.current, {
-      x: '150%',
-      opacity: 1,
-      scale: 1.02,
-      duration: 1.0,
-      ease: 'power3.in'
-    }, '+=0.1');
-
-    if (speedLinesRef.current) {
-      tl.to(speedLinesRef.current, {
-        opacity: 0,
-        duration: 0.4
-      }, '-=0.6');
-    }
-  };
-
-  useEffect(() => {
-    // Attempt automatic start
-    let autoTimer = setTimeout(() => {
-      startSequence();
-    }, 200);
+    }, 7400); // 1.4s entry + 6.0s pause = 7.4s total sequence
 
     return () => {
-      clearTimeout(autoTimer);
-      if (timelineRef.current) {
-        timelineRef.current.kill();
-      }
+      clearInterval(interval);
+      clearTimeout(exitTimer);
+      if (timelineRef.current) timelineRef.current.kill();
       stopRealF1EngineSound();
     };
   }, []);
 
-  // Screen click handler: if not started, starts immediately; if running, clicking skips directly to resume
-  const handleScreenClick = () => {
-    if (!hasStarted) {
-      startSequence();
-    } else {
-      // User tapped while running -> quick skip directly into resume
-      if (timelineRef.current) {
-        timelineRef.current.kill();
-      }
-      stopRealF1EngineSound();
-      if (onComplete) onComplete();
-    }
+  // Quick skip option if user taps or wants to enter immediately
+  const handleQuickSkip = () => {
+    stopRealF1EngineSound();
+    if (onComplete) onComplete();
   };
 
   return (
     <div 
       ref={containerRef}
-      onClick={handleScreenClick}
-      className="fixed inset-0 z-50 bg-black flex flex-col items-center justify-between p-4 sm:p-8 overflow-hidden select-none cursor-pointer"
+      className="fixed inset-0 z-50 bg-black flex flex-col items-center justify-between p-4 sm:p-8 overflow-hidden select-none"
     >
-      {/* MINIMAL TOP TELEMETRY HEADER */}
+      {/* TOP TELEMETRY STATUS */}
       <div className="w-full max-w-6xl flex justify-between items-center z-20 font-mono text-xs">
         <div className="flex items-center space-x-2.5">
-          <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-          <span className="text-[11px] text-slate-400 font-semibold tracking-[0.2em] uppercase">
+          <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+          <span className="text-[11px] text-slate-300 font-semibold tracking-[0.2em] uppercase">
             SCUDERIA AS-26 // AYUSH SHUKLA
           </span>
         </div>
 
-        <span className="text-[10px] text-slate-600 tracking-widest uppercase font-mono">
-          HIGH-VELOCITY TELEMETRY
-        </span>
+        <button
+          onClick={handleQuickSkip}
+          className="px-3 py-1 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-slate-400 hover:text-white text-[10px] tracking-wider uppercase transition-all"
+        >
+          SKIP TO PORTFOLIO →
+        </button>
       </div>
 
-      {/* CENTER STAGE: CAR GLIDES IN & ACCELERATES OUT */}
+      {/* CENTER STAGE: CAR RESTS FOR 6 SECONDS IN CENTER & HEARS SOUND */}
       <div className="relative w-full max-w-5xl flex items-center justify-center my-auto">
         
-        {/* Subtle Horizontal Speed Streaks */}
-        <div 
-          ref={speedLinesRef}
-          className="absolute inset-0 flex flex-col justify-around opacity-0 pointer-events-none"
-        >
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent" />
-          <div className="w-3/4 mx-auto h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-          <div className="w-5/6 mx-auto h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
-        </div>
-
         {/* PRISTINE F1 RACING CAR */}
         <div 
           ref={carRef}
           className="relative w-full flex items-center justify-center will-change-transform"
-          style={{ transform: 'translateX(-140%)' }}
+          style={{ transform: 'translateX(-135%)' }}
         >
           {/* Aero ground shadow */}
           <div className="absolute inset-x-20 bottom-3 h-6 bg-black/95 blur-md pointer-events-none" />
 
-          {/* Clean Solid Cutout (Zero Box, Solid Tires & Carbon Body) */}
+          {/* Clean Solid Cutout with Radial Gradient Mask for Seamless Borderless Blend */}
           <img 
             src="/f1-car-transparent.png" 
             alt="Formula 1 High-Performance Chassis" 
@@ -175,13 +142,11 @@ export default function CarLaunchIntro({ onComplete }) {
 
       </div>
 
-      {/* MINIMAL ELEGANT PROMPT IF USER GESTURE NEEDED BY BROWSER */}
-      <div 
-        ref={promptRef}
-        className="w-full text-center z-20 font-mono text-[11px] text-slate-400 transition-opacity"
-      >
-        <span className="tracking-[0.25em] uppercase text-slate-400 hover:text-white transition-colors">
-          [ TOUCH SCREEN TO LAUNCH ]
+      {/* FOOTER SEQUENCE STATUS & 6-SECOND TIMER */}
+      <div className="w-full text-center z-20 font-mono text-[11px] text-slate-500 flex items-center justify-center space-x-3">
+        <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+        <span className="tracking-[0.2em] uppercase">
+          F1 V8 ENGINE SEQUENCE {secondsLeft > 0 ? `// LAUNCH IN ${secondsLeft}S` : '// ACCELERATING...'}
         </span>
       </div>
 
