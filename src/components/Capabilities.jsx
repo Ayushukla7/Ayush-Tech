@@ -105,49 +105,53 @@ export default function Capabilities() {
 
             {/* GRID OF SKILL COMPONENTS WITH LIVE SVG GAUGES */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              {skillsData[activeIdx].skills.map((skill, i) => (
-                <div 
-                  key={i}
-                  className="p-3.5 rounded-xl bg-dark-900/90 border border-white/10 hover:border-red-500/50 transition-all flex items-center justify-between group"
-                >
-                  <div className="space-y-1">
-                    <div className="flex items-center space-x-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
-                      <span className="font-clash font-bold text-sm text-white uppercase group-hover:text-red-400 transition-colors">
-                        {skill}
+              {skillsData[activeIdx].skills.map((skill, i) => {
+                const skillName = typeof skill === 'object' ? skill.name : skill;
+                const skillLevel = typeof skill === 'object' ? skill.level : 'CORE PROFICIENCY';
+                return (
+                  <div 
+                    key={i}
+                    className="p-3.5 rounded-xl bg-dark-900/90 border border-white/10 hover:border-red-500/50 transition-all flex items-center justify-between group"
+                  >
+                    <div className="space-y-1">
+                      <div className="flex items-center space-x-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                        <span className="font-clash font-bold text-sm text-white uppercase group-hover:text-red-400 transition-colors">
+                          {skillName}
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-mono text-slate-400 block">
+                        {skillLevel}
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono text-slate-400 block">
-                      CORE PROFICIENCY
-                    </span>
-                  </div>
 
-                  {/* MINI SPEEDOMETER GAUGE PER SKILL */}
-                  <div className="relative w-10 h-10 flex items-center justify-center">
-                    <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
-                      <path
-                        className="text-white/10"
-                        strokeWidth="3.5"
-                        stroke="currentColor"
-                        fill="none"
-                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <path
-                        className="text-red-500 transition-all duration-700"
-                        strokeDasharray={`${85 + (i * 3) % 15}, 100`}
-                        strokeWidth="3.5"
-                        strokeLinecap="round"
-                        stroke="currentColor"
-                        fill="none"
-                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                    </svg>
-                    <span className="absolute font-mono text-[8px] font-bold text-white">
-                      {88 + (i * 2) % 12}%
-                    </span>
+                    {/* MINI SPEEDOMETER GAUGE PER SKILL */}
+                    <div className="relative w-10 h-10 flex items-center justify-center">
+                      <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                        <path
+                          className="text-white/10"
+                          strokeWidth="3.5"
+                          stroke="currentColor"
+                          fill="none"
+                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <path
+                          className="text-red-500 transition-all duration-700"
+                          strokeDasharray={`${85 + (i * 3) % 15}, 100`}
+                          strokeWidth="3.5"
+                          strokeLinecap="round"
+                          stroke="currentColor"
+                          fill="none"
+                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                      </svg>
+                      <span className="absolute font-mono text-[8px] font-bold text-white">
+                        {88 + (i * 2) % 12}%
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* PADDOCK STATUS FOOTNOTE */}

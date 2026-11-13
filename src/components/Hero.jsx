@@ -403,7 +403,7 @@ export default function Hero({ onOpenResume }) {
             <div>
               <span className="text-[10px] text-slate-500 uppercase tracking-widest block font-medium">ALGORITHMS</span>
               <div className="text-2xl sm:text-3xl font-clash font-extrabold text-white">
-                <Counter target={250} suffix="+" />
+                <Counter value="250" suffix="+" />
               </div>
               <span className="text-[10px] text-slate-400">DSA LeetCode & GFG</span>
             </div>

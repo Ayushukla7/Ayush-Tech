@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-export default function Counter({ value, suffix = '', prefix = '', duration = 1800 }) {
+export default function Counter({ value, target, suffix = '', prefix = '', duration = 1800 }) {
   const [count, setCount] = useState(0);
   const elementRef = useRef(null);
   const hasAnimatedRef = useRef(false);
 
-  // Extract numeric part
-  const numericValue = parseInt(value.replace(/[^0-9]/g, ''), 10) || 0;
+  // Safely extract numeric value whether passed as string, number, value, or target
+  const raw = value !== undefined ? value : (target !== undefined ? target : 0);
+  const strVal = String(raw || '0');
+  const numericValue = parseInt(strVal.replace(/[^0-9]/g, ''), 10) || 0;
 
   useEffect(() => {
     const el = elementRef.current;
@@ -43,18 +45,18 @@ export default function Counter({ value, suffix = '', prefix = '', duration = 18
   }, [numericValue, duration]);
 
   // Combine with original string signs like +, -, %
-  const originalHasPlus = value.includes('+');
-  const originalHasMinus = value.includes('-');
-  const originalHasPercent = value.includes('%');
+  const originalHasPlus = strVal.includes('+') || suffix.includes('+');
+  const originalHasMinus = strVal.includes('-');
+  const originalHasPercent = strVal.includes('%') || suffix.includes('%');
 
   return (
-    <span ref={elementRef} className="tabular-nums">
+    <span ref={elementRef} className="tabular-nums font-clash font-extrabold tracking-tight">
       {prefix}
-      {originalHasMinus ? '-' : ''}
+      {originalHasMinus && '-'}
       {count}
-      {originalHasPlus ? '+' : ''}
-      {originalHasPercent ? '%' : ''}
-      {suffix}
+      {originalHasPlus && '+'}
+      {originalHasPercent && '%'}
+      {!originalHasPlus && !originalHasPercent && suffix}
     </span>
   );
 }
