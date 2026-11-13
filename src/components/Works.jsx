@@ -38,19 +38,19 @@ export default function Works({ onSelectProject }) {
     >
       <div className="max-w-7xl mx-auto space-y-12">
         
-        {/* MINIMAL VISUAL HEADER (20% TEXT) */}
+        {/* FORMAL EXECUTIVE HEADER */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
-          <div className="space-y-1">
-            <div className="flex items-center space-x-2 text-[10px] font-mono text-red-500 font-bold uppercase tracking-widest">
-              <span className="w-2 h-2 rounded-sm bg-red-500 animate-pulse" />
+          <div className="space-y-1.5">
+            <div className="flex items-center space-x-2 text-[10px] font-mono text-red-500 font-semibold uppercase tracking-[0.2em]">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
               <span>CHASSIS REPOSITORY // 01–04</span>
             </div>
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-clash font-extrabold text-white uppercase tracking-tight">
-              PADDOCK <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-300 to-white">BUILDS</span>
+              PADDOCK <span className="text-white">BUILDS</span>
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">
-            [ 04 VERIFIED HIGH-VELOCITY PLATFORMS ]
+            [ 04 VERIFIED PRODUCTION ARCHITECTURES ]
           </span>
         </div>
 
@@ -66,7 +66,7 @@ export default function Works({ onSelectProject }) {
                 }}
                 maxTilt={4}
                 scale={1.012}
-                className="group relative rounded-2xl bg-dark-900/90 border border-white/15 hover:border-red-500/70 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_20px_50px_rgba(225,6,0,0.25)] cursor-pointer h-full backdrop-blur-xl overflow-hidden"
+                className="group relative rounded-2xl bg-dark-900/90 border border-white/15 hover:border-red-500/70 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_20px_50px_rgba(225,6,0,0.2)] cursor-pointer h-full backdrop-blur-xl overflow-hidden"
                 data-cursor="INSPECT"
               >
                 {/* CORNER TICKS */}
@@ -77,11 +77,11 @@ export default function Works({ onSelectProject }) {
 
                 {/* TOP CHASSIS BAR */}
                 <div className="flex items-center justify-between pb-3 border-b border-white/10 font-mono text-xs">
-                  <span className="px-2 py-0.5 rounded bg-red-600/20 border border-red-500/40 text-red-400 font-bold">
+                  <span className="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-slate-200 font-bold">
                     RIG 0{idx + 1}
                   </span>
-                  <span className="px-2.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center space-x-1.5 font-bold text-[11px]">
-                    <Trophy className="w-3 h-3 text-amber-400" />
+                  <span className="px-2.5 py-0.5 rounded bg-white/[0.04] border border-white/10 text-slate-200 flex items-center space-x-1.5 font-semibold text-[11px]">
+                    <Trophy className="w-3 h-3 text-red-500" />
                     <span>{project.award}</span>
                   </span>
                 </div>
@@ -89,21 +89,21 @@ export default function Works({ onSelectProject }) {
                 {/* ======================================================== */}
                 {/* 70% VISUAL HOLOGRAPHIC CHASSIS DISPLAY BOX */}
                 {/* ======================================================== */}
-                <div className="my-4 w-full h-56 sm:h-64 rounded-xl bg-black border border-white/10 overflow-hidden relative flex flex-col justify-between p-5 group-hover:border-red-500/50 transition-all">
+                <div className="my-4 w-full h-56 sm:h-64 rounded-xl bg-black border border-white/10 overflow-hidden relative flex flex-col justify-between p-5 group-hover:border-red-500/40 transition-all">
                   
                   {/* Subtle telemetry wireframe background */}
-                  <div className="absolute inset-0 racing-grid-dense opacity-40 pointer-events-none" />
+                  <div className="absolute inset-0 racing-grid-dense opacity-25 pointer-events-none" />
 
                   {/* Ambient glowing radial flare */}
                   <div 
-                    className="absolute -right-8 -bottom-8 w-44 h-44 rounded-full blur-[50px] opacity-25 group-hover:opacity-45 transition-opacity pointer-events-none"
-                    style={{ background: project.accentColor || '#e10600' }}
+                    className="absolute -right-8 -bottom-8 w-44 h-44 rounded-full blur-[50px] opacity-20 group-hover:opacity-35 transition-opacity pointer-events-none"
+                    style={{ background: '#e10600' }}
                   />
 
                   {/* Top status bar inside visual box */}
                   <div className="relative z-10 flex items-center justify-between font-mono text-[10px]">
-                    <span className="flex items-center space-x-1.5 text-cyan-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                    <span className="flex items-center space-x-1.5 text-slate-300">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
                       <span>TELEMETRY VERIFIED</span>
                     </span>
 
@@ -112,7 +112,7 @@ export default function Works({ onSelectProject }) {
                     </div>
                   </div>
 
-                  {/* CENTER GRAPHICAL TELEMETRY WIDGET (PURE VISUAL PER PROJECT) */}
+                  {/* CENTER GRAPHICAL TELEMETRY WIDGET */}
                   <div className="relative z-10 my-auto flex items-center justify-between">
                     {idx === 0 && (
                       /* VacciTrack: Heartbeat ECG wave visual */
@@ -134,9 +134,9 @@ export default function Works({ onSelectProject }) {
                       <div className="w-full flex items-center justify-between space-x-4 font-mono">
                         <div className="space-y-1">
                           <span className="text-[10px] text-slate-400 uppercase">PREDICTIVE ENGINE</span>
-                          <div className="text-2xl font-clash font-extrabold text-cyan-400">-45% LATENCY</div>
+                          <div className="text-2xl font-clash font-extrabold text-white">-45% LATENCY</div>
                         </div>
-                        <div className="px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-bold">
+                        <div className="px-3 py-1.5 rounded-lg bg-white/[0.06] border border-white/15 text-slate-200 text-xs font-bold">
                           180ms PIPELINE
                         </div>
                       </div>
@@ -147,7 +147,7 @@ export default function Works({ onSelectProject }) {
                       <div className="w-full flex items-center justify-between space-x-4 font-mono">
                         <div className="space-y-1">
                           <span className="text-[10px] text-slate-400 uppercase">CRYPTOGRAPHIC LEDGER</span>
-                          <div className="text-2xl font-clash font-extrabold text-sky-400">HASH VERIFIED</div>
+                          <div className="text-2xl font-clash font-extrabold text-white">HASH VERIFIED</div>
                         </div>
                         <div className="px-2.5 py-1 rounded bg-white/10 text-[10px] text-slate-300 border border-white/15">
                           0x7F...A26
@@ -159,11 +159,11 @@ export default function Works({ onSelectProject }) {
                       /* Portfolio: 3D Earth WebGL Telemetry visual */
                       <div className="w-full flex items-center justify-between space-x-4 font-mono">
                         <div className="space-y-1">
-                          <span className="text-[10px] text-slate-400 uppercase">WEBGL 3D EXPERIENCE</span>
+                          <span className="text-[10px] text-slate-400 uppercase">HIGH-VELOCITY UI</span>
                           <div className="text-2xl font-clash font-extrabold text-white">60 FPS ENGINE</div>
                         </div>
                         <div className="px-2.5 py-1 rounded bg-red-600/20 text-red-400 text-xs font-bold border border-red-500/40">
-                          THREE.JS
+                          REACT + GSAP
                         </div>
                       </div>
                     )}
@@ -199,33 +199,34 @@ export default function Works({ onSelectProject }) {
                         <a
                           href={project.github}
                           target="_blank"
-                          rel="noreferrer"
+                          rel="noopener noreferrer"
                           onClick={(e) => { e.stopPropagation(); playTacticalClick(); }}
-                          className="flex items-center space-x-1 text-slate-400 hover:text-white transition-colors"
+                          className="text-slate-400 hover:text-white flex items-center space-x-1 transition-colors"
                         >
                           <Github className="w-3.5 h-3.5" />
                           <span>Code</span>
                         </a>
                       )}
-                      {project.live && (
+                      {project.liveUrl && (
                         <a
-                          href={project.live}
+                          href={project.liveUrl}
                           target="_blank"
-                          rel="noreferrer"
+                          rel="noopener noreferrer"
                           onClick={(e) => { e.stopPropagation(); playTacticalClick(); }}
-                          className="flex items-center space-x-1 text-red-400 hover:text-red-300 transition-colors"
+                          className="text-slate-400 hover:text-white flex items-center space-x-1 transition-colors"
                         >
                           <ExternalLink className="w-3.5 h-3.5" />
                           <span>Live Demo</span>
                         </a>
                       )}
                     </div>
-                    
-                    <span className="text-[11px] text-slate-400 group-hover:text-cyan-400 transition-colors font-bold">
-                      INSPECT →
+
+                    <span className="text-[10px] text-slate-500 uppercase tracking-widest group-hover:text-red-400 transition-colors">
+                      DETAILS →
                     </span>
                   </div>
                 </div>
+
               </TiltCard>
             </div>
           ))}

@@ -7,15 +7,15 @@ export default function Trajectory() {
     <section id="experience" className="relative py-20 px-3 sm:px-6 lg:px-8 border-b border-white/10 racing-grid">
       <div className="max-w-7xl mx-auto space-y-10">
         
-        {/* HEADER (20% TEXT) */}
+        {/* FORMAL EXECUTIVE HEADER */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
-          <div className="space-y-1">
-            <div className="flex items-center space-x-2 text-[10px] font-mono text-red-500 font-bold uppercase tracking-widest">
-              <span className="w-2 h-2 rounded-sm bg-red-500 animate-pulse" />
+          <div className="space-y-1.5">
+            <div className="flex items-center space-x-2 text-[10px] font-mono text-red-500 font-semibold uppercase tracking-[0.2em]">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
               <span>CAREER STINTS & TRACK LAPS</span>
             </div>
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-clash font-extrabold text-white uppercase tracking-tight">
-              RACE <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-300 to-white">STRATEGY</span>
+              RACE <span className="text-white">STRATEGY</span>
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">
@@ -32,10 +32,10 @@ export default function Trajectory() {
               data-cursor="LAP"
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono">
-                <span className="px-2 py-0.5 rounded bg-red-600/20 text-red-400 font-bold text-xs">
+                <span className="px-2 py-0.5 rounded bg-white/[0.06] border border-white/10 text-slate-200 font-bold text-xs">
                   LAP 0{idx + 1}
                 </span>
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-slate-400 font-medium">
                   {item.period}
                 </span>
               </div>
@@ -44,7 +44,7 @@ export default function Trajectory() {
                 <h3 className="text-2xl font-clash font-extrabold text-white uppercase group-hover:text-red-400 transition-colors">
                   {item.role}
                 </h3>
-                <div className="text-xs font-mono text-cyan-400 font-semibold">
+                <div className="text-xs font-mono text-slate-300 font-semibold">
                   @{item.organization} • {item.location}
                 </div>
               </div>
@@ -65,13 +65,13 @@ export default function Trajectory() {
                 )}
                 {idx === 2 && (
                   <>
-                    <span className="px-2.5 py-1 rounded bg-black/60 border border-white/10 text-emerald-400 font-bold">2,000+ Community</span>
+                    <span className="px-2.5 py-1 rounded bg-black/60 border border-white/10 text-slate-200 font-bold">2,000+ Community</span>
                     <span className="px-2.5 py-1 rounded bg-black/60 border border-white/10 text-slate-200">Developer Paddock</span>
                   </>
                 )}
                 {idx === 3 && (
                   <>
-                    <span className="px-2.5 py-1 rounded bg-black/60 border border-white/10 text-cyan-300">UI & Graphic Systems</span>
+                    <span className="px-2.5 py-1 rounded bg-black/60 border border-white/10 text-slate-200">UI & Graphic Systems</span>
                     <span className="px-2.5 py-1 rounded bg-black/60 border border-white/10 text-slate-200">Event Branding</span>
                   </>
                 )}

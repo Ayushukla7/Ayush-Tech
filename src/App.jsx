@@ -42,10 +42,10 @@ export default function App() {
     };
   }, []);
 
-  // When Crazy F1 Car Launch finishes, reveal the Hero Portfolio directly (NO auto-resume popup!)
+  // When F1 Car Launch finishes with sound, seamlessly reveal portfolio and auto-open Resume
   const handleIntroComplete = () => {
     setShowIntro(false);
-    setIsResumeOpen(false); // Keeps user on the exciting Hero portfolio!
+    setIsResumeOpen(true); // Smoothly slides up official Resume Dossier as requested!
   };
 
   return (

@@ -130,7 +130,7 @@ export default function ResumeModal({ isOpen, onClose }) {
               href="/Ayush_Shukla_Resume.pdf"
               download="Ayush_Shukla_Resume.pdf"
               onClick={playTacticalClick}
-              className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold flex items-center space-x-1.5 transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+              className="px-3 py-1.5 rounded-lg bg-white hover:bg-red-600 text-black hover:text-white font-clash text-xs font-bold uppercase flex items-center space-x-1.5 transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]"
               title="Download Original PDF"
             >
               <Download className="w-3.5 h-3.5" />

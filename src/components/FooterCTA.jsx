@@ -34,7 +34,7 @@ export default function FooterCTA({ onOpenResume }) {
     <footer id="contact" className="relative pt-28 pb-16 px-4 sm:px-6 lg:px-8 bg-dark-950 overflow-hidden racing-grid">
       
       {/* BACKGROUND GLOW */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45rem] h-[30rem] bg-gradient-to-tr from-red-600/10 via-rose-500/10 to-cyan-600/10 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45rem] h-[30rem] bg-red-600/10 rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto space-y-20 relative z-10">
         
@@ -51,8 +51,8 @@ export default function FooterCTA({ onOpenResume }) {
             <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-clash font-extrabold uppercase tracking-tight text-white leading-[0.9]">
               BOX, BOX.
             </h2>
-            <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-clash font-extrabold uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-white leading-[0.9]">
-              LET'S TALK.
+            <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-clash font-extrabold uppercase tracking-tight text-white leading-[0.9]">
+              LET'S TALK<span className="text-red-500">.</span>
             </h2>
           </div>
         </div>
