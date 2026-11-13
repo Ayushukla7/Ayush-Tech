@@ -276,7 +276,7 @@ export default function Hero({ onOpenResume }) {
               <img 
                 src="/f1-car-transparent.png" 
                 alt="F1 High-Performance Engineering Telemetry Chassis AS-2026"
-                className="w-full h-auto max-h-[380px] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.95)] pointer-events-none select-none transition-transform duration-500 hover:scale-[1.01]"
+                className="w-full h-auto max-h-[380px] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.95)] pointer-events-none select-none transition-transform duration-500 hover:scale-[1.01] [mask-image:radial-gradient(ellipse_94%_84%_at_50%_45%,black_75%,transparent_100%)]"
               />
 
               {/* 5 INTERACTIVE PULSING HOTSPOT TARGETS ON CAR */}

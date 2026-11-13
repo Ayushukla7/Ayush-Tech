@@ -169,7 +169,7 @@ export default function CarLaunchIntro({ onComplete }) {
           <img 
             src="/f1-car-transparent.png" 
             alt="Formula 1 High-Performance Chassis" 
-            className="w-full max-w-3xl sm:max-w-4xl h-auto object-contain pointer-events-none select-none filter drop-shadow-[0_25px_50px_rgba(0,0,0,0.95)]"
+            className="w-full max-w-3xl sm:max-w-4xl h-auto object-contain pointer-events-none select-none filter drop-shadow-[0_25px_50px_rgba(0,0,0,0.95)] [mask-image:radial-gradient(ellipse_94%_84%_at_50%_45%,black_75%,transparent_100%)]"
           />
         </div>
 
