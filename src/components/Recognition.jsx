@@ -43,19 +43,19 @@ export default function Recognition() {
                 RANK 3
               </div>
               <div className="text-xs font-mono text-slate-200 font-bold uppercase">
-                National Hackathon Runner-Up
+                National Hackathon 2nd Runner-Up
               </div>
               <div className="text-[11px] font-mono text-slate-400">
-                120+ Teams Competing Across India
+                120+ Engineering Teams Competing Across India
               </div>
             </div>
 
             <div className="w-full h-12 bg-white/[0.04] rounded-xl border border-white/10 flex items-center justify-center font-mono text-xs font-bold text-slate-300">
-              MEDAL OF DISTINCTION
+              NATIONAL MEDAL OF DISTINCTION
             </div>
           </div>
 
-          {/* PODIUM 1 (CENTER - TALLEST): 1ST PLACE HEALTHCARE INNOVATION */}
+          {/* PODIUM 1 (CENTER - TALLEST): 1ST PLACE CHAMPION */}
           <div className="p-8 rounded-2xl bg-gradient-to-b from-white/[0.06] via-dark-900 to-black border-2 border-red-500/80 shadow-[0_0_50px_rgba(225,6,0,0.25)] space-y-5 backdrop-blur-2xl relative overflow-hidden group -mt-4">
             <div className="absolute top-2 right-2 px-2.5 py-0.5 rounded bg-red-600 text-white font-mono text-[9px] font-extrabold uppercase shadow-md">
               1ST PLACE
@@ -63,7 +63,7 @@ export default function Recognition() {
 
             <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono">
               <span className="text-xs text-red-400 font-bold">CHAMPIONSHIP P1</span>
-              <span className="text-slate-300 text-xs font-bold">GOLD DISTINCTION</span>
+              <span className="text-slate-300 text-xs font-bold">BUILDSPRINT WINNER</span>
             </div>
 
             <div className="text-center py-4 space-y-2">
@@ -74,24 +74,24 @@ export default function Recognition() {
                 1ST PRIZE
               </div>
               <div className="text-sm font-mono text-slate-200 font-bold uppercase">
-                Healthcare Innovation Track
+                BuildSprint Winner (Rank 1 / 85+)
               </div>
               <div className="text-xs font-mono text-slate-400">
-                VacciTrack Immunization Platform
+                1st Position Healthcare Innovation Track
               </div>
             </div>
 
             <div className="w-full h-12 bg-red-600/20 rounded-xl border border-red-500/40 flex items-center justify-center font-mono text-xs font-bold text-red-300">
-              NATIONAL WINNER TROPHY
+              GOLD CHAMPIONSHIP TROPHY
             </div>
           </div>
 
-          {/* PODIUM 3 (RIGHT): COMPETITIVE PROBLEM SOLVING */}
+          {/* PODIUM 3 (RIGHT): 350+ DSA PROBLEMS */}
           <div className="p-6 rounded-2xl bg-dark-900/90 border border-white/15 hover:border-red-500/50 transition-all space-y-4 backdrop-blur-xl relative overflow-hidden group">
             <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono">
               <span className="text-xs text-slate-400 font-bold">POS 03</span>
               <span className="px-2 py-0.5 rounded bg-white/[0.06] text-slate-200 text-[10px] font-bold border border-white/10">
-                TOP 5% CODERS
+                DSA MASTERY
               </span>
             </div>
 
@@ -100,13 +100,13 @@ export default function Recognition() {
                 <Medal className="w-7 h-7 text-slate-300" />
               </div>
               <div className="text-3xl font-clash font-extrabold text-white">
-                3-STAR
+                350+ DSA
               </div>
               <div className="text-xs font-mono text-slate-200 font-bold uppercase">
-                HackerRank C++ & Python
+                LeetCode & GeeksforGeeks
               </div>
               <div className="text-[11px] font-mono text-slate-400">
-                250+ Algorithmic Challenges Cleared
+                Java & C++ STL Algorithmic Challenges
               </div>
             </div>
 
@@ -115,6 +115,27 @@ export default function Recognition() {
             </div>
           </div>
 
+        </div>
+
+        {/* ADDITIONAL NATIONAL FINALIST BADGES */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs pt-2">
+          <div className="p-4 rounded-xl bg-dark-900/80 border border-white/10 flex items-center justify-between">
+            <div>
+              <span className="text-[10px] text-slate-400 uppercase block font-semibold">IIT MADRAS SHAASTRA</span>
+              <span className="font-clash font-bold text-sm text-white">NeuroHACK Finalist</span>
+              <p className="text-[11px] text-slate-400 font-sans">National finalist among top engineering cohorts</p>
+            </div>
+            <Star className="w-6 h-6 text-red-500 shrink-0" />
+          </div>
+
+          <div className="p-4 rounded-xl bg-dark-900/80 border border-white/10 flex items-center justify-between">
+            <div>
+              <span className="text-[10px] text-slate-400 uppercase block font-semibold">OPEN INNOVATION CHALLENGE</span>
+              <span className="font-clash font-bold text-sm text-white">Code for Bharat Season 2 Finalist</span>
+              <p className="text-[11px] text-slate-400 font-sans">Selected national-level finalist across open domains</p>
+            </div>
+            <Flag className="w-6 h-6 text-red-500 shrink-0" />
+          </div>
         </div>
 
       </div>

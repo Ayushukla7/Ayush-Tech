@@ -1,300 +1,255 @@
 export const personalInfo = {
   name: "Ayush Shukla",
-  title: "Software Developer | Full-Stack Developer | Problem Solver",
-  tagline: "Building digital experiences through technology, creativity and problem-solving.",
+  title: "Software Developer | Full-Stack MERN Architect | Problem Solver",
+  tagline: "Computer Science undergraduate combining full-stack MERN development, UI/UX design architectures, and technical leadership.",
   email: "ayush.apply41@gmail.com",
   phone: "+91-9369657005",
-  location: "Ghaziabad / Lucknow, Uttar Pradesh, India",
-  coordinates: {
-    lat: "28.6692° N",
-    lng: "77.4538° E",
-    city: "Ghaziabad (Delhi-NCR)",
-    region: "India",
-    elevation: "214m",
-    satelliteTrack: "SAT-IND-01"
-  },
+  location: "Ghaziabad, Uttar Pradesh, India",
   college: "ABES Engineering College, Ghaziabad",
-  degree: "Bachelor of Technology in Computer Science & Engineering",
-  cgpa: "8.00 / 10.0",
-  period: "Aug 2024 – Aug 2028",
+  degree: "B.Tech in Computer Science & Engineering",
+  cgpa: "7.89 / 10.0",
+  period: "2024 – Present",
+  school: "Uttar Pradesh State Board (UPMSP)",
+  intermediate: "Intermediate, Mathematics (88%)",
+  schoolPeriod: "2021 – 2023",
   github: "https://github.com/Ayushukla7",
   githubUsername: "Ayushukla7",
   linkedin: "https://www.linkedin.com/in/ayushstech/",
   linkedinHandle: "ayushstech",
   portfolio: "https://ayush-tech-dev.vercel.app",
   stats: [
-    { label: "DSA Problems Solved", value: "250+", detail: "LeetCode & GFG in Java / C++", icon: "Code2" },
-    { label: "API Latency Slashed", value: "45%", detail: "420ms to 180ms via Aggregation", icon: "Zap" },
-    { label: "Delay Forecast Accuracy", value: "88%", detail: "WorkRadar Delay Risk Engine", icon: "TrendingUp" },
+    { label: "DSA Problems Solved", value: "350+", detail: "LeetCode & GFG in Java / C++", icon: "Code2" },
+    { label: "Server Latency Reduced", value: "35%", detail: "Optimized MongoDB Aggregations", icon: "Zap" },
     { label: "National Hackathon", value: "Rank 3", detail: "2nd Runner-Up (120+ teams)", icon: "Trophy" },
-    { label: "Developer Community", value: "2,000+", detail: "Discord, LinkedIn & Campus", icon: "Users" },
-    { label: "Lighthouse Performance", value: "98+", detail: "Sub-1.2s page load speed", icon: "Gauge" }
+    { label: "Academic Record", value: "7.89", detail: "CGPA at ABESEC CSE", icon: "Layers" },
+    { label: "Developer Community", value: "2,000+", detail: "National Tech Ecosystem", icon: "Users" },
+    { label: "Design Delivery", value: "40+", detail: "Promotional Assets & Brand Systems", icon: "Palette" }
   ]
 };
 
 export const aboutData = {
-  summary: "I am a Software Developer and Computer Science undergraduate at ABES Engineering College with a strong passion for architecting scalable full-stack applications, solving complex algorithmic challenges, and building practical technology solutions.",
-  highlights: [
+  summary: "Computer Science undergraduate combining full-stack MERN development, UI/UX design architectures, and technical leadership. Proven track record of architecting scalable web apps, machine intelligence workflows, and healthcare solutions. National hackathon winner and technical community builder specializing in high-performance digital products and user experience optimization.",
+  education: [
     {
-      title: "Full-Stack Development",
-      description: "Proven experience building responsive, accessible web applications using modern React ecosystems, Node.js, and scalable database architectures."
+      institution: "ABES Engineering College, Ghaziabad",
+      degree: "B.Tech in Computer Science & Engineering",
+      score: "CGPA: 7.89 / 10.0",
+      period: "2024 – Present",
+      location: "Ghaziabad, Uttar Pradesh"
     },
     {
-      title: "Algorithmic Problem Solving",
-      description: "Solved 250+ algorithmic problems across LeetCode and GeeksforGeeks in Java and C++, with HackerRank 3-Star Problem Solving recognition in C."
-    },
-    {
-      title: "Predictive & Practical Engineering",
-      description: "Engineered high-impact solutions like VacciTrack (ABHA-compliant immunization platform) and WorkRadar (predictive delay risk forecasting engine)."
-    },
-    {
-      title: "Leadership & Community Impact",
-      description: "Co-Founder at ZenYukti, Student Ambassador at Capgemini, and Community Manager scaling technical networks to 2,000+ developers."
+      institution: "Uttar Pradesh State Board (UPMSP)",
+      degree: "Intermediate, Mathematics",
+      score: "Percentage: 88%",
+      period: "2021 – 2023",
+      location: "Uttar Pradesh, India"
     }
-  ],
-  education: {
-    institution: "ABES Engineering College",
-    degree: "B.Tech in Computer Science & Engineering",
-    cgpa: "8.00 / 10.0",
-    duration: "Aug 2024 – Aug 2028",
-    location: "Ghaziabad, Uttar Pradesh, India",
-    coursework: [
-      "Data Structures & Algorithms",
-      "Object-Oriented Programming (OOP)",
-      "Database Management Systems (DBMS)",
-      "Operating Systems",
-      "Computer Networks",
-      "Web Technologies"
-    ]
-  }
+  ]
 };
 
 export const skillsData = [
   {
-    category: "Programming",
+    category: "Languages",
     description: "Core languages for high-performance systems and algorithms",
     skills: [
-      { name: "Python", level: "Scripting & Automation", badge: "Core", icon: "FileCode2" },
-      { name: "Java", level: "DSA & OOP Architecture", badge: "Primary", icon: "Cpu" },
-      { name: "C", level: "Low-level Systems & Pointers", badge: "Systems", icon: "Binary" },
-      { name: "C++", level: "STL & Algorithmic Problem Solving", badge: "Competitive", icon: "Code" }
+      { name: "Java", level: "DSA & OOP Architecture", badge: "Primary" },
+      { name: "C++", level: "STL & Competitive Problem Solving", badge: "Competitive" },
+      { name: "C", level: "Low-level Systems & Memory", badge: "Core" },
+      { name: "Python", level: "Scripting & Automation", badge: "Automation" },
+      { name: "JavaScript", level: "ES6+, Async/Await & Event Loop", badge: "Runtime" },
+      { name: "SQL", level: "Relational Modeling & Joins", badge: "Database" },
+      { name: "HTML5 / CSS3", level: "Semantic Markup & Modern Layouts", badge: "Standard" }
     ]
   },
   {
     category: "Frontend",
     description: "Building responsive, accessible 60 FPS user interfaces",
     skills: [
-      { name: "HTML", level: "Semantic HTML5 & Accessibility", badge: "Standard", icon: "Layout" },
-      { name: "CSS", level: "Modern CSS3, Flexbox & Grid", badge: "Design", icon: "Palette" },
-      { name: "JavaScript", level: "ES6+, Async/Await & Event Loop", badge: "Web Engine", icon: "FileJson" },
-      { name: "React.js", level: "Hooks, Virtual DOM & Component Architecture", badge: "Framework", icon: "Atom" }
+      { name: "React.js", level: "Hooks, Virtual DOM & State Architecture", badge: "Framework" },
+      { name: "Next.js", level: "SSR, SSG & Server Components", badge: "Production" },
+      { name: "Tailwind CSS", level: "Utility-First Responsive Systems", badge: "Styling" },
+      { name: "Redux Toolkit", level: "Predictable Global State Management", badge: "State" },
+      { name: "Framer Motion", level: "Production Motion & Layout Transitions", badge: "Animation" },
+      { name: "Vite", level: "High-Speed Bundling & HMR", badge: "Tooling" }
     ]
   },
   {
-    category: "Backend",
-    description: "Server architecture, API routing and business logic",
+    category: "Backend & DB",
+    description: "Server architecture, API routing, authentication and database pipelines",
     skills: [
-      { name: "Node.js", level: "Asynchronous Event-Driven Runtime", badge: "Runtime", icon: "Server" },
-      { name: "Django", level: "Python Web Framework & ORM", badge: "Framework", icon: "Workflow" }
+      { name: "Node.js", level: "Event-Driven Asynchronous Server Runtime", badge: "Runtime" },
+      { name: "Express.js", level: "RESTful Routing, Middleware & Controllers", badge: "Backend" },
+      { name: "RESTful APIs", level: "Scalable Stateless Endpoint Design", badge: "Architecture" },
+      { name: "JWT Auth", level: "Secure Token-Based Stateless Authentication", badge: "Security" },
+      { name: "MongoDB", level: "Document Modeling & Multi-Stage Aggregations", badge: "NoSQL" },
+      { name: "Mongoose", level: "Schema Validation & Data ODM", badge: "ODM" },
+      { name: "MySQL / PostgreSQL", level: "Relational ACID Compliance & Queries", badge: "SQL" }
     ]
   },
   {
-    category: "Database",
-    description: "Relational data modeling, querying and optimization",
+    category: "Tools & Design",
+    description: "Product design systems, version control, and development environments",
     skills: [
-      { name: "SQL", level: "Relational Modeling, MySQL, PostgreSQL & ACID", badge: "Relational", icon: "Database" }
-    ]
-  },
-  {
-    category: "Developer Tools",
-    description: "Version control, workflow efficiency and development environments",
-    skills: [
-      { name: "Git", level: "Branching, Merging & Version Control", badge: "VCS", icon: "GitBranch" },
-      { name: "GitHub", level: "CI/CD, Pull Requests & Open-Source", badge: "Collaboration", icon: "Github" },
-      { name: "VS Code", level: "Integrated Development & Tooling", badge: "IDE", icon: "Terminal" }
+      { name: "Figma", level: "UI/UX Prototyping & Design Systems", badge: "UI/UX" },
+      { name: "Adobe Illustrator", level: "Vector Graphics & Identity Design", badge: "Vector" },
+      { name: "Photoshop", level: "Visual Assets & Production Graphics", badge: "Design" },
+      { name: "Git & GitHub", level: "Branching, PRs & CI/CD Collaboration", badge: "VCS" },
+      { name: "Postman", level: "API Testing & Endpoint Validation", badge: "Testing" },
+      { name: "Vercel", level: "Cloud Deployments & Edge Routing", badge: "DevOps" },
+      { name: "Linux CLI", level: "Shell Scripting & System Tooling", badge: "CLI" }
     ]
   }
 ];
 
 export const projectsData = [
   {
-    id: "vaccitrack",
-    name: "VacciTrack / Medi-Vahak",
-    tagline: "Child Immunization Tracking & Healthcare Accessibility Platform",
-    description: "A child vaccination tracking platform designed to improve immunization management and healthcare accessibility for doctors and parents. Won 1st Position in Healthcare Innovation Track at the National Hackathon.",
-    techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs", "ABHA Standards", "Twilio OTP 2FA", "Tailwind CSS"],
-    imageType: "healthcare",
+    id: "hr-pulse",
+    name: "HR Pulse",
+    tagline: "Enterprise HR Management System",
+    description: "An enterprise-grade MERN platform engineered with role-based access control and 7+ integrated modules including employee tracking, automated payroll, attendance logging, and performance reviews. Optimized MongoDB aggregations reduced server response latency by nearly 35%.",
+    techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "Tailwind CSS"],
     features: [
-      "Dual user roles for Healthcare Professionals (Doctors) and Parents with distinct tailored dashboards.",
-      "Integrated national ABHA standards and OTP-verified 2-Factor Authentication, cutting clinical entry errors by 95%.",
-      "Automated multi-channel schedule workflows reducing duplicate patient records to <0.5%.",
-      "Attained a 98+ Lighthouse Performance score with sub-1.2s page loads through lazy loading and code-splitting."
+      "Role-based access control across 7+ enterprise modules including payroll, attendance, and employee tracking.",
+      "Implemented secure JWT stateless authentication and protected API routing pipelines.",
+      "Optimized MongoDB multi-stage aggregation queries, slashing server response latency by nearly 35%.",
+      "Real-time department directory and structured employee performance review workflows."
     ],
-    contribution: "Architected the full-stack MERN workflow, integrated national ABHA standards and Twilio OTP 2FA verification, and optimized frontend performance to achieve sub-1.2s load speeds.",
     github: "https://github.com/Ayushukla7",
-    live: "https://ayush-tech-dev.vercel.app",
-    award: "National Hackathon Runner-Up (1st in Healthcare)",
-    accentColor: "#00f2fe"
-  },
-  {
-    id: "skillledger",
-    name: "SkillLedger",
-    tagline: "Blockchain-Based Skill Verification & Micro-Certification Concept",
-    description: "A blockchain-based skill verification and micro-certification platform concept designed to provide tamper-proof credential validation for students, educational institutions, and recruiters.",
-    techStack: ["React.js", "Node.js", "Cryptographic Hashing", "Distributed Ledger Concept", "RESTful APIs", "Tailwind CSS"],
-    imageType: "blockchain",
-    features: [
-      "Tamper-proof verifiable skill badges backed by immutable cryptographic proof of achievement.",
-      "Decentralized credential checking interface allowing recruiters to instantly verify student micro-certifications.",
-      "Secure student credential locker organizing coursework and verified project achievements into a unified digital portfolio.",
-      "Zero-knowledge validation protocols ensuring privacy compliance for student records."
-    ],
-    contribution: "Designed the system architecture, structured the verification logic and cryptographic hash verification flow, and developed the interactive React user interface prototype.",
-    github: "https://github.com/Ayushukla7",
-    live: "https://ayush-tech-dev.vercel.app",
-    award: "Engineering Innovation Concept",
-    accentColor: "#38bdf8"
-  },
-  {
-    id: "portfolio",
-    name: "Personal Portfolio (3D Earth Identity)",
-    tagline: "Cinematic 3D WebGL Digital Identity & Engineering Showcase",
-    description: "My interactive 3D digital identity and developer portfolio inspired by Google Earth satellite imagery and NASA orbital telemetry, built with Three.js, React, GSAP, and Tailwind CSS.",
-    techStack: ["React.js", "Three.js", "WebGL", "GSAP", "Tailwind CSS", "Web Audio API", "Vite"],
-    imageType: "satellite",
-    features: [
-      "Cinematic orbital camera descent from deep outer space zooming into India (NCR / Lucknow hub).",
-      "Realistic procedural Earth rendering with specular ocean reflections, cloud layers, and city night lights.",
-      "Native Web Audio API sound synthesizer producing tactile sci-fi HUD audio with zero external MP3 latency.",
-      "Fully responsive architecture with fallback modes respecting reduced-motion accessibility preferences."
-    ],
-    contribution: "Sole architect and developer: engineered the custom 3D WebGL shaders, camera interpolation timelines, audio synthesis engine, and responsive HUD design system.",
-    github: "https://github.com/Ayushukla7",
-    live: "https://ayush-tech-dev.vercel.app",
-    award: "Digital Identity 2026",
-    accentColor: "#2563eb"
+    liveUrl: "https://ayush-tech-dev.vercel.app",
+    award: "Enterprise Platform",
+    metric: "-35% Server Latency",
+    subMetric: "7+ Enterprise Modules",
+    contribution: "Engineered scalable RESTful API controllers, optimized MongoDB multi-stage aggregation pipelines cutting latency by 35%, and implemented JWT authentication across 7+ enterprise HR modules."
   },
   {
     id: "workradar",
     name: "WorkRadar",
-    tagline: "Predictive Task & Workforce Analytics Platform",
-    description: "A predictive workforce analytics platform forecasting project delay risks with 88% accuracy before deadlines occur, cutting bottleneck discovery time across engineering teams by 40%.",
-    techStack: ["React.js", "Node.js", "Express.js", "MongoDB Aggregation", "JWT Auth", "Tailwind CSS"],
-    imageType: "analytics",
+    tagline: "Predictive Workforce Analytics Platform",
+    description: "A proactive project analytics system built with a custom 0–100 task-delay risk calculation engine that evaluates progress velocity, active blockers, and workload parameters. Integrated responsive data visualizations using Recharts to empower executive managers with real-time bottleneck tracking.",
+    techStack: ["React.js", "Vite", "Node.js", "Express.js", "MongoDB", "JWT", "Recharts"],
     features: [
-      "Engineered a 0–100 Delay Risk Engine processing 6+ key metrics (active blockers, developer workload, sprint velocity).",
-      "Optimized MongoDB aggregation pipelines across 1,000+ tasks, slashing API latency by 45% (from 420ms to 180ms).",
-      "Interactive risk distribution matrix alerting tech leads to scheduling hazards 7 days prior to deadline milestones."
+      "Proprietary 0–100 task-delay risk calculation algorithm evaluating velocity, blockers, and workload.",
+      "Interactive data visualizations built with Recharts empowering managers with real-time bottleneck tracking.",
+      "Stateless JWT-authenticated REST APIs for multi-tiered user authorization.",
+      "Proactive schedule risk alerts highlighting team bottlenecks before deadline milestones."
     ],
-    contribution: "Architected the delay forecasting algorithms, built the real-time risk dashboard, and optimized MongoDB multi-stage aggregation queries.",
     github: "https://github.com/Ayushukla7",
-    live: "https://ayush-tech-dev.vercel.app",
-    award: "Production Analytics Platform",
-    accentColor: "#06b6d4"
+    liveUrl: "https://ayush-tech-dev.vercel.app",
+    award: "Predictive Analytics",
+    metric: "0–100 Risk Engine",
+    subMetric: "Recharts Visualizations",
+    contribution: "Developed the proprietary 0–100 task-delay risk calculation algorithm, integrated interactive Recharts dashboards, and built protected RESTful endpoints."
+  },
+  {
+    id: "ayush-ui",
+    name: "AYUSH-UI",
+    tagline: "UI/UX & Frontend Design System Portfolio",
+    description: "An interactive frontend architecture and design showcase presenting 10+ professional UI/UX prototypes and full-stack web applications with high-frame-rate responsive layouts, smooth micro-interactions, and accessible typography.",
+    techStack: ["React.js", "Vite", "Tailwind CSS", "Framer Motion", "Vercel"],
+    features: [
+      "10+ professional UI/UX design prototypes and interactive web application workflows.",
+      "Fluid 60 FPS responsive animations powered by Framer Motion and optimized CSS.",
+      "Clean atomic design system with modular tokens for rapid interface deployment.",
+      "Deployed to Vercel edge infrastructure with sub-second asset delivery."
+    ],
+    github: "https://github.com/Ayushukla7",
+    liveUrl: "https://ayush-tech-dev.vercel.app",
+    award: "UI/UX Architecture",
+    metric: "10+ Design Prototypes",
+    subMetric: "60 FPS Fluid Motion",
+    contribution: "Created reusable atomic component system with Tailwind CSS and Framer Motion, delivering responsive 60 FPS motion and sub-second asset load times on Vercel."
   }
 ];
 
 export const experienceData = [
   {
-    role: "Co-Founder",
-    organization: "ZenYukti",
-    period: "2024 – Present",
-    location: "Ghaziabad, India",
-    type: "Entrepreneurship & Innovation",
+    role: "UI/UX Designer Intern",
+    organization: "ONI Cares – Continuum Pregnancy Care",
+    period: "Oct 2026 – Present",
+    location: "Remote",
+    type: "Product Design & Accessibility",
     highlights: [
-      "Co-founded ZenYukti to pioneer student technology initiatives, hackathon prototypes, and collaborative software projects.",
-      "Spearheaded technical development workflows, system architecture, and product design for real-world campus and industrial solutions."
+      "Evaluated end-to-end pregnancy care digital workflows and period-tracking modules, identifying usability gaps to optimize multi-device user journeys for mothers and medical practitioners.",
+      "Documented interaction friction points with structured feedback logs and visual assets to streamline overall product accessibility and patient retention metrics."
     ],
-    badge: "Leadership"
+    badge: "UI/UX Internship"
   },
   {
-    role: "Student Ambassador",
-    organization: "Capgemini",
-    period: "Aug 2025 – Present",
+    role: "Joint Secretary (Former Graphic Designer, 1.5 Years)",
+    organization: "Technovation Club, ABESEC",
+    period: "Oct 2026 – Present",
     location: "Ghaziabad, India",
-    type: "Corporate Community Leadership",
+    type: "Leadership & Technical Operations",
     highlights: [
-      "Spearheaded campus outreach for Capgemini Brand Quest, engaging 500+ students and driving a 35% increase in registrations.",
-      "Coordinated 3+ technical webinars on modern enterprise engineering, achieving an average participant satisfaction rating of 4.8 / 5.0."
+      "Direct core technical operations, institutional hackathons, and collegiate club initiatives, scaling community engagement metrics across multiple engineering departments.",
+      "Designed 40+ promotional brand assets and digital flyers, successfully expanding major event participation to over 500+ active students."
     ],
-    badge: "Enterprise Ambassador"
+    badge: "Joint Secretary"
   },
   {
     role: "Social Media & Community Manager",
     organization: "Elixir Tech Community",
-    period: "Jan 2025 – Present",
+    period: "Jan 2026 – Present",
     location: "Remote",
-    type: "Community Growth & Mentorship",
+    type: "Community Growth & Technical Mentorship",
     highlights: [
-      "Scaled technical community to 2,000+ members across Discord and LinkedIn, boosting organic engagement by 120%.",
-      "Facilitated 8+ peer-to-peer coding sessions, mentoring 250+ students in Web Development, Git workflows, and open-source contributions."
+      "Co-managed a 2,000+ member national technical ecosystem, fostering developer discussions and peer-to-peer code reviews.",
+      "Facilitated 8+ intensive peer-learning workshops focused on Full-Stack Web Development, JavaScript tooling, and Git version control workflows."
     ],
-    badge: "Community Growth"
+    badge: "Community Manager"
   },
   {
-    role: "Lead Graphic & UI Designer",
-    organization: "Technovation – The Networking Club",
-    period: "Jun 2024 – Present",
-    location: "ABESEC, Ghaziabad",
-    type: "UI/UX & Design Systems",
+    role: "Lead Graphic Designer",
+    organization: "Ignite Room",
+    period: "Jul 2025 – Jun 2026",
+    location: "Delhi, India",
+    type: "Brand Identity & Visual Campaigns",
     highlights: [
-      "Crafted 40+ marketing assets and UI prototypes in Figma for tech fests with 1,500+ attendees.",
-      "Accelerated design delivery speed by 30% through modular component libraries and reusable UI tokens."
+      "Spearheaded visual identity and marketing asset creation, delivering high-impact campaigns that achieved a documented 40% growth in digital reach."
     ],
     badge: "Design Lead"
-  },
-  {
-    role: "Campus Mentorship & Hackathons",
-    organization: "ABES Engineering College",
-    period: "2024 – Present",
-    location: "Ghaziabad, India",
-    type: "Mentorship",
-    highlights: [
-      "Mentored 500+ junior students across college hackathons and UI/UX design workshops, guiding fundamental Git and React workflows."
-    ],
-    badge: "Mentorship"
   }
 ];
 
 export const achievementsData = [
   {
-    title: "National Hackathon – 2nd Runner Up",
+    title: "National Hackathon – 2nd Runner-Up",
     rank: "Rank 3 / 120+ Teams",
     category: "1st Position – Healthcare Innovation Track",
-    description: "Awarded 2nd Runner-Up nationally for VacciTrack. Recognized by the jury for innovative ABHA standard integration, bilingual workflows, and cutting clinical error rates.",
-    badge: "National Podium",
+    description: "Ranked 3rd among 120+ competing teams across India; secured 1st position in the Healthcare Innovation Track.",
+    badge: "Rank 3 National",
     icon: "Trophy"
   },
   {
-    title: "First Prize in Healthcare Innovation",
-    rank: "Category Champion",
-    category: "Healthcare Track Winner",
-    description: "Won First Prize in Healthcare Innovation for engineering the VacciTrack immunization management platform, solving pediatric immunization drop-off challenges.",
-    badge: "1st Position",
+    title: "BuildSprint – Winner",
+    rank: "1st Place Champion",
+    category: "Technovation Intra-College Hackathon",
+    description: "Won 1st place in Technovation's intra-college competitive hackathon hosted at ABESEC.",
+    badge: "1st Place Winner",
     icon: "Award"
   },
   {
-    title: "HackerRank 3-Star Problem Solving",
-    rank: "3-Star Gold Badge",
-    category: "C Programming & Problem Solving",
-    description: "Demonstrated strong command over algorithmic problem solving, pointer manipulation, and memory management in C on HackerRank.",
-    badge: "Verified Skill",
+    title: "350+ Algorithmic Problems Solved",
+    rank: "Top Problem Solver",
+    category: "LeetCode & GeeksforGeeks",
+    description: "Solved 350+ data structures and algorithmic problems across LeetCode and GeeksforGeeks using Java and C++.",
+    badge: "350+ DSA",
+    icon: "CheckCircle2"
+  },
+  {
+    title: "Hackathon Finalist (Shaastra IIT Madras & More)",
+    rank: "National Finalist",
+    category: "NeuroHACK, JJK & Hack4Health",
+    description: "Competed as a national finalist in NeuroHACK (Shaastra, IIT Madras), JJK Hackathon, and Hack4Health.",
+    badge: "IIT Madras Finalist",
     icon: "Star"
   },
   {
-    title: "NeuroHACK Finalist – Shaastra, IIT Madras",
-    rank: "National Finalist",
-    category: "Biomedical & Engineering Fest",
-    description: "Selected as national finalist in Shaastra's prestigious NeuroHACK at IIT Madras, tackling real-time biomedical and automated workflow challenges.",
-    badge: "IIT Madras",
-    icon: "Sparkles"
-  },
-  {
-    title: "250+ Algorithmic Problems Solved",
-    rank: "DSA Rigor",
-    category: "LeetCode & GeeksforGeeks",
-    description: "Solved 250+ problems in Java and C++ covering Dynamic Programming, Graph Traversals (BFS/DFS, Dijkstra), Trees, and Binary Search.",
-    badge: "Problem Solving",
-    icon: "CheckCircle2"
+    title: "Code for Bharat Season 2",
+    rank: "Premier National Finalist",
+    category: "National Open Innovation Challenge",
+    description: "Selected and participated as a premier national-level finalist in an open innovation coding challenge.",
+    badge: "National Finalist",
+    icon: "Flag"
   }
 ];

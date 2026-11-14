@@ -57,11 +57,11 @@ export default function AboutSection() {
                 </div>
                 <div className="flex justify-between text-slate-400">
                   <span>CAMPUS GRID:</span>
-                  <strong className="text-slate-200">ABESEC (B.Tech CSE)</strong>
+                  <strong className="text-slate-200">ABESEC (CGPA 7.89)</strong>
                 </div>
                 <div className="flex justify-between text-slate-400">
-                  <span>GRADUATION:</span>
-                  <strong className="text-white">2026 COHORT</strong>
+                  <span>INTERMEDIATE:</span>
+                  <strong className="text-white">UPMSP 88%</strong>
                 </div>
                 <div className="flex justify-between text-slate-400">
                   <span>BASE STATION:</span>
@@ -88,7 +88,7 @@ export default function AboutSection() {
                 SYSTEMS ARCHITECT SUMMARY
               </span>
               <p className="text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
-                Computer Science & Engineering undergraduate at ABESEC with a relentless focus on high-throughput full-stack architecture, distributed systems, and algorithmic efficiency. Proven record in national competitive hackathons, reducing API latency by 45%, and building fault-tolerant healthcare platforms.
+                Computer Science undergraduate combining full-stack MERN development, UI/UX design architectures, and technical leadership. Proven track record of architecting scalable web apps, optimizing database query pipelines, and leading developer community ecosystems of 2,000+ members. National hackathon 2nd runner-up and BuildSprint champion.
               </p>
             </div>
 
@@ -100,7 +100,7 @@ export default function AboutSection() {
                   <span>ALGORITHMIC RIGOR</span>
                 </div>
                 <p className="text-xs font-mono text-slate-400">
-                  250+ Data Structures & Algorithms solved across Java, C++ STL, and OOP design.
+                  350+ Data Structures & Algorithms solved across Java, C++ STL, and OOP design.
                 </p>
               </div>
 
@@ -110,7 +110,7 @@ export default function AboutSection() {
                   <span>SYSTEM LATENCY</span>
                 </div>
                 <p className="text-xs font-mono text-slate-400">
-                  Tuned production query pipelines, cutting response latency from 420ms to 180ms.
+                  Optimized multi-stage MongoDB aggregations, slashing server response latency by 35%.
                 </p>
               </div>
 
@@ -120,7 +120,7 @@ export default function AboutSection() {
                   <span>ENTERPRISE STANDARDS</span>
                 </div>
                 <p className="text-xs font-mono text-slate-400">
-                  Integrated government ABHA M1/M2/M3 standards and Twilio 2FA authentication.
+                  Engineered 7+ modular HR subsystems with secure stateless JWT authentication.
                 </p>
               </div>
 
@@ -130,7 +130,7 @@ export default function AboutSection() {
                   <span>HIGH-FRAME FRONTENDS</span>
                 </div>
                 <p className="text-xs font-mono text-slate-400">
-                  Fluid 60 FPS client experiences with Next.js, React, Tailwind, and GSAP.
+                  10+ UI/UX design prototypes and fluid 60 FPS frontends with React, Framer Motion & Tailwind.
                 </p>
               </div>
             </div>

@@ -231,10 +231,10 @@ export default function ResumeModal({ isOpen, onClose }) {
               <div className="space-y-1.5">
                 <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 flex items-center justify-between">
                   <span>Professional Summary</span>
-                  <span className="text-[10px] font-mono text-slate-500 font-normal">MERN • Next.js • Low-Latency Systems</span>
+                  <span className="text-[10px] font-mono text-slate-500 font-normal">MERN • Low-Latency Systems • UI/UX Architecture</span>
                 </h2>
                 <p className="text-xs text-slate-700 leading-relaxed text-justify">
-                  Results-driven Software Engineering undergraduate at ABES Engineering College with strong expertise in full-stack web development (React.js, Node.js, Express, MongoDB, Next.js) and algorithmic problem solving. Proven track record of architecting scalable applications, slashing API latency by 45%, and leading developer community initiatives reaching 2,000+ members. National Hackathon 2nd Runner-Up with 250+ DSA problems solved across LeetCode and GeeksforGeeks in Java and C++.
+                  Results-driven Software Engineering undergraduate at ABES Engineering College combining full-stack MERN development, UI/UX design architectures, and technical leadership. Proven track record of architecting scalable applications, cutting server latency by 35%, and leading developer communities of 2,000+ members. National Hackathon 2nd Runner-Up with 350+ DSA problems solved across LeetCode and GeeksforGeeks in Java and C++.
                 </p>
               </div>
 
@@ -245,16 +245,19 @@ export default function ResumeModal({ isOpen, onClose }) {
                 </h2>
                 <div className="space-y-1 text-xs text-slate-800">
                   <p>
-                    <strong className="text-slate-950 font-semibold">Programming Languages:</strong> Java, C, C++, JavaScript (ES6+), TypeScript, Python, SQL (MySQL, PostgreSQL)
+                    <strong className="text-slate-950 font-semibold">Programming Languages:</strong> Java, C, C++, JavaScript (ES6+), Python, SQL (MySQL, PostgreSQL), HTML5, CSS3
                   </p>
                   <p>
-                    <strong className="text-slate-950 font-semibold">Frontend Technologies:</strong> React.js, Next.js, Redux Toolkit, Tailwind CSS, HTML5, CSS3, Vite, GSAP, Responsive Design
+                    <strong className="text-slate-950 font-semibold">Frameworks & Libraries:</strong> React.js, Next.js, Node.js, Express.js, Tailwind CSS, Bootstrap, Framer Motion, Redux Toolkit
                   </p>
                   <p>
-                    <strong className="text-slate-950 font-semibold">Backend & Databases:</strong> Node.js, Express.js, Django, RESTful APIs, MongoDB, Mongoose, JWT Authentication
+                    <strong className="text-slate-950 font-semibold">Developer Tools & Environments:</strong> Git, GitHub, VS Code, Postman, Vercel, Vite, Figma
                   </p>
                   <p>
-                    <strong className="text-slate-950 font-semibold">Developer Tools & Environments:</strong> Git, GitHub, VS Code, Postman, Vercel, Docker (Basics), Figma, Wireframing
+                    <strong className="text-slate-950 font-semibold">Databases & Architecture:</strong> MongoDB, Mongoose, MySQL, RESTful APIs, JWT Authentication, Microservices Design
+                  </p>
+                  <p>
+                    <strong className="text-slate-950 font-semibold">CS Fundamentals:</strong> Data Structures & Algorithms, Object-Oriented Programming (OOPs), DBMS, Operating Systems, Computer Networks
                   </p>
                 </div>
               </div>
@@ -265,21 +268,20 @@ export default function ResumeModal({ isOpen, onClose }) {
                   Flagship Engineering Projects
                 </h2>
 
-                {/* VacciTrack */}
+                {/* HR Pulse */}
                 <div className="space-y-1">
                   <div className="flex justify-between items-baseline text-xs">
                     <span className="font-bold text-slate-950">
-                      VacciTrack / Medi-Vahak – Child Immunization Platform <span className="font-normal italic text-slate-600">| MERN Stack, ABHA, Twilio OTP 2FA</span>
+                      HR Pulse – Enterprise HR Management Platform <span className="font-normal italic text-slate-600">| MERN Stack, JWT Auth, RESTful API</span>
                     </span>
                     <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline font-mono text-[11px]">
                       [GitHub Repo]
                     </a>
                   </div>
                   <ul className="list-disc list-outside ml-4 space-y-0.5 text-xs text-slate-700 leading-normal">
-                    <li><strong>National Hackathon 2nd Runner-Up:</strong> Won 1st Position in Healthcare Innovation Track among 120+ competing engineering teams.</li>
-                    <li>Engineered an immunization portal for 2 user roles (Doctor & Parent) with automated multi-channel schedule workflows.</li>
-                    <li>Integrated national ABHA standards and OTP-verified 2FA, reducing clinical data entry errors by 95% and duplicate records to &lt;0.5%.</li>
-                    <li>Attained a 98+ Lighthouse Performance score with sub-1.2s page loads through lazy loading and component code-splitting.</li>
+                    <li>Engineered an enterprise-grade HR management platform with role-based access control across 7+ integrated modules including employee tracking, automated payroll, attendance logging, and performance reviews.</li>
+                    <li>Implemented secure JWT stateless authentication and protected API routing pipelines.</li>
+                    <li>Optimized MongoDB multi-stage aggregation queries, slashing server response latency by nearly 35%.</li>
                   </ul>
                 </div>
 
@@ -287,32 +289,33 @@ export default function ResumeModal({ isOpen, onClose }) {
                 <div className="space-y-1">
                   <div className="flex justify-between items-baseline text-xs">
                     <span className="font-bold text-slate-950">
-                      WorkRadar – Predictive Task & Workforce Platform <span className="font-normal italic text-slate-600">| React.js, Node.js, Express, MongoDB, JWT</span>
+                      WorkRadar – Predictive Task & Workforce Platform <span className="font-normal italic text-slate-600">| React.js, Vite, Node.js, Express, MongoDB, JWT, Recharts</span>
                     </span>
                     <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline font-mono text-[11px]">
                       [GitHub Repo]
                     </a>
                   </div>
                   <ul className="list-disc list-outside ml-4 space-y-0.5 text-xs text-slate-700 leading-normal">
-                    <li>Architected a predictive workforce analytics platform forecasting project delay risks with 88% accuracy before deadlines.</li>
-                    <li>Engineered a 0–100 Delay Risk Engine processing 6+ key metrics (blockers, workload, velocity), cutting bottleneck discovery by 40%.</li>
-                    <li>Optimized MongoDB aggregation pipelines across 1,000+ tasks, slashing API response latency by 45% (from 420ms to 180ms).</li>
+                    <li>Architected a proactive project analytics system built with a proprietary 0–100 task-delay risk calculation engine evaluating velocity, blockers, and workload parameters.</li>
+                    <li>Integrated interactive data visualizations with Recharts empowering executive managers with real-time bottleneck discovery.</li>
+                    <li>Optimized MongoDB aggregation pipelines across 1,000+ tasks, ensuring seamless real-time metric updates.</li>
                   </ul>
                 </div>
 
-                {/* SkillLedger */}
+                {/* AYUSH-UI */}
                 <div className="space-y-1">
                   <div className="flex justify-between items-baseline text-xs">
                     <span className="font-bold text-slate-950">
-                      SkillLedger – Blockchain-Based Skill Verification Platform <span className="font-normal italic text-slate-600">| React.js, Node.js, Cryptographic Hashing</span>
+                      AYUSH-UI – UI/UX & Frontend Design System Portfolio <span className="font-normal italic text-slate-600">| React.js, Vite, Tailwind CSS, Framer Motion, Vercel</span>
                     </span>
                     <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline font-mono text-[11px]">
                       [GitHub Repo]
                     </a>
                   </div>
                   <ul className="list-disc list-outside ml-4 space-y-0.5 text-xs text-slate-700 leading-normal">
-                    <li>Engineered verifiable digital credential workflows to validate student technical skills and micro-certifications with immutable cryptographic proofs.</li>
-                    <li>Designed recruiter verification portals allowing instant tamper-proof credential validation.</li>
+                    <li>Created an interactive frontend architecture and design showcase presenting 10+ professional UI/UX prototypes and web applications.</li>
+                    <li>Engineered fluid 60 FPS responsive animations powered by Framer Motion and modern modular CSS tokens.</li>
+                    <li>Deployed to Vercel edge infrastructure with sub-second asset delivery and zero layout shift.</li>
                   </ul>
                 </div>
               </div>
@@ -325,45 +328,60 @@ export default function ResumeModal({ isOpen, onClose }) {
 
                 <div>
                   <div className="flex justify-between text-xs">
-                    <span className="font-bold text-slate-950">Co-Founder</span>
-                    <span className="font-medium text-slate-600">2024 – Present</span>
+                    <span className="font-bold text-slate-950">UI/UX Designer Intern</span>
+                    <span className="font-medium text-slate-600">Oct 2026 – Present</span>
                   </div>
                   <div className="flex justify-between text-xs italic text-slate-700">
-                    <span>ZenYukti</span>
-                    <span>Ghaziabad, India</span>
+                    <span>ONI Cares – Continuum Pregnancy Care</span>
+                    <span>Remote</span>
                   </div>
                   <ul className="list-disc list-outside ml-4 mt-0.5 text-xs text-slate-700">
-                    <li>Pioneered student technology initiatives, hackathon prototypes, UI design architectures, and collaborative project engineering.</li>
+                    <li>Evaluated end-to-end pregnancy care digital workflows and period-tracking modules, identifying usability gaps to optimize multi-device user journeys for mothers and medical practitioners.</li>
+                    <li>Documented interaction friction points with structured feedback logs and visual assets to streamline overall product accessibility and patient retention metrics.</li>
                   </ul>
                 </div>
 
                 <div>
                   <div className="flex justify-between text-xs">
-                    <span className="font-bold text-slate-950">Student Ambassador</span>
-                    <span className="font-medium text-slate-600">Aug 2025 – Present</span>
+                    <span className="font-bold text-slate-950">Joint Secretary (Former Graphic Designer, 1.5 Years)</span>
+                    <span className="font-medium text-slate-600">Oct 2026 – Present</span>
                   </div>
                   <div className="flex justify-between text-xs italic text-slate-700">
-                    <span>Capgemini</span>
+                    <span>Technovation Club, ABESEC</span>
                     <span>Ghaziabad, India</span>
                   </div>
                   <ul className="list-disc list-outside ml-4 mt-0.5 text-xs text-slate-700">
-                    <li>Spearheaded campus outreach for Capgemini Brand Quest, engaging 500+ students and driving a 35% increase in registrations.</li>
-                    <li>Coordinated 3+ technical webinars, achieving an average participant satisfaction rating of 4.8/5.0.</li>
+                    <li>Direct core technical operations, institutional hackathons, and collegiate club initiatives, scaling community engagement metrics across multiple engineering departments.</li>
+                    <li>Designed 40+ promotional brand assets and digital flyers, successfully expanding major event participation to over 500+ active students.</li>
                   </ul>
                 </div>
 
                 <div>
                   <div className="flex justify-between text-xs">
                     <span className="font-bold text-slate-950">Social Media & Community Manager</span>
-                    <span className="font-medium text-slate-600">Jan 2025 – Present</span>
+                    <span className="font-medium text-slate-600">Jan 2026 – Present</span>
                   </div>
                   <div className="flex justify-between text-xs italic text-slate-700">
                     <span>Elixir Tech Community</span>
                     <span>Remote</span>
                   </div>
                   <ul className="list-disc list-outside ml-4 mt-0.5 text-xs text-slate-700">
-                    <li>Scaled technical community to 2,000+ members across Discord and LinkedIn, boosting organic engagement by 120%.</li>
-                    <li>Facilitated 8+ peer-to-peer coding sessions, mentoring 250+ students in Web Development and Git workflows.</li>
+                    <li>Co-managed a 2,000+ member national technical ecosystem, fostering developer discussions and peer-to-peer code reviews.</li>
+                    <li>Facilitated 8+ intensive peer-learning workshops focused on Full-Stack Web Development, JavaScript tooling, and Git version control workflows.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-xs">
+                    <span className="font-bold text-slate-950">Lead Graphic Designer</span>
+                    <span className="font-medium text-slate-600">Jul 2025 – Jun 2026</span>
+                  </div>
+                  <div className="flex justify-between text-xs italic text-slate-700">
+                    <span>Ignite Room</span>
+                    <span>Delhi, India</span>
+                  </div>
+                  <ul className="list-disc list-outside ml-4 mt-0.5 text-xs text-slate-700">
+                    <li>Spearheaded visual identity and marketing asset creation, delivering high-impact campaigns that achieved a documented 40% growth in digital reach.</li>
                   </ul>
                 </div>
               </div>
@@ -378,11 +396,20 @@ export default function ResumeModal({ isOpen, onClose }) {
                   <span className="font-normal text-slate-600">Ghaziabad, Uttar Pradesh</span>
                 </div>
                 <div className="flex justify-between italic text-xs text-slate-700">
-                  <span>Bachelor of Technology in Computer Science & Engineering <strong>(CGPA: 8.00 / 10.0)</strong></span>
-                  <span>Aug 2024 – Aug 2028</span>
+                  <span>Bachelor of Technology in Computer Science & Engineering <strong>(CGPA: 7.89 / 10.0)</strong></span>
+                  <span>2024 – Present</span>
                 </div>
-                <p className="text-[11px] text-slate-600">
-                  Coursework: Data Structures & Algorithms, Object-Oriented Programming (OOP), Database Management Systems (DBMS), Operating Systems, Computer Networks, Web Technologies.
+
+                <div className="flex justify-between font-bold text-xs text-slate-950 pt-2 border-t border-slate-200">
+                  <span>Uttar Pradesh State Board (UPMSP)</span>
+                  <span className="font-normal text-slate-600">Uttar Pradesh, India</span>
+                </div>
+                <div className="flex justify-between italic text-xs text-slate-700">
+                  <span>Intermediate (12th), Mathematics <strong>(Score: 88%)</strong></span>
+                  <span>2021 – 2023</span>
+                </div>
+                <p className="text-[11px] text-slate-600 pt-1">
+                  Core Competencies: Data Structures & Algorithms, Object-Oriented Programming (OOP), DBMS, Operating Systems, Computer Networks, MERN Web Architecture.
                 </p>
               </div>
 
@@ -396,13 +423,16 @@ export default function ResumeModal({ isOpen, onClose }) {
                     <strong className="text-slate-950">National Hackathon – 2nd Runner Up (Rank 3 out of 120+ teams):</strong> Awarded 1st Position in Healthcare Innovation Track.
                   </li>
                   <li>
-                    <strong className="text-slate-950">HackerRank 3-Star Problem Solving in C:</strong> Verified problem-solving foundations and low-level algorithmic mastery.
+                    <strong className="text-slate-950">BuildSprint – Winner (Rank 1 / 85+ participants):</strong> Won 1st place in Technovation competitive hackathon.
                   </li>
                   <li>
-                    <strong className="text-slate-950">NeuroHACK Finalist:</strong> Shaastra, Indian Institute of Technology (IIT) Madras.
+                    <strong className="text-slate-950">350+ Algorithmic Problems Solved:</strong> LeetCode & GeeksforGeeks in Java and C++ STL.
                   </li>
                   <li>
-                    <strong className="text-slate-950">250+ Algorithmic Problems Solved:</strong> LeetCode & GeeksforGeeks in Java and C++.
+                    <strong className="text-slate-950">Hackathon Finalist:</strong> NeuroHACK (Shaastra, IIT Madras), JJK Hackathon, Hack4Health.
+                  </li>
+                  <li>
+                    <strong className="text-slate-950">Code for Bharat Season 2:</strong> National Finalist in premier open innovation challenge.
                   </li>
                 </ul>
               </div>

@@ -18,55 +18,55 @@ import { playTacticalClick, playTelemetryBlip, playEngineRev, playTouchSelect } 
 import MagneticButton from './MagneticButton';
 import Counter from './Counter';
 
-// Telemetry Hotspots mapped to Ayush's engineering stack
+// Telemetry Hotspots mapped to Ayush's engineering stack from verified resume
 const SUBSYSTEMS = [
   {
-    id: 'powertrain',
-    title: 'POWERTRAIN // V6 HYBRID',
-    stat: '250+ DSA',
+    id: 'dsa',
+    title: 'POWERTRAIN // CORE DSA',
+    stat: '350+ PROBLEMS',
     sub: 'Java & C++ STL',
-    desc: 'High-throughput algorithmic core & memory optimization.',
-    tags: ['Algorithms', 'Java', 'C++', 'OOP'],
+    desc: 'Algorithmic problem solving across LeetCode & GeeksforGeeks.',
+    tags: ['Algorithms', 'Java', 'C++ STL', 'Data Structures', 'OOPs'],
     x: '64%',
     y: '40%'
   },
   {
-    id: 'telemetry',
-    title: 'ECU // WORKRADAR',
-    stat: '-45% LATENCY',
-    sub: '420ms → 180ms',
-    desc: 'Predictive delay engine with 88% forecast accuracy.',
-    tags: ['MongoDB Agg', 'Node.js', 'JWT', 'REST'],
+    id: 'hrpulse',
+    title: 'BACKEND // HR PULSE',
+    stat: '-35% LATENCY',
+    sub: 'MERN & JWT Auth',
+    desc: 'Optimized schema queries cutting server latency by 35% with role-based access.',
+    tags: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'JWT'],
     x: '46%',
     y: '35%'
   },
   {
-    id: 'cockpit',
-    title: 'AERO // COCKPIT UI',
-    stat: '60 FPS FLUID',
-    sub: '98+ Lighthouse',
-    desc: 'Zero layout-shift reactive client architecture.',
-    tags: ['React.js', 'Tailwind', 'GSAP', 'WebGL'],
+    id: 'workradar',
+    title: 'PREDICTIVE ECU // WORKRADAR',
+    stat: '0–100 RISK ENGINE',
+    sub: 'Workforce Analytics',
+    desc: 'Real-time delay forecasting algorithm tracking velocity, blockers & workload.',
+    tags: ['React.js', 'Tailwind', 'Recharts', 'Analytics'],
     x: '18%',
     y: '45%'
   },
   {
-    id: 'transmission',
-    title: 'DRIVETRAIN // PIPELINE',
-    stat: 'MERN FULL-STACK',
-    sub: 'ABHA & Twilio 2FA',
-    desc: 'Healthcare vaccination platform cutting clinical errors by 95%.',
-    tags: ['Express', 'Node', 'ABHA', 'SQL'],
+    id: 'designui',
+    title: 'AERO & UI/UX // ONI CARES & AYUSH-UI',
+    stat: '10+ PROTOTYPES',
+    sub: 'Figma & Framer Motion',
+    desc: 'Design system architectures, 60 FPS fluid micro-interactions, patient journey UX.',
+    tags: ['Figma', 'UI/UX Design', 'React.js', 'Framer Motion'],
     x: '78%',
     y: '50%'
   },
   {
     id: 'podium',
-    title: 'DRS WING // PODIUM',
+    title: 'DRS WING // PODIUM WINS',
     stat: 'RANK 3 / 120+',
-    sub: 'National Hackathon',
-    desc: '1st in Healthcare Innovation & 2nd Runner-Up.',
-    tags: ['Hackathon P3', '1st Health', 'HackerRank 3★'],
+    sub: 'National Hackathon & BuildSprint',
+    desc: '2nd Runner-Up at National Hackathon (1st Healthcare) & BuildSprint Champion.',
+    tags: ['Rank 3 National', 'BuildSprint Winner', 'IIT Madras Finalist'],
     x: '92%',
     y: '25%'
   }
@@ -78,7 +78,6 @@ export default function Hero({ onOpenResume }) {
   const [rpm, setRpm] = useState(13200);
   const [speed, setSpeed] = useState(328);
   const [isRevving, setIsRevving] = useState(false);
-  const [gForce, setGForce] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -90,15 +89,6 @@ export default function Hero({ onOpenResume }) {
     }, heroRef);
     return () => ctx.revert();
   }, []);
-
-  // Track mouse for G-Force ball vector inside the HUD
-  const handleMouseMove = (e) => {
-    if (!heroRef.current) return;
-    const rect = heroRef.current.getBoundingClientRect();
-    const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-    const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-    setGForce({ x: Math.max(-1, Math.min(1, nx)), y: Math.max(-1, Math.min(1, ny)) });
-  };
 
   const handleRev = () => {
     setIsRevving(true);
@@ -121,7 +111,6 @@ export default function Hero({ onOpenResume }) {
     <section 
       ref={heroRef}
       id="hero" 
-      onMouseMove={handleMouseMove}
       className="relative min-h-screen flex flex-col justify-between pt-24 pb-12 px-3 sm:px-6 lg:px-8 overflow-hidden racing-grid select-none"
     >
       {/* SOPHISTICATED AMBIENT UNDERGLOW */}
@@ -145,7 +134,7 @@ export default function Hero({ onOpenResume }) {
             <span className="text-slate-700">•</span>
             <span className="text-slate-300 font-medium">ABESEC CSE</span>
             <span className="text-slate-700">•</span>
-            <span className="text-slate-300 font-medium">CGPA: 8.00</span>
+            <span className="text-slate-300 font-medium">CGPA: 7.89</span>
           </div>
         </div>
 
@@ -320,47 +309,12 @@ export default function Hero({ onOpenResume }) {
                 );
               })}
 
-              {/* LEFT HUD WIDGET: 4-TIRE THERMAL MAP (FORMAL MONOCHROME) */}
-              <div className="absolute left-2 bottom-2 hidden sm:flex flex-col bg-black/85 border border-white/15 rounded-xl p-2.5 font-mono text-[9px] backdrop-blur-md z-20 space-y-1.5">
-                <div className="text-[8px] text-slate-500 uppercase tracking-wider font-semibold">TIRE THERMALS</div>
-                <div className="grid grid-cols-2 gap-1.5 text-center">
-                  <div className="px-2 py-1 rounded bg-white/[0.04] text-slate-200 border border-white/10">
-                    <span className="block text-[8px] text-slate-400">FL</span>
-                    <strong>102°C</strong>
-                  </div>
-                  <div className="px-2 py-1 rounded bg-white/[0.04] text-slate-200 border border-white/10">
-                    <span className="block text-[8px] text-slate-400">FR</span>
-                    <strong>104°C</strong>
-                  </div>
-                  <div className="px-2 py-1 rounded bg-white/[0.04] text-slate-200 border border-white/10">
-                    <span className="block text-[8px] text-slate-400">RL</span>
-                    <strong>98°C</strong>
-                  </div>
-                  <div className="px-2 py-1 rounded bg-white/[0.04] text-slate-200 border border-white/10">
-                    <span className="block text-[8px] text-slate-400">RR</span>
-                    <strong>101°C</strong>
-                  </div>
-                </div>
-              </div>
-
-              {/* RIGHT HUD WIDGET: INTERACTIVE G-FORCE VECTOR BALL */}
-              <div className="absolute right-2 bottom-2 hidden sm:flex flex-col items-center bg-black/85 border border-white/15 rounded-xl p-2.5 font-mono text-[9px] backdrop-blur-md z-20 space-y-1">
-                <div className="text-[8px] text-slate-500 uppercase tracking-wider font-semibold">G-FORCE METER</div>
-                <div className="relative w-14 h-14 rounded-full border border-white/20 flex items-center justify-center">
-                  <div className="w-px h-full bg-white/10 absolute" />
-                  <div className="h-px w-full bg-white/10 absolute" />
-                  
-                  {/* Dynamic tracking ball */}
-                  <div 
-                    className="w-2.5 h-2.5 rounded-full bg-red-500 shadow-[0_0_10px_#ef4444] transition-transform duration-75"
-                    style={{
-                      transform: `translate(${gForce.x * 16}px, ${gForce.y * 16}px)`
-                    }}
-                  />
-                </div>
-                <div className="text-[8px] text-slate-400">
-                  LAT: <strong className="text-white">{(Math.abs(gForce.x) * 2.8 + 1.2).toFixed(2)}G</strong>
-                </div>
+              {/* CLEAN HORIZONTAL TELEMETRY BADGE OVERLAY */}
+              <div className="absolute right-4 bottom-4 hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-black/85 border border-white/15 font-mono text-[10px] text-slate-300 backdrop-blur-md z-20">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                <span>CHASSIS AS-26</span>
+                <span className="text-slate-600">•</span>
+                <span className="text-red-400 font-bold">DOWNFORCE TUNED</span>
               </div>
 
             </div>
@@ -396,14 +350,14 @@ export default function Hero({ onOpenResume }) {
 
         </div>
 
-        {/* BOTTOM METRICS TICKER: 4 CORE PROVEN BENCHMARKS */}
+        {/* BOTTOM METRICS TICKER: 4 CORE PROVEN BENCHMARKS (FROM VERIFIED RESUME) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 font-mono">
           
           <div className="telemetry-instrument p-3.5 sm:p-4 rounded-xl bg-dark-900/80 border border-white/10 backdrop-blur-md flex items-center justify-between group hover:border-red-500/40 transition-all">
             <div>
               <span className="text-[10px] text-slate-500 uppercase tracking-widest block font-medium">ALGORITHMS</span>
               <div className="text-2xl sm:text-3xl font-clash font-extrabold text-white">
-                <Counter value="250" suffix="+" />
+                <Counter value="350" suffix="+" />
               </div>
               <span className="text-[10px] text-slate-400">DSA LeetCode & GFG</span>
             </div>
@@ -416,7 +370,7 @@ export default function Hero({ onOpenResume }) {
               <div className="text-2xl sm:text-3xl font-clash font-extrabold text-white">
                 P3 / 120+
               </div>
-              <span className="text-[10px] text-slate-400">1st Health Innovation</span>
+              <span className="text-[10px] text-slate-400">1st Health & BuildSprint</span>
             </div>
             <Trophy className="w-6 h-6 text-red-500 group-hover:scale-110 transition-transform" />
           </div>
@@ -425,9 +379,9 @@ export default function Hero({ onOpenResume }) {
             <div>
               <span className="text-[10px] text-slate-500 uppercase tracking-widest block font-medium">LATENCY TUNED</span>
               <div className="text-2xl sm:text-3xl font-clash font-extrabold text-white">
-                -45%
+                -35%
               </div>
-              <span className="text-[10px] text-slate-400">180ms Optimized API</span>
+              <span className="text-[10px] text-slate-400">Optimized Server Latency</span>
             </div>
             <Activity className="w-6 h-6 text-red-500 group-hover:scale-110 transition-transform" />
           </div>
@@ -436,9 +390,9 @@ export default function Hero({ onOpenResume }) {
             <div>
               <span className="text-[10px] text-slate-500 uppercase tracking-widest block font-medium">ACADEMIC RECORD</span>
               <div className="text-2xl sm:text-3xl font-clash font-extrabold text-white">
-                8.00
+                7.89
               </div>
-              <span className="text-[10px] text-slate-400">B.Tech CSE ABESEC</span>
+              <span className="text-[10px] text-slate-400">B.Tech CSE (UPMSP 88%)</span>
             </div>
             <Layers className="w-6 h-6 text-red-500 group-hover:scale-110 transition-transform" />
           </div>

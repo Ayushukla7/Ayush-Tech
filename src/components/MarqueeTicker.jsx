@@ -3,14 +3,14 @@ import React from 'react';
 export default function MarqueeTicker() {
   const items = [
     'SCUDERIA AS-26',
-    'POWERTRAIN: 250+ DSA SOLVED',
-    'VACCITRACK HEALTHCARE PODIUM',
-    '-45% API LATENCY CUT',
+    'POWERTRAIN: 350+ DSA SOLVED',
+    'HR PULSE: -35% LATENCY CUT',
     'WORKRADAR PREDICTIVE ENGINE',
     'NATIONAL HACKATHON P3',
-    '2,000+ COMMUNITY PADDOCK',
-    '60 FPS CLIENT AERODYNAMICS',
-    'ABESEC B.TECH CSE (CGPA 8.00)'
+    'BUILDSPRINT WINNER (RANK 1/85+)',
+    '2,000+ TECH COMMUNITY',
+    'AYUSH-UI: 10+ PROTOTYPES',
+    'ABESEC B.TECH CSE (CGPA 7.89)'
   ];
 
   return (

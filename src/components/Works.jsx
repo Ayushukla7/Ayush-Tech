@@ -43,14 +43,14 @@ export default function Works({ onSelectProject }) {
           <div className="space-y-1.5">
             <div className="flex items-center space-x-2 text-[10px] font-mono text-red-500 font-semibold uppercase tracking-[0.2em]">
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span>CHASSIS REPOSITORY // 01–04</span>
+              <span>CHASSIS REPOSITORY // 01–03</span>
             </div>
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-clash font-extrabold text-white uppercase tracking-tight">
               PADDOCK <span className="text-white">BUILDS</span>
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">
-            [ 04 VERIFIED PRODUCTION ARCHITECTURES ]
+            [ 03 VERIFIED PRODUCTION ARCHITECTURES ]
           </span>
         </div>
 
@@ -113,60 +113,19 @@ export default function Works({ onSelectProject }) {
                   </div>
 
                   {/* CENTER GRAPHICAL TELEMETRY WIDGET */}
-                  <div className="relative z-10 my-auto flex items-center justify-between">
-                    {idx === 0 && (
-                      /* VacciTrack: Heartbeat ECG wave visual */
-                      <div className="w-full flex items-center justify-between space-x-4 font-mono">
-                        <div className="space-y-1">
-                          <span className="text-[10px] text-slate-400 uppercase">HEALTHCARE TELEMETRY</span>
-                          <div className="text-2xl font-clash font-extrabold text-white">95% ERROR CUT</div>
-                        </div>
-                        <div className="w-28 h-10 flex items-center">
-                          <svg className="w-full h-full text-red-500 animate-pulse" viewBox="0 0 100 30" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M0 15 H30 L38 5 L46 25 L54 10 L60 18 L68 15 H100" />
-                          </svg>
-                        </div>
+                  <div className="relative z-10 my-auto flex items-center justify-between font-mono">
+                    <div className="space-y-1">
+                      <span className="text-[10px] text-slate-400 uppercase tracking-wider">
+                        {project.subMetric || 'TELEMETRY BENCHMARK'}
+                      </span>
+                      <div className="text-2xl sm:text-3xl font-clash font-extrabold text-white">
+                        {project.metric}
                       </div>
-                    )}
+                    </div>
 
-                    {idx === 1 && (
-                      /* WorkRadar: Latency & Risk Radar visual */
-                      <div className="w-full flex items-center justify-between space-x-4 font-mono">
-                        <div className="space-y-1">
-                          <span className="text-[10px] text-slate-400 uppercase">PREDICTIVE ENGINE</span>
-                          <div className="text-2xl font-clash font-extrabold text-white">-45% LATENCY</div>
-                        </div>
-                        <div className="px-3 py-1.5 rounded-lg bg-white/[0.06] border border-white/15 text-slate-200 text-xs font-bold">
-                          180ms PIPELINE
-                        </div>
-                      </div>
-                    )}
-
-                    {idx === 2 && (
-                      /* SkillLedger: Cryptographic blockchain visual */
-                      <div className="w-full flex items-center justify-between space-x-4 font-mono">
-                        <div className="space-y-1">
-                          <span className="text-[10px] text-slate-400 uppercase">CRYPTOGRAPHIC LEDGER</span>
-                          <div className="text-2xl font-clash font-extrabold text-white">HASH VERIFIED</div>
-                        </div>
-                        <div className="px-2.5 py-1 rounded bg-white/10 text-[10px] text-slate-300 border border-white/15">
-                          0x7F...A26
-                        </div>
-                      </div>
-                    )}
-
-                    {idx === 3 && (
-                      /* Portfolio: 3D Earth WebGL Telemetry visual */
-                      <div className="w-full flex items-center justify-between space-x-4 font-mono">
-                        <div className="space-y-1">
-                          <span className="text-[10px] text-slate-400 uppercase">HIGH-VELOCITY UI</span>
-                          <div className="text-2xl font-clash font-extrabold text-white">60 FPS ENGINE</div>
-                        </div>
-                        <div className="px-2.5 py-1 rounded bg-red-600/20 text-red-400 text-xs font-bold border border-red-500/40">
-                          REACT + GSAP
-                        </div>
-                      </div>
-                    )}
+                    <div className="px-3 py-1.5 rounded-lg bg-white/[0.06] border border-white/15 text-slate-200 text-xs font-bold tracking-wider">
+                      {project.techStack[0]} + {project.techStack[1]}
+                    </div>
                   </div>
 
                   {/* Bottom Title on Visual Box */}

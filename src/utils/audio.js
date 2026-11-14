@@ -1,7 +1,8 @@
-// High-Performance Audio Engine: Authentic F1 V8/V6 Sounds + Tactile Haptic UI Feedback
+// Authentic High-Performance Audio Engine: Real Racing Accelerator Audio & Tactile Haptic UI Feedback
 let audioCtx = null;
 let isAudioMuted = false;
 let realF1Audio = null;
+let acceleratorAudio = null;
 let audioUnlocked = false;
 
 // Initialize or resume Web Audio Context on user gesture
@@ -44,8 +45,8 @@ if (typeof window !== 'undefined') {
   });
 }
 
-// Starting Intro: Authentic F1 engine sound (gentle minimal volume 0.12)
-export const playRealF1EngineSound = (targetVolume = 0.12) => {
+// Starting Intro: Authentic F1 engine sound (gentle minimal volume 0.22)
+export const playRealF1EngineSound = (targetVolume = 0.22) => {
   if (isAudioMuted) return;
   try {
     if (!realF1Audio) {
@@ -60,36 +61,78 @@ export const playRealF1EngineSound = (targetVolume = 0.12) => {
         .then(() => {
           audioUnlocked = true;
         })
-        .catch((err) => {
-          // Browser Autoplay blocked: will automatically resume on first user tap/click
-          console.log('Autoplay waiting for user gesture (standard browser policy)');
-          // Web Audio fallback if needed
-        });
+        .catch(() => {});
+    }
+  } catch (err) {}
+};
+
+// Real F1 Accelerator / Throttle Rev Audio (Williams-Renault V10 authentic accelerator sound)
+export const playEngineRev = () => {
+  if (isAudioMuted) return;
+  try {
+    if (!acceleratorAudio) {
+      acceleratorAudio = new Audio('/f1-v10-rev.ogg');
+    }
+    acceleratorAudio.currentTime = 0;
+    acceleratorAudio.volume = 0.40;
+    const playPromise = acceleratorAudio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Fallback to synthesized accelerator rumble if file play is interrupted
+        playSynthesizedAccelerator();
+      });
     }
   } catch (err) {
-    console.warn('Real F1 sound init error:', err);
+    playSynthesizedAccelerator();
   }
 };
 
-// Launch Roar: Played when user clicks "CLICK TO OPEN PORTFOLIO" as car accelerates off screen!
+// Launch Roar: Played when F1 car accelerates and moves out
 export const playF1LaunchRoar = () => {
-  if (isAudioMuted) return;
-  
-  // If HTML5 audio is available, ramp it up as the car speeds off!
-  if (realF1Audio) {
-    try {
-      realF1Audio.volume = Math.min(0.35, realF1Audio.volume + 0.2);
-      realF1Audio.play().catch(() => {});
-      
-      // Smoothly fade out as the car leaves the screen and hero appears
-      setTimeout(() => {
-        stopRealF1EngineSound();
-      }, 700);
-    } catch (e) {}
-  }
-
-  // Also fire Web Audio API acceleration rev for visceral punch
   playEngineRev();
+};
+
+// Procedural fallback for accelerator rev in case audio file is delayed
+const playSynthesizedAccelerator = () => {
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  const now = ctx.currentTime;
+  const osc1 = ctx.createOscillator();
+  const osc2 = ctx.createOscillator();
+  const filter = ctx.createBiquadFilter();
+  const gain = ctx.createGain();
+
+  osc1.type = 'sawtooth';
+  osc2.type = 'sawtooth';
+
+  // F1 accelerator throttle profile
+  osc1.frequency.setValueAtTime(140, now);
+  osc1.frequency.exponentialRampToValueAtTime(540, now + 0.35);
+  osc1.frequency.exponentialRampToValueAtTime(160, now + 1.2);
+
+  osc2.frequency.setValueAtTime(143, now);
+  osc2.frequency.exponentialRampToValueAtTime(548, now + 0.35);
+  osc2.frequency.exponentialRampToValueAtTime(163, now + 1.2);
+
+  filter.type = 'lowpass';
+  filter.frequency.setValueAtTime(900, now);
+  filter.frequency.exponentialRampToValueAtTime(3200, now + 0.35);
+  filter.frequency.exponentialRampToValueAtTime(800, now + 1.2);
+
+  gain.gain.setValueAtTime(0.04, now);
+  gain.gain.exponentialRampToValueAtTime(0.18, now + 0.35);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+
+  osc1.connect(filter);
+  osc2.connect(filter);
+  filter.connect(gain);
+  gain.connect(ctx.destination);
+
+  osc1.start(now);
+  osc2.start(now);
+  osc1.stop(now + 1.2);
+  osc2.stop(now + 1.2);
 };
 
 // Fade out intro sound smoothly
@@ -119,17 +162,14 @@ export const isMuted = () => isAudioMuted;
 export const setMuted = (muted) => {
   isAudioMuted = muted;
   if (realF1Audio) realF1Audio.muted = muted;
+  if (acceleratorAudio) acceleratorAudio.muted = muted;
   return isAudioMuted;
 };
 
 export const toggleAudio = () => {
   isAudioMuted = !isAudioMuted;
-  if (realF1Audio) {
-    realF1Audio.muted = isAudioMuted;
-    if (!isAudioMuted && realF1Audio.paused) {
-      realF1Audio.play().catch(() => {});
-    }
-  }
+  if (realF1Audio) realF1Audio.muted = isAudioMuted;
+  if (acceleratorAudio) acceleratorAudio.muted = isAudioMuted;
   if (!isAudioMuted) {
     playTacticalClick();
   }
@@ -137,7 +177,7 @@ export const toggleAudio = () => {
 };
 
 // =========================================================================
-// PORTFOLIO TACTILE TOUCH SOUNDS (Apple Haptic / Tesla Touch Inspired)
+// PORTFOLIO TACTILE TOUCH SOUNDS (Subtle Haptic Feedback)
 // =========================================================================
 
 // Ultra-subtle, minimal tactile switch click for buttons, links & taps
@@ -150,12 +190,11 @@ export const playTacticalClick = () => {
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
 
-  // Gentle, soft wooden/haptic micro-tap
   osc.type = 'sine';
   osc.frequency.setValueAtTime(640, now);
   osc.frequency.exponentialRampToValueAtTime(180, now + 0.03);
 
-  gain.gain.setValueAtTime(0.025, now);
+  gain.gain.setValueAtTime(0.02, now);
   gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.03);
 
   osc.connect(gain);
@@ -165,33 +204,8 @@ export const playTacticalClick = () => {
   osc.stop(now + 0.03);
 };
 
-// Minimal, pleasant touch select sound for tabs, modals & project cards
+// Minimal touch select sound for tabs and cards
 export const playTouchSelect = () => {
-  if (isAudioMuted) return;
-  const ctx = getAudioContext();
-  if (!ctx) return;
-
-  const now = ctx.currentTime;
-  [523.25, 783.99].forEach((freq, i) => {
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(freq, now + i * 0.03);
-
-    gain.gain.setValueAtTime(0.02, now + i * 0.03);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.03 + 0.08);
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
-    osc.start(now + i * 0.03);
-    osc.stop(now + i * 0.03 + 0.08);
-  });
-};
-
-// Soft telemetry hotspot target lock chirp (minimal volume)
-export const playTelemetryBlip = (freqOffset = 0) => {
   if (isAudioMuted) return;
   const ctx = getAudioContext();
   if (!ctx) return;
@@ -201,8 +215,8 @@ export const playTelemetryBlip = (freqOffset = 0) => {
   const gain = ctx.createGain();
 
   osc.type = 'sine';
-  osc.frequency.setValueAtTime(700 + (freqOffset % 200), now);
-  osc.frequency.exponentialRampToValueAtTime(950 + (freqOffset % 200), now + 0.04);
+  osc.frequency.setValueAtTime(580, now);
+  osc.frequency.exponentialRampToValueAtTime(780, now + 0.04);
 
   gain.gain.setValueAtTime(0.015, now);
   gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.04);
@@ -214,70 +228,10 @@ export const playTelemetryBlip = (freqOffset = 0) => {
   osc.stop(now + 0.04);
 };
 
-// Minimal pit-to-car radio comms chirp
-export const playRadioBeep = () => {
-  if (isAudioMuted) return;
-  const ctx = getAudioContext();
-  if (!ctx) return;
-
-  const now = ctx.currentTime;
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-
-  osc.type = 'sine';
-  osc.frequency.setValueAtTime(1400, now);
-  osc.frequency.setValueAtTime(900, now + 0.04);
-
-  gain.gain.setValueAtTime(0.02, now);
-  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.08);
-
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  osc.start(now);
-  osc.stop(now + 0.08);
+export const playTelemetryBlip = () => {
+  playTouchSelect();
 };
 
-// F1 Engine Throttle Rev for the "REV ENGINE" button in Hero
-export const playEngineRev = () => {
-  if (isAudioMuted) return;
-  const ctx = getAudioContext();
-  if (!ctx) return;
-
-  const now = ctx.currentTime;
-  const osc1 = ctx.createOscillator();
-  const osc2 = ctx.createOscillator();
-  const filter = ctx.createBiquadFilter();
-  const gain = ctx.createGain();
-
-  osc1.type = 'sawtooth';
-  osc2.type = 'sawtooth';
-
-  // F1 V6 hybrid engine RPM pitch climb: 120Hz idle -> 480Hz rev peak -> 160Hz
-  osc1.frequency.setValueAtTime(130, now);
-  osc1.frequency.exponentialRampToValueAtTime(460, now + 0.35);
-  osc1.frequency.exponentialRampToValueAtTime(140, now + 1.1);
-
-  osc2.frequency.setValueAtTime(133, now);
-  osc2.frequency.exponentialRampToValueAtTime(468, now + 0.35);
-  osc2.frequency.exponentialRampToValueAtTime(143, now + 1.1);
-
-  filter.type = 'lowpass';
-  filter.frequency.setValueAtTime(800, now);
-  filter.frequency.exponentialRampToValueAtTime(2600, now + 0.35);
-  filter.frequency.exponentialRampToValueAtTime(700, now + 1.1);
-
-  gain.gain.setValueAtTime(0.03, now);
-  gain.gain.exponentialRampToValueAtTime(0.12, now + 0.35);
-  gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.1);
-
-  osc1.connect(filter);
-  osc2.connect(filter);
-  filter.connect(gain);
-  gain.connect(ctx.destination);
-
-  osc1.start(now);
-  osc2.start(now);
-  osc1.stop(now + 1.1);
-  osc2.stop(now + 1.1);
+export const playRadioBeep = () => {
+  playTacticalClick();
 };
