@@ -93,13 +93,13 @@ export default function Hero({ onOpenResume }) {
   const handleRev = () => {
     setIsRevving(true);
     playEngineRev();
-    setRpm(14950);
-    setSpeed(346);
+    setRpm(15200);
+    setSpeed(352);
     setTimeout(() => {
       setRpm(13200);
       setSpeed(328);
       setIsRevving(false);
-    }, 1100);
+    }, 750);
   };
 
   const selectSpot = (sub, idx) => {
@@ -138,12 +138,12 @@ export default function Hero({ onOpenResume }) {
           </div>
         </div>
 
-        {/* HERO HEADLINE: HIGH-CLASS FORMAL EDITORIAL TYPOGRAPHY */}
+        {/* HERO HEADLINE: CLEAN, HIGH-CLASS RACING TYPOGRAPHY */}
         <div className="hero-headline flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="space-y-1.5">
             <div className="flex items-center space-x-2 text-[11px] font-mono uppercase tracking-[0.2em] text-red-500 font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
-              <span>Full-Stack Systems & High-Velocity Architecture</span>
+              <span>Software Developer & Full-Stack MERN Architect</span>
             </div>
             <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-clash font-extrabold uppercase tracking-tight text-white leading-[0.88]">
               AYUSH <span className="text-white">SHUKLA</span>
@@ -162,7 +162,7 @@ export default function Hero({ onOpenResume }) {
               data-cursor="REV"
             >
               <Gauge className={`w-4 h-4 ${isRevving ? 'animate-spin' : ''}`} />
-              <span>{isRevving ? 'V6 THROTTLE OPEN' : 'REV ENGINE ⚡'}</span>
+              <span>{isRevving ? 'THROTTLE WIDE OPEN' : 'REV THROTTLE ⚡'}</span>
             </button>
 
             <MagneticButton
@@ -186,9 +186,22 @@ export default function Hero({ onOpenResume }) {
         </div>
 
         {/* ========================================================================= */}
-        {/* 70% VISUAL MASTERPIECE: MASSIVE F1 CAR TELEMETRY COCKPIT & LIVE HUD */}
+        {/* F1 ASPHALT TRACK STRAIGHT WITH RUMBLE KERBS & STARTING GRID */}
         {/* ========================================================================= */}
-        <div className="hero-car-stage relative w-full rounded-2xl bg-black/92 border border-white/15 p-4 sm:p-6 backdrop-blur-2xl shadow-[0_25px_70px_rgba(0,0,0,0.95)] overflow-hidden">
+        <div className="hero-car-stage relative w-full rounded-2xl bg-black/95 border border-white/15 p-4 sm:p-6 backdrop-blur-2xl shadow-[0_25px_70px_rgba(0,0,0,0.95)] overflow-hidden tarmac-surface">
+          
+          {/* TOP & BOTTOM F1 RUMBLE KERBS (RED & WHITE STRIPED) */}
+          <div className="absolute top-0 inset-x-0 h-2 f1-kerb-h z-20" />
+          <div className="absolute bottom-0 inset-x-0 h-2 f1-kerb-h z-20" />
+
+          {/* STARTING GRID SLOT MARKINGS ON ASPHALT */}
+          <div className="absolute left-6 top-1/2 -translate-y-1/2 w-44 h-32 border-2 border-dashed border-white/15 rounded-lg pointer-events-none hidden sm:flex flex-col justify-between p-2.5">
+            <span className="text-[9px] font-mono font-bold text-white/40 tracking-widest">GRID SLOT [ 01 ]</span>
+            <span className="text-[9px] font-mono text-red-500/60 font-bold uppercase tracking-wider">POLE POSITION</span>
+          </div>
+
+          {/* ASPHALT CENTER DASHED RACING LINE */}
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-0.5 border-t border-dashed border-white/[0.08] pointer-events-none" />
           
           {/* CORNER BRACKETS */}
           <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-red-500/80" />

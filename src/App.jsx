@@ -4,6 +4,7 @@ import CustomCursor from './components/CustomCursor';
 import FluidCanvas from './components/FluidCanvas';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import RaceTrackCircuit from './components/RaceTrackCircuit';
 import MarqueeTicker from './components/MarqueeTicker';
 import Works from './components/Works';
 import Capabilities from './components/Capabilities';
@@ -73,6 +74,9 @@ export default function App() {
         
         {/* HERO SECTION: MASSIVE CENTRAL CAR TELEMETRY HUD & TACHOMETER */}
         <Hero onOpenResume={() => setIsResumeOpen(true)} />
+
+        {/* F1 RACE TRACK GRAND PRIX CIRCUIT MAP & SECTORS */}
+        <RaceTrackCircuit />
 
         {/* HIGH-VELOCITY MARQUEE TICKER */}
         <MarqueeTicker />

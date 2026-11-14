@@ -91,3 +91,56 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #e10600;
 }
+
+/* ========================================================================= */
+/* AUTHENTIC FORMULA 1 RACE TRACK & ASPHALT CIRCUIT VISUAL SYSTEM */
+/* ========================================================================= */
+
+/* F1 Red & White Alternating Rumble Kerbs (Horizontal & Vertical) */
+.f1-kerb-h {
+  background: repeating-linear-gradient(
+    90deg,
+    #e10600 0px,
+    #e10600 24px,
+    #ffffff 24px,
+    #ffffff 48px
+  );
+}
+
+.f1-kerb-v {
+  background: repeating-linear-gradient(
+    180deg,
+    #e10600 0px,
+    #e10600 24px,
+    #ffffff 24px,
+    #ffffff 48px
+  );
+}
+
+/* Realistic Asphalt Tarmac Texture */
+.tarmac-surface {
+  background-color: #0b0c10;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 16, 22, 0.95), rgba(7, 8, 12, 0.98));
+  background-size: 16px 16px, 100% 100%;
+}
+
+/* F1 Chequered Flag Pattern */
+.chequered-flag-strip {
+  background-image: 
+    linear-gradient(45deg, #fff 25%, transparent 25%), 
+    linear-gradient(-45deg, #fff 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #fff 75%), 
+    linear-gradient(-45deg, transparent 75%, #fff 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+  background-color: #000;
+}
+
+/* F1 Track Grid Slot Markings */
+.grid-slot-marker {
+  border-left: 3px solid rgba(255, 255, 255, 0.8);
+  border-top: 3px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.8);
+}

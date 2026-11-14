@@ -12,7 +12,7 @@ export default function Trajectory() {
           <div className="space-y-1.5">
             <div className="flex items-center space-x-2 text-[10px] font-mono text-red-500 font-semibold uppercase tracking-[0.2em]">
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span>CAREER STINTS & TRACK LAPS</span>
+              <span>SECTOR 03 // RACE STRATEGY & CAREER LAPS</span>
             </div>
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-clash font-extrabold text-white uppercase tracking-tight">
               RACE <span className="text-white">STRATEGY</span>

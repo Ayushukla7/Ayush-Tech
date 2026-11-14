@@ -4,15 +4,19 @@ import { Trophy, Award, Star, Medal, Zap, Flag } from 'lucide-react';
 
 export default function Recognition() {
   return (
-    <section id="awards" className="relative py-20 px-3 sm:px-6 lg:px-8 border-b border-white/10 racing-grid">
-      <div className="max-w-7xl mx-auto space-y-12">
+    <section id="awards" className="relative py-20 px-3 sm:px-6 lg:px-8 border-b border-white/10 racing-grid overflow-hidden">
+      {/* FINISH LINE CHEQUERED FLAG BORDER */}
+      <div className="absolute top-0 inset-x-0 h-2 chequered-flag-strip opacity-90" />
+      <div className="absolute bottom-0 inset-x-0 h-2 chequered-flag-strip opacity-90" />
+
+      <div className="max-w-7xl mx-auto space-y-12 relative z-10">
         
-        {/* FORMAL EXECUTIVE HEADER */}
+        {/* FORMAL FINISH LINE HEADER */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
           <div className="space-y-1.5">
-            <div className="flex items-center space-x-2 text-[10px] font-mono text-red-500 font-semibold uppercase tracking-[0.2em]">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span>CHAMPIONSHIP STANDINGS</span>
+            <div className="flex items-center space-x-2 text-[10px] font-mono text-amber-400 font-semibold uppercase tracking-[0.2em]">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+              <span>FINISH LINE // CHAMPIONSHIP PODIUM</span>
             </div>
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-clash font-extrabold text-white uppercase tracking-tight">
               PODIUM <span className="text-white">HONORS</span>

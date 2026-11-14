@@ -3,6 +3,8 @@ let audioCtx = null;
 let isAudioMuted = false;
 let realF1Audio = null;
 let acceleratorAudio = null;
+let acceleratorTimeout = null;
+let acceleratorFadeInterval = null;
 let audioUnlocked = false;
 
 // Initialize or resume Web Audio Context on user gesture
@@ -66,22 +68,43 @@ export const playRealF1EngineSound = (targetVolume = 0.22) => {
   } catch (err) {}
 };
 
-// Real F1 Accelerator / Throttle Rev Audio (Williams-Renault V10 authentic accelerator sound)
+// Real F1 Accelerator / Throttle Rev Audio: Snappy blip (< 1 sec) matching RPM gauge
 export const playEngineRev = () => {
   if (isAudioMuted) return;
   try {
+    if (acceleratorTimeout) clearTimeout(acceleratorTimeout);
+    if (acceleratorFadeInterval) clearInterval(acceleratorFadeInterval);
+
     if (!acceleratorAudio) {
       acceleratorAudio = new Audio('/f1-v10-rev.ogg');
     }
-    acceleratorAudio.currentTime = 0;
-    acceleratorAudio.volume = 0.40;
+    // Jump straight to the high-RPM throttle burst
+    acceleratorAudio.currentTime = 0.1;
+    acceleratorAudio.volume = 0.45;
     const playPromise = acceleratorAudio.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // Fallback to synthesized accelerator rumble if file play is interrupted
         playSynthesizedAccelerator();
       });
     }
+
+    // Snappy throttle blip: strictly less than 1 second (stops & fades out at ~700ms)
+    acceleratorTimeout = setTimeout(() => {
+      if (acceleratorAudio && !acceleratorAudio.paused) {
+        let vol = acceleratorAudio.volume;
+        acceleratorFadeInterval = setInterval(() => {
+          vol = Math.max(0, vol - 0.1);
+          if (acceleratorAudio) acceleratorAudio.volume = vol;
+          if (vol <= 0) {
+            clearInterval(acceleratorFadeInterval);
+            if (acceleratorAudio) {
+              acceleratorAudio.pause();
+              acceleratorAudio.currentTime = 0;
+            }
+          }
+        }, 20);
+      }
+    }, 650);
   } catch (err) {
     playSynthesizedAccelerator();
   }
@@ -92,7 +115,7 @@ export const playF1LaunchRoar = () => {
   playEngineRev();
 };
 
-// Procedural fallback for accelerator rev in case audio file is delayed
+// Procedural fallback for snappy accelerator rev (< 1s)
 const playSynthesizedAccelerator = () => {
   const ctx = getAudioContext();
   if (!ctx) return;
@@ -106,23 +129,23 @@ const playSynthesizedAccelerator = () => {
   osc1.type = 'sawtooth';
   osc2.type = 'sawtooth';
 
-  // F1 accelerator throttle profile
-  osc1.frequency.setValueAtTime(140, now);
-  osc1.frequency.exponentialRampToValueAtTime(540, now + 0.35);
-  osc1.frequency.exponentialRampToValueAtTime(160, now + 1.2);
+  // F1 accelerator throttle profile: 0.7s duration
+  osc1.frequency.setValueAtTime(160, now);
+  osc1.frequency.exponentialRampToValueAtTime(580, now + 0.25);
+  osc1.frequency.exponentialRampToValueAtTime(180, now + 0.7);
 
-  osc2.frequency.setValueAtTime(143, now);
-  osc2.frequency.exponentialRampToValueAtTime(548, now + 0.35);
-  osc2.frequency.exponentialRampToValueAtTime(163, now + 1.2);
+  osc2.frequency.setValueAtTime(164, now);
+  osc2.frequency.exponentialRampToValueAtTime(590, now + 0.25);
+  osc2.frequency.exponentialRampToValueAtTime(184, now + 0.7);
 
   filter.type = 'lowpass';
-  filter.frequency.setValueAtTime(900, now);
-  filter.frequency.exponentialRampToValueAtTime(3200, now + 0.35);
-  filter.frequency.exponentialRampToValueAtTime(800, now + 1.2);
+  filter.frequency.setValueAtTime(1100, now);
+  filter.frequency.exponentialRampToValueAtTime(3600, now + 0.25);
+  filter.frequency.exponentialRampToValueAtTime(900, now + 0.7);
 
-  gain.gain.setValueAtTime(0.04, now);
-  gain.gain.exponentialRampToValueAtTime(0.18, now + 0.35);
-  gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+  gain.gain.setValueAtTime(0.05, now);
+  gain.gain.exponentialRampToValueAtTime(0.22, now + 0.25);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.7);
 
   osc1.connect(filter);
   osc2.connect(filter);
@@ -131,8 +154,8 @@ const playSynthesizedAccelerator = () => {
 
   osc1.start(now);
   osc2.start(now);
-  osc1.stop(now + 1.2);
-  osc2.stop(now + 1.2);
+  osc1.stop(now + 0.7);
+  osc2.stop(now + 0.7);
 };
 
 // Fade out intro sound smoothly

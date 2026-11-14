@@ -43,7 +43,7 @@ export default function Works({ onSelectProject }) {
           <div className="space-y-1.5">
             <div className="flex items-center space-x-2 text-[10px] font-mono text-red-500 font-semibold uppercase tracking-[0.2em]">
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span>CHASSIS REPOSITORY // 01–03</span>
+              <span>SECTOR 02 // PIT GARAGE BUILDS</span>
             </div>
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-clash font-extrabold text-white uppercase tracking-tight">
               PADDOCK <span className="text-white">BUILDS</span>
