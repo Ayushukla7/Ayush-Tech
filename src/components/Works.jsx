@@ -107,9 +107,16 @@ export default function Works({ onSelectProject }) {
                       <span>TELEMETRY VERIFIED</span>
                     </span>
 
-                    <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-white group-hover:bg-red-600 group-hover:border-red-400 transition-all shadow-md">
+                    <a
+                      href={project.liveUrl || project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => { e.stopPropagation(); playTacticalClick(); }}
+                      className="w-8 h-8 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-white hover:bg-red-600 hover:border-red-400 transition-all shadow-md z-20"
+                      title="Open Live Project"
+                    >
                       <ArrowUpRight className="w-4 h-4" />
-                    </div>
+                    </a>
                   </div>
 
                   {/* CENTER GRAPHICAL TELEMETRY WIDGET */}
@@ -166,16 +173,16 @@ export default function Works({ onSelectProject }) {
                           <span>Code</span>
                         </a>
                       )}
-                      {project.liveUrl && (
+                      {(project.liveUrl || project.live) && (
                         <a
-                          href={project.liveUrl}
+                          href={project.liveUrl || project.live}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => { e.stopPropagation(); playTacticalClick(); }}
-                          className="text-slate-400 hover:text-white flex items-center space-x-1 transition-colors"
+                          className="px-2.5 py-1 rounded-md bg-red-600/20 hover:bg-red-600 border border-red-500/40 text-red-300 hover:text-white flex items-center space-x-1.5 transition-all font-semibold"
                         >
                           <ExternalLink className="w-3.5 h-3.5" />
-                          <span>Live Demo</span>
+                          <span>Live Project ↗</span>
                         </a>
                       )}
                     </div>

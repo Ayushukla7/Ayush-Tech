@@ -274,9 +274,14 @@ export default function ResumeModal({ isOpen, onClose }) {
                     <span className="font-bold text-slate-950">
                       HR Pulse – Enterprise HR Management Platform <span className="font-normal italic text-slate-600">| MERN Stack, JWT Auth, RESTful API</span>
                     </span>
-                    <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline font-mono text-[11px]">
-                      [GitHub Repo]
-                    </a>
+                    <div className="flex items-center space-x-2 font-mono text-[11px]">
+                      <a href="https://hrms-seven-delta.vercel.app/" target="_blank" rel="noreferrer" className="text-red-600 font-bold hover:underline">
+                        [Live Demo]
+                      </a>
+                      <a href="https://github.com/Ayushukla7/HRMS" target="_blank" rel="noreferrer" className="text-blue-700 hover:underline">
+                        [GitHub Repo]
+                      </a>
+                    </div>
                   </div>
                   <ul className="list-disc list-outside ml-4 space-y-0.5 text-xs text-slate-700 leading-normal">
                     <li>Engineered an enterprise-grade HR management platform with role-based access control across 7+ integrated modules including employee tracking, automated payroll, attendance logging, and performance reviews.</li>
@@ -291,9 +296,14 @@ export default function ResumeModal({ isOpen, onClose }) {
                     <span className="font-bold text-slate-950">
                       WorkRadar – Predictive Task & Workforce Platform <span className="font-normal italic text-slate-600">| React.js, Vite, Node.js, Express, MongoDB, JWT, Recharts</span>
                     </span>
-                    <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline font-mono text-[11px]">
-                      [GitHub Repo]
-                    </a>
+                    <div className="flex items-center space-x-2 font-mono text-[11px]">
+                      <a href="https://workradar-nch5.vercel.app/" target="_blank" rel="noreferrer" className="text-red-600 font-bold hover:underline">
+                        [Live Demo]
+                      </a>
+                      <a href="https://github.com/Ayushukla7/WORKRADAR" target="_blank" rel="noreferrer" className="text-blue-700 hover:underline">
+                        [GitHub Repo]
+                      </a>
+                    </div>
                   </div>
                   <ul className="list-disc list-outside ml-4 space-y-0.5 text-xs text-slate-700 leading-normal">
                     <li>Architected a proactive project analytics system built with a proprietary 0–100 task-delay risk calculation engine evaluating velocity, blockers, and workload parameters.</li>
@@ -308,9 +318,14 @@ export default function ResumeModal({ isOpen, onClose }) {
                     <span className="font-bold text-slate-950">
                       AYUSH-UI – UI/UX & Frontend Design System Portfolio <span className="font-normal italic text-slate-600">| React.js, Vite, Tailwind CSS, Framer Motion, Vercel</span>
                     </span>
-                    <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline font-mono text-[11px]">
-                      [GitHub Repo]
-                    </a>
+                    <div className="flex items-center space-x-2 font-mono text-[11px]">
+                      <a href="https://ayush-ui.vercel.app/" target="_blank" rel="noreferrer" className="text-red-600 font-bold hover:underline">
+                        [Live Demo]
+                      </a>
+                      <a href="https://github.com/Ayushukla7/AYUSH-UI" target="_blank" rel="noreferrer" className="text-blue-700 hover:underline">
+                        [GitHub Repo]
+                      </a>
+                    </div>
                   </div>
                   <ul className="list-disc list-outside ml-4 space-y-0.5 text-xs text-slate-700 leading-normal">
                     <li>Created an interactive frontend architecture and design showcase presenting 10+ professional UI/UX prototypes and web applications.</li>

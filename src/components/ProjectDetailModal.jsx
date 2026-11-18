@@ -100,24 +100,24 @@ export default function ProjectDetailModal({ project, isOpen, onClose }) {
             <a
               href={project.github}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               onClick={playTacticalClick}
               className="flex-1 py-3 rounded-lg bg-white/10 hover:bg-white/15 border border-white/15 text-white font-mono text-xs font-bold flex items-center justify-center space-x-2 transition-all"
             >
               <Github className="w-4 h-4" />
-              <span>Chassis GitHub</span>
+              <span>GitHub Repo</span>
             </a>
           )}
-          {project.live && (
+          {(project.liveUrl || project.live) && (
             <a
-              href={project.live}
+              href={project.liveUrl || project.live}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               onClick={playTacticalClick}
               className="flex-1 py-3 rounded-lg bg-red-600 hover:bg-red-500 text-white font-mono text-xs font-bold flex items-center justify-center space-x-2 transition-all shadow-[0_0_20px_rgba(225,6,0,0.4)]"
             >
               <ExternalLink className="w-4 h-4" />
-              <span>Launch Live Telemetry</span>
+              <span>Launch Live Project ↗</span>
             </a>
           )}
         </div>
