@@ -80,7 +80,7 @@ export default function Hero({ onOpenResume }) {
                 className="px-5 py-3.5 bg-[#14161c] hover:bg-[#20242e] border border-[#2a2d39] text-[#eae7dd] hover:text-[#ccff00] hover:border-[#ccff00] font-mono font-bold text-xs tracking-wider uppercase flex items-center space-x-2 transition-all shadow-[4px_4px_0px_#ccff00] active:translate-x-0.5 active:translate-y-0.5"
               >
                 <FileText className="w-4 h-4" />
-                <span>RESUME DOSSIER</span>
+                <span>RESUME [PDF]</span>
               </button>
 
               <a

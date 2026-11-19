@@ -130,7 +130,7 @@ export default function Header({ onOpenResume }) {
               className="px-4 py-2 bg-[#ccff00] hover:bg-white text-black font-anton text-xs sm:text-sm tracking-wider uppercase flex items-center space-x-1.5 transition-all shadow-[3px_3px_0px_#fff] active:translate-x-0.5 active:translate-y-0.5"
             >
               <FileText className="w-4 h-4" />
-              <span>RESUME DOSSIER ↗</span>
+              <span>RESUME [PDF] ↗</span>
             </button>
 
             {/* Mobile menu trigger */}
