@@ -1,167 +1,71 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, Menu, X, FileText, Download, Github, Linkedin } from 'lucide-react';
+import React from 'react';
 import { WireframeGlobe } from './AcidIcons';
-import { personalInfo } from '../data/portfolioData';
 import { playTacticalClick } from '../utils/audio';
 
 export default function Header({ onOpenResume }) {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const navLinks = [
     { label: 'PROJECTS', href: '#projects' },
     { label: 'PROCESS', href: '#process' },
     { label: 'MATRIX', href: '#skills' },
-    { label: 'EXPERIENCE', href: '#experience' },
     { label: 'CONTACT', href: '#contact' },
   ];
 
   return (
-    <header className="fixed top-0 inset-x-0 z-40 select-none">
-      
-      {/* TOP BRUTALIST TICKER BAR (EXACT AS IMAGE HEADER) */}
-      <div className="w-full bg-[#0e0f12] border-b border-[#2a2d39] text-[#8a8d98] font-mono text-[10px] tracking-widest px-3 sm:px-6 py-1.5 flex items-center justify-between">
+    <header className="fixed top-0 inset-x-0 z-40 select-none bg-[#0e0f12]/95 backdrop-blur-md border-b border-[#2a2d39]">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between font-mono text-[10px] tracking-widest">
         
-        {/* Left: Role identification */}
-        <div className="flex items-center space-x-2 text-[#f4f3ee]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-ping" />
-          <span className="uppercase font-bold tracking-[0.18em]">
-            SOFTWARE DEVELOPER // FULL-STACK ARCHITECT
+        {/* LEFT: DIGITAL DESIGNER / VISUAL STRATEGIST (EXACT AS POSTER) */}
+        <div className="flex items-center space-x-2 text-[#eae7dd]">
+          <div className="flex flex-col leading-tight">
+            <span className="font-bold uppercase tracking-wider text-[#ccff00]">
+              DIGITAL DESIGNER
+            </span>
+            <span className="text-[#8a8d98] uppercase tracking-wider">
+              VISUAL STRATEGIST // AYUSH SHUKLA
+            </span>
+          </div>
+          <WireframeGlobe className="w-4 h-4 text-[#ccff00] ml-1.5 shrink-0" />
+        </div>
+
+        {/* CENTER: BASED IN WORLDWIDE / INDIA (EXACT AS POSTER) */}
+        <div className="hidden md:flex flex-col items-center leading-tight text-[#eae7dd]">
+          <span className="text-[#8a8d98] uppercase">BASED IN</span>
+          <span className="font-bold flex items-center space-x-1 uppercase text-[#ccff00]">
+            <span>GHAZIABAD, INDIA</span>
+            <span className="text-white">+</span>
           </span>
         </div>
 
-        {/* Center: Wireframe globe + Location */}
-        <div className="hidden md:flex items-center space-x-2 text-[#f4f3ee]">
-          <WireframeGlobe className="w-3.5 h-3.5 text-[#ccff00]" />
-          <span>BASED IN GHAZIABAD, INDIA</span>
-          <span className="text-[#ccff00] font-bold">+</span>
-        </div>
-
-        {/* Right: Year & Barcode tag */}
-        <div className="flex items-center space-x-3 text-[#f4f3ee]">
-          <span className="font-bold tracking-widest">2026©</span>
-          <span className="hidden sm:inline-block w-8 h-3.5 acid-barcode" />
-          <span className="text-[#ccff00] font-bold">[ AS-DEV ]</span>
-        </div>
-
-      </div>
-
-      {/* FLOATING MAIN NAVIGATION BAR */}
-      <div 
-        className={`w-full transition-all duration-300 ${
-          scrolled 
-            ? 'bg-[#0e0f12]/95 backdrop-blur-xl border-b border-[#2a2d39] py-3 shadow-[0_10px_30px_rgba(0,0,0,0.85)]' 
-            : 'bg-transparent py-4'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 flex items-center justify-between">
-          
-          {/* BRAND LOGO / ID */}
-          <a
-            href="#hero"
-            onClick={playTacticalClick}
-            className="flex items-center space-x-2.5 group cursor-pointer"
-          >
-            <div className="w-8 h-8 rounded-none bg-[#ccff00] text-black font-anton font-extrabold text-base flex items-center justify-center transition-transform group-hover:scale-105 shadow-[2px_2px_0px_#fff]">
-              AS
-            </div>
-            <div>
-              <span className="font-anton tracking-wider text-xl sm:text-2xl text-[#f4f3ee] group-hover:text-[#ccff00] transition-colors uppercase leading-none block">
-                AYUSH SHUKLA
-              </span>
-              <span className="text-[9px] font-mono text-[#8a8d98] tracking-widest block uppercase">
-                ACID BRUTAL DEV // B.TECH CSE
-              </span>
-            </div>
-          </a>
-
-          {/* DESKTOP NAV LINKS */}
-          <nav className="hidden lg:flex items-center space-x-1 border border-[#2a2d39] bg-[#14161c]/90 p-1 rounded-none shadow-[2px_2px_0px_#ccff00]">
+        {/* RIGHT: NAVIGATION, RESUME & 2026© BARCODE (EXACT AS POSTER) */}
+        <div className="flex items-center space-x-3 text-[#eae7dd]">
+          {/* Subtle nav links */}
+          <nav className="hidden lg:flex items-center space-x-3 text-[#8a8d98] font-bold">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={playTacticalClick}
-                className="px-4 py-1.5 text-xs font-mono font-bold tracking-wider text-[#eae7dd] hover:text-black hover:bg-[#ccff00] transition-all uppercase"
+                className="hover:text-[#ccff00] transition-colors"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* RIGHT ACTIONS: RESUME MODAL & SOCIAL */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
-            
-            {/* GitHub Quick Link */}
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noreferrer"
-              onClick={playTacticalClick}
-              className="hidden sm:flex items-center justify-center w-9 h-9 border border-[#2a2d39] bg-[#14161c] text-[#eae7dd] hover:text-black hover:bg-[#ccff00] hover:border-[#ccff00] transition-all"
-              title="GitHub Profile"
-            >
-              <Github className="w-4 h-4" />
-            </a>
+          {/* Quick Resume Button */}
+          <button
+            onClick={() => { playTacticalClick(); onOpenResume(); }}
+            className="px-2.5 py-1 bg-[#ccff00] hover:bg-white text-black font-anton text-xs uppercase transition-all shadow-[2px_2px_0px_#fff]"
+          >
+            RESUME [PDF] ↗
+          </button>
 
-            {/* LinkedIn Quick Link */}
-            <a
-              href={personalInfo.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              onClick={playTacticalClick}
-              className="hidden sm:flex items-center justify-center w-9 h-9 border border-[#2a2d39] bg-[#14161c] text-[#eae7dd] hover:text-black hover:bg-[#ccff00] hover:border-[#ccff00] transition-all"
-              title="LinkedIn Profile"
-            >
-              <Linkedin className="w-4 h-4" />
-            </a>
-
-            {/* RESUME DOSSIER BUTTON (Acid Lime brutalist button) */}
-            <button
-              onClick={() => { playTacticalClick(); onOpenResume(); }}
-              className="px-4 py-2 bg-[#ccff00] hover:bg-white text-black font-anton text-xs sm:text-sm tracking-wider uppercase flex items-center space-x-1.5 transition-all shadow-[3px_3px_0px_#fff] active:translate-x-0.5 active:translate-y-0.5"
-            >
-              <FileText className="w-4 h-4" />
-              <span>RESUME [PDF] ↗</span>
-            </button>
-
-            {/* Mobile menu trigger */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 border border-[#2a2d39] bg-[#14161c] text-[#eae7dd]"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-
-          </div>
-
+          {/* Year & Barcode */}
+          <span className="font-bold tracking-widest hidden sm:inline">2026©</span>
+          <span className="w-8 h-3.5 acid-barcode opacity-80 hidden sm:inline-block" />
         </div>
+
       </div>
-
-      {/* MOBILE DRAWER */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0e0f12] border-b border-[#2a2d39] p-4 space-y-2 font-mono text-xs">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => { playTacticalClick(); setMobileMenuOpen(false); }}
-              className="block p-2.5 text-[#eae7dd] hover:bg-[#ccff00] hover:text-black font-bold uppercase transition-all"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      )}
-
     </header>
   );
 }
