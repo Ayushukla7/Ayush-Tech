@@ -49,25 +49,25 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Zero-latency high-precision center red dot */}
+      {/* Zero-latency high-precision center acid lime dot */}
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 z-50 -ml-1 -mt-1 w-2 h-2 rounded-full bg-red-500 shadow-[0_0_8px_#ef4444]"
+        className="pointer-events-none fixed top-0 left-0 z-50 -ml-1 -mt-1 w-2 h-2 rounded-none bg-[#ccff00] shadow-[0_0_8px_#ccff00]"
       />
 
-      {/* Zero-latency outer telemetry bracket ring */}
+      {/* Zero-latency outer acid brutalist bracket ring */}
       <div
         ref={ringRef}
         className={`pointer-events-none fixed top-0 left-0 z-40 flex items-center justify-center transition-all duration-100 ease-out ${
           isHovered
             ? cursorText
-              ? '-ml-9 -mt-9 w-[72px] h-[72px] rounded-xl bg-red-600/15 border border-red-500/80 backdrop-blur-[2px] shadow-[0_0_20px_rgba(239,68,68,0.4)]'
-              : '-ml-5 -mt-5 w-10 h-10 rounded-full border border-cyan-400/80 shadow-[0_0_12px_rgba(0,242,254,0.4)] scale-110'
-            : '-ml-3.5 -mt-3.5 w-7 h-7 rounded-full border border-white/25 scale-75 opacity-60'
+              ? '-ml-9 -mt-9 w-[72px] h-[72px] rounded-none bg-[#ccff00]/15 border-2 border-[#ccff00] backdrop-blur-[2px] shadow-[0_0_20px_rgba(204,255,0,0.4)]'
+              : '-ml-5 -mt-5 w-10 h-10 rounded-none border border-[#ccff00] shadow-[0_0_12px_rgba(204,255,0,0.4)] scale-110'
+            : '-ml-3.5 -mt-3.5 w-7 h-7 rounded-none border border-white/25 scale-75 opacity-60'
         }`}
       >
         {cursorText && (
-          <span className="font-mono text-[9px] font-bold text-red-400 tracking-wider uppercase animate-pulse">
+          <span className="font-mono text-[9px] font-bold text-[#ccff00] tracking-wider uppercase">
             {cursorText}
           </span>
         )}

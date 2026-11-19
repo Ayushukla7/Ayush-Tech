@@ -4,27 +4,22 @@ import CustomCursor from './components/CustomCursor';
 import FluidCanvas from './components/FluidCanvas';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import RaceTrackCircuit from './components/RaceTrackCircuit';
 import MarqueeTicker from './components/MarqueeTicker';
 import Works from './components/Works';
 import Capabilities from './components/Capabilities';
 import Trajectory from './components/Trajectory';
-import Recognition from './components/Recognition';
-import AboutSection from './components/AboutSection';
 import FooterCTA from './components/FooterCTA';
 import ProjectDetailModal from './components/ProjectDetailModal';
 import ResumeModal from './components/ResumeModal';
-import CarLaunchIntro from './components/CarLaunchIntro';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [showIntro, setShowIntro] = useState(true);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   // Initialize Lenis Smooth Inertial Scrolling
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       smoothWheel: true,
@@ -43,60 +38,40 @@ export default function App() {
     };
   }, []);
 
-  // When F1 Car Launch finishes, cleanly reveal the Hero Portfolio (NO auto-opening resume modal!)
-  const handleIntroComplete = () => {
-    setShowIntro(false);
-    setIsResumeOpen(false); // Keeps user directly on the high-class Hero portfolio!
-  };
-
   return (
-    <div className="relative min-h-screen bg-dark-950 text-slate-100 font-sans selection:bg-red-500 selection:text-white">
+    <div className="relative min-h-screen bg-acid-dark text-acid-paper font-space selection:bg-acid-lime selection:text-black overflow-x-hidden">
       
-      {/* 1. HIGH-ADRENALINE F1 TURBO BURN & FLYBY LAUNCH INTRO */}
-      {showIntro && (
-        <CarLaunchIntro onComplete={handleIntroComplete} />
-      )}
-
-      {/* INTERACTIVE AMBIENT FLUID CANVAS BACKGROUND (F1 Red & Cyan Liquid Waves) */}
+      {/* INTERACTIVE AMBIENT FLUID CANVAS BACKGROUND (Subtle Lime Acid Glow) */}
       <FluidCanvas />
 
-      {/* CINEMATIC NOISE GRAIN OVERLAY */}
+      {/* CINEMATIC DISTRESSED GRAIN OVERLAY */}
       <div className="fixed inset-0 z-30 grain-overlay pointer-events-none" />
 
-      {/* ZERO-LATENCY HIGH-PRECISION F1 TELEMETRY CURSOR */}
+      {/* ACID BRUTAL CUSTOM CURSOR */}
       <CustomCursor />
 
-      {/* FIXED FLOATING PITWALL HEADER */}
+      {/* TOP BRUTALIST POSTER HEADER */}
       <Header onOpenResume={() => setIsResumeOpen(true)} />
 
-      {/* MAIN SECTIONS */}
+      {/* MAIN POSTER SECTIONS */}
       <main className="relative z-10">
         
-        {/* HERO SECTION: MASSIVE CENTRAL CAR TELEMETRY HUD & TACHOMETER */}
+        {/* HERO SECTION: GIANT CONDENSED AYUSH SHUKLA TYPOGRAPHY & AVATAR DISC */}
         <Hero onOpenResume={() => setIsResumeOpen(true)} />
 
-        {/* F1 RACE TRACK GRAND PRIX CIRCUIT MAP & SECTORS */}
-        <RaceTrackCircuit />
-
-        {/* HIGH-VELOCITY MARQUEE TICKER */}
+        {/* HIGH-IMPACT POSTER TICKER */}
         <MarqueeTicker />
 
-        {/* PADDOCK BUILDS (70% VISUAL CHASSIS SPECIFICATIONS) */}
+        {/* 2-COLUMN WORKS: SELECTED PROJECTS (LEFT) + PROCESS NOTES (RIGHT) */}
         <Works onSelectProject={(project) => setSelectedProject(project)} />
 
-        {/* POWERTRAIN & COMPONENT MATRIX (70% VISUAL LIVE TELEMETRY TILES) */}
+        {/* 3-BOX ROW: SKILLS MATRIX HEATMAP + PHILOSOPHY QUOTE + SOLID ACID LIME TOOLS */}
         <Capabilities />
 
-        {/* RACE STRATEGY & CAREER LAPS (LEADERSHIP TIMELINE) */}
+        {/* CAREER TRAJECTORY & HONORS LEDGER */}
         <Trajectory />
 
-        {/* CHAMPIONSHIP PODIUM STAND (3-STEP VISUAL PODIUM) */}
-        <Recognition />
-
-        {/* FIA DRIVER DOSSIER PASS (3D VISUAL PADDOCK PASS) */}
-        <AboutSection />
-
-        {/* PITWALL DIRECT RADIO COMMS (FOOTER CTA) */}
+        {/* GIANT FOOTER: LET'S CREATE SOMETHING REAL + WORK TOGETHER */}
         <FooterCTA onOpenResume={() => setIsResumeOpen(true)} />
 
       </main>
@@ -108,7 +83,7 @@ export default function App() {
         onClose={() => setSelectedProject(null)}
       />
 
-      {/* 2. OFFICIAL FULL RESUME DOSSIER & EMBEDDED ORIGINAL PDF (SLIDES SMOOTHLY ON DEMAND) */}
+      {/* OFFICIAL FULL RESUME DOSSIER */}
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}

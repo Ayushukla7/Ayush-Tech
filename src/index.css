@@ -10,71 +10,111 @@
     scroll-behavior: smooth;
   }
   body {
-    background-color: #06070a;
-    color: #f1f5f9;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #0e0f12;
+    color: #f4f3ee;
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
   }
 }
 
-/* F1 Telemetry Blueprint Grid Background */
-.racing-grid {
-  background-size: 40px 40px;
+/* ========================================================================= */
+/* ACID BRUTAL DESIGN SYSTEM: VIBRANT ACID LIME & POSTER PRINT AESTHETICS */
+/* ========================================================================= */
+
+/* Gritty Chalkboard / Poster Texture Background */
+.acid-grid {
+  background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
-.racing-grid-dense {
-  background-size: 20px 20px;
-  background-image: 
-    linear-gradient(to right, rgba(225, 6, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+.acid-dots {
+  background-image: radial-gradient(rgba(204, 255, 0, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Carbon Fiber Weave Texture */
-.carbon-fiber {
-  background: 
-    radial-gradient(black 15%, transparent 16%) 0 0,
-    radial-gradient(black 15%, transparent 16%) 8px 8px,
-    radial-gradient(rgba(255,255,255,.05) 15%, transparent 20%) 0 1px,
-    radial-gradient(rgba(255,255,255,.05) 15%, transparent 20%) 8px 9px;
-  background-color: #08090e;
-  background-size: 16px 16px;
-}
-
-/* Telemetry scanline overlay */
-.telemetry-scanline {
-  background: linear-gradient(
-    to bottom,
-    transparent 50%,
-    rgba(0, 242, 254, 0.02) 51%,
-    transparent 52%
-  );
-  background-size: 100% 4px;
-}
-
-/* Film Grain Texture Overlay */
+/* Distressed Paper / Halftone Grain Overlay */
 .grain-overlay {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.045'/%3E%3C/svg%3E");
   pointer-events: none;
 }
 
-/* Marquee gradient fade mask */
-.marquee-mask {
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+/* Diagonal Hazard Stripes (Black & Acid Lime) */
+.acid-hazard {
+  background: repeating-linear-gradient(
+    -45deg,
+    #000000,
+    #000000 8px,
+    #ccff00 8px,
+    #ccff00 16px
+  );
 }
 
-/* F1 Telemetry Glowing Borders */
-.telemetry-border-red {
-  border: 1px solid rgba(225, 6, 0, 0.4);
-  box-shadow: 0 0 15px rgba(225, 6, 0, 0.15);
+.acid-hazard-sm {
+  background: repeating-linear-gradient(
+    -45deg,
+    #000000,
+    #000000 5px,
+    #ccff00 5px,
+    #ccff00 10px
+  );
 }
 
-.telemetry-border-cyan {
-  border: 1px solid rgba(0, 242, 254, 0.35);
-  box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+/* Acid Barcode / Scannable Tag Texture */
+.acid-barcode {
+  background: repeating-linear-gradient(
+    90deg,
+    #ccff00 0px,
+    #ccff00 2px,
+    transparent 2px,
+    transparent 4px,
+    #ccff00 4px,
+    #ccff00 7px,
+    transparent 7px,
+    transparent 9px,
+    #ccff00 9px,
+    #ccff00 10px,
+    transparent 10px,
+    transparent 14px
+  );
+}
+
+.acid-barcode-white {
+  background: repeating-linear-gradient(
+    90deg,
+    #ffffff 0px,
+    #ffffff 2px,
+    transparent 2px,
+    transparent 4px,
+    #ffffff 4px,
+    #ffffff 7px,
+    transparent 7px,
+    transparent 9px,
+    #ffffff 9px,
+    #ffffff 10px,
+    transparent 10px,
+    transparent 14px
+  );
+}
+
+/* Weathered / Distressed Poster Display Text */
+.distressed-title {
+  letter-spacing: -0.02em;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+/* High-Contrast Brutalist Shadows */
+.acid-shadow-lime {
+  box-shadow: 4px 4px 0px #ccff00;
+}
+
+.acid-shadow-white {
+  box-shadow: 4px 4px 0px #f4f3ee;
+}
+
+.acid-shadow-black {
+  box-shadow: 4px 4px 0px #000000;
 }
 
 /* Custom scrollbars */
@@ -82,14 +122,14 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #06070a;
+  background: #0e0f12;
 }
 ::-webkit-scrollbar-thumb {
-  background: #202638;
-  border-radius: 9999px;
+  background: #2a2d39;
+  border-radius: 0px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #e10600;
+  background: #ccff00;
 }
 
 /* ========================================================================= */

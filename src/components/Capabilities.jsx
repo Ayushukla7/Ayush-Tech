@@ -1,163 +1,161 @@
 import React, { useState } from 'react';
-import { skillsData } from '../data/portfolioData';
-import { Cpu, Zap, Activity, Layers, Database, Terminal, ShieldCheck } from 'lucide-react';
-import { playTacticalClick, playTouchSelect } from '../utils/audio';
-
-const ICONS = [Cpu, Zap, Activity, Database, Terminal];
+import { WireframeGlobe, BrutalStar } from './AcidIcons';
+import { playTouchSelect } from '../utils/audio';
 
 export default function Capabilities() {
-  const [activeIdx, setActiveIdx] = useState(0);
+  const [hoveredSkill, setHoveredSkill] = useState(null);
+
+  const skills = [
+    { name: 'JAVA & C++ (DSA)', level: 9 },
+    { name: 'FULL-STACK (MERN)', level: 8 },
+    { name: 'REACT.JS / NEXT.JS', level: 9 },
+    { name: 'NODE & EXPRESS.JS', level: 8 },
+    { name: 'MONGODB & SQL', level: 8 },
+    { name: 'UI/UX & FIGMA', level: 9 },
+    { name: 'TAILWIND & CSS3', level: 9 },
+  ];
+
+  const toolsList = [
+    'FIGMA',
+    'JAVA (350+ DSA)',
+    'REACT.JS / NEXT.JS',
+    'NODE.JS / EXPRESS',
+    'MONGODB / POSTGRESQL',
+    'TAILWIND CSS',
+    'C++ STL ALGORITHMS',
+    'POSTMAN & REST APIS',
+    'GIT & VERCEL'
+  ];
 
   return (
-    <section id="skills" className="relative py-20 px-3 sm:px-6 lg:px-8 border-b border-white/10 racing-grid">
-      <div className="max-w-7xl mx-auto space-y-10">
+    <section 
+      id="skills" 
+      className="relative py-20 px-3 sm:px-6 lg:px-8 border-b border-[#2a2d39] acid-grid select-none"
+    >
+      <div className="max-w-7xl mx-auto space-y-8">
         
-        {/* FORMAL EXECUTIVE HEADER */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
-          <div className="space-y-1.5">
-            <div className="flex items-center space-x-2 text-[10px] font-mono text-red-500 font-semibold uppercase tracking-[0.2em]">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span>SECTOR 01 // POWERTRAIN & CORE STACK</span>
-            </div>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-clash font-extrabold text-white uppercase tracking-tight">
-              POWERTRAIN <span className="text-white">STACK</span>
-            </h2>
-          </div>
-          <span className="text-xs font-mono text-slate-400">
-            [ ALL HARDWARE & SOFTWARE SUBSYSTEMS CALIBRATED ]
-          </span>
-        </div>
-
-        {/* 70% VISUAL INTERACTIVE CHIPS & TELEMETRY GAUGES */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        {/* ========================================================================= */}
+        {/* LOWER SECTION: 3-BOX GRID (SKILLS MATRIX + QUOTE CARD + SOLID TOOLS BOX) */}
+        {/* ========================================================================= */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
           
-          {/* LEFT 4 COLS: Visual Subsystem Selector Tabs */}
-          <div className="lg:col-span-5 space-y-2 font-mono">
-            {skillsData.map((cat, idx) => {
-              const isSelected = activeIdx === idx;
-              const IconComp = ICONS[idx] || Cpu;
-
-              return (
-                <button
-                  key={cat.category}
-                  onClick={() => {
-                    playTacticalClick();
-                    playTouchSelect();
-                    setActiveIdx(idx);
-                  }}
-                  className={`w-full p-4 rounded-xl border text-left flex items-center justify-between transition-all ${
-                    isSelected
-                      ? 'bg-red-600/20 border-red-500/70 shadow-[0_0_25px_rgba(225,6,0,0.2)]'
-                      : 'bg-dark-900/80 hover:bg-dark-850 border-white/10 text-slate-400 hover:text-white'
-                  }`}
-                  data-cursor="SUBSYSTEM"
-                >
-                  <div className="flex items-center space-x-3.5">
-                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center border ${
-                      isSelected 
-                        ? 'bg-red-600 text-white border-red-400 shadow-md' 
-                        : 'bg-black/60 border-white/10 text-slate-400'
-                    }`}>
-                      <IconComp className="w-4 h-4" />
-                    </div>
-
-                    <div>
-                      <span className="text-[10px] text-slate-500 uppercase tracking-widest block font-medium">
-                        SUBSYSTEM 0{idx + 1}
-                      </span>
-                      <span className="font-clash font-extrabold text-lg text-white uppercase tracking-wide">
-                        {cat.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="text-right">
-                    <span className={`text-[10px] font-bold block ${isSelected ? 'text-red-400' : 'text-slate-500'}`}>
-                      {isSelected ? '● ACTIVE' : 'CALIBRATED'}
-                    </span>
-                    <span className="text-[9px] text-slate-400">{cat.skills.length} MODULES</span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* RIGHT 7 COLS: 70% VISUAL COMPONENT TILES WITH LIVE METERS */}
-          <div className="lg:col-span-7 p-6 rounded-2xl bg-black/90 border border-white/15 backdrop-blur-2xl shadow-2xl space-y-6 relative overflow-hidden">
+          {/* BOX 1 (LEFT 5 COLS): SKILLS MATRIX & INTERACTIVE HEATMAP */}
+          <div className="md:col-span-5 border border-[#2a2d39] bg-[#14161c] p-6 space-y-5 flex flex-col justify-between shadow-[4px_4px_0px_#000]">
             
-            {/* CORNER BRACKETS */}
-            <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-red-500/80" />
-            <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-red-500/80" />
-
-            {/* TOP DIAGNOSTIC BAR */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono text-xs">
-              <div className="flex items-center space-x-2">
-                <span className="px-2 py-0.5 rounded bg-white/[0.06] border border-white/15 text-slate-200 font-bold uppercase">
-                  {skillsData[activeIdx].category}
-                </span>
-                <span className="text-slate-400 hidden sm:inline">// HARDWARE BENCHMARK</span>
-              </div>
-              <span className="text-slate-300 font-semibold flex items-center space-x-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                <span>BENCHMARK OPTIMAL</span>
+            {/* Header */}
+            <div className="flex items-center justify-between pb-3 border-b border-[#2a2d39]">
+              <span className="font-anton tracking-wider text-xl uppercase text-[#f4f3ee]">
+                SKILLS MATRIX
               </span>
+              <span className="w-2 h-2 bg-[#ccff00] rounded-none animate-pulse" />
             </div>
 
-            {/* GRID OF SKILL COMPONENTS WITH LIVE SVG GAUGES */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              {skillsData[activeIdx].skills.map((skill, i) => {
-                const skillName = typeof skill === 'object' ? skill.name : skill;
-                const skillLevel = typeof skill === 'object' ? skill.level : 'CORE PROFICIENCY';
+            {/* Matrix Rows: Skill Label on Left + 10-Block Heatmap on Right */}
+            <div className="space-y-3 font-mono text-xs">
+              {skills.map((skill, rowIdx) => {
+                const isHovered = hoveredSkill === skill.name;
                 return (
                   <div 
-                    key={i}
-                    className="p-3.5 rounded-xl bg-dark-900/90 border border-white/10 hover:border-red-500/50 transition-all flex items-center justify-between group"
+                    key={skill.name}
+                    onMouseEnter={() => { playTouchSelect(); setHoveredSkill(skill.name); }}
+                    onMouseLeave={() => setHoveredSkill(null)}
+                    className="flex items-center justify-between gap-3 group cursor-pointer"
                   >
-                    <div className="space-y-1">
-                      <div className="flex items-center space-x-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
-                        <span className="font-clash font-bold text-sm text-white uppercase group-hover:text-red-400 transition-colors">
-                          {skillName}
-                        </span>
-                      </div>
-                      <span className="text-[10px] font-mono text-slate-400 block">
-                        {skillLevel}
-                      </span>
-                    </div>
+                    {/* Skill Label */}
+                    <span className={`text-[11px] font-bold tracking-wider truncate w-36 transition-colors ${
+                      isHovered ? 'text-[#ccff00]' : 'text-[#cfd2dc]'
+                    }`}>
+                      {skill.name}
+                    </span>
 
-                    {/* MINI SPEEDOMETER GAUGE PER SKILL */}
-                    <div className="relative w-10 h-10 flex items-center justify-center">
-                      <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
-                        <path
-                          className="text-white/10"
-                          strokeWidth="3.5"
-                          stroke="currentColor"
-                          fill="none"
-                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                        />
-                        <path
-                          className="text-red-500 transition-all duration-700"
-                          strokeDasharray={`${85 + (i * 3) % 15}, 100`}
-                          strokeWidth="3.5"
-                          strokeLinecap="round"
-                          stroke="currentColor"
-                          fill="none"
-                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                        />
-                      </svg>
-                      <span className="absolute font-mono text-[8px] font-bold text-white">
-                        {88 + (i * 2) % 12}%
-                      </span>
+                    {/* 10-Block Matrix Grid (Exact as image heatmap) */}
+                    <div className="flex items-center space-x-1 shrink-0">
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((block) => {
+                        const isFilled = block <= skill.level;
+                        const isAccent = isFilled && (block >= 7 || block === skill.level);
+                        return (
+                          <div
+                            key={block}
+                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 border transition-all ${
+                              isFilled
+                                ? isAccent
+                                  ? 'bg-[#ccff00] border-[#ccff00] shadow-[0_0_8px_rgba(204,255,0,0.5)]'
+                                  : 'bg-[#e4e2d8] border-[#e4e2d8]'
+                                : 'bg-[#0a0b0e] border-[#2a2d39] group-hover:border-[#424756]'
+                            }`}
+                          />
+                        );
+                      })}
                     </div>
                   </div>
                 );
               })}
             </div>
 
-            {/* PADDOCK STATUS FOOTNOTE */}
-            <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-slate-500">
-              <span>ARCHITECTURE: FAULT-TOLERANT DISTRIBUTED</span>
-              <span>SCUDERIA AS-26</span>
+            {/* Scale Footer: BASIC -> EXPERT */}
+            <div className="flex items-center justify-between pt-3 border-t border-[#2a2d39] font-mono text-[10px] text-[#8a8d98] uppercase font-bold">
+              <span>BASIC</span>
+              <div className="flex-1 mx-3 border-t border-dashed border-[#2a2d39]" />
+              <span className="text-[#ccff00]">EXPERT [98%]</span>
+            </div>
+
+          </div>
+
+          {/* BOX 2 (CENTER 4 COLS): DISTRESSED QUOTE CARD (EXACT AS IMAGE) */}
+          <div className="md:col-span-4 border border-[#2a2d39] bg-[#0e0f12] p-6 flex flex-col justify-between relative overflow-hidden shadow-[4px_4px_0px_#ccff00]">
+            
+            {/* Top Crosshair */}
+            <div className="flex items-center justify-between font-mono text-xs text-[#8a8d98]">
+              <span className="text-[#ccff00] font-bold">+</span>
+              <span className="text-[10px] tracking-widest uppercase">PHILOSOPHY</span>
+              <span className="text-[#ccff00] font-bold">+</span>
+            </div>
+
+            {/* Central Giant Acid Quote */}
+            <div className="my-auto py-6 space-y-2">
+              <p className="font-anton text-2xl sm:text-3xl text-[#ccff00] uppercase leading-tight tracking-wide">
+                “DESIGN IS INTELLIGENCE MADE VISIBLE.”
+              </p>
+              <p className="font-mono text-xs text-[#eae7dd] leading-relaxed">
+                Code is architecture in motion. Algorithms turn complexity into speed.
+              </p>
+            </div>
+
+            {/* Bottom Wireframe Globe (As in image) */}
+            <div className="flex items-center justify-between pt-3 border-t border-[#2a2d39]">
+              <WireframeGlobe className="w-8 h-8 text-[#ccff00]" />
+              <span className="font-mono text-[10px] text-[#8a8d98] tracking-widest uppercase">
+                AS-STUDIO // 2026
+              </span>
+            </div>
+
+          </div>
+
+          {/* BOX 3 (RIGHT 3 COLS): SOLID ACID LIME TOOLS BOX (EXACT AS IMAGE) */}
+          <div className="md:col-span-3 bg-[#ccff00] text-black p-6 flex flex-col justify-between shadow-[4px_4px_0px_#fff]">
+            
+            <div>
+              {/* Box Top Title */}
+              <div className="flex items-center justify-between pb-3 border-b-2 border-black">
+                <span className="font-anton tracking-wider text-xl uppercase text-black">
+                  TOOLS
+                </span>
+                <span className="font-mono text-xs font-bold">[09]</span>
+              </div>
+
+              {/* Tools List in Bold Monospace Typewriter Font */}
+              <div className="space-y-1.5 pt-4 font-mono text-xs font-extrabold uppercase tracking-wider text-black">
+                {toolsList.map((tool, i) => (
+                  <div key={i} className="flex items-center space-x-1.5">
+                    <span>{tool}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom Black Asterisk Star (Exact as image) */}
+            <div className="pt-6 flex justify-end">
+              <BrutalStar className="w-8 h-8 text-black" />
             </div>
 
           </div>

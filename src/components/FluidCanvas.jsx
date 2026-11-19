@@ -14,12 +14,12 @@ export default function FluidCanvas() {
     // Mouse coordinates with easing
     const mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
 
-    // Executive Ambient Lighting: Deep Scuderia Crimson & Subtle Titanium Specular Glow
+    // Ambient Lighting: Acid Lime & Distressed Paper Specular Glow
     const orbs = [
-      { x: width * 0.25, y: height * 0.3, radius: 420, color: 'rgba(225, 6, 0, 0.065)', vx: 0.2, vy: 0.12 },
-      { x: width * 0.75, y: height * 0.45, radius: 480, color: 'rgba(255, 255, 255, 0.02)', vx: -0.15, vy: 0.18 },
-      { x: width * 0.5, y: height * 0.85, radius: 500, color: 'rgba(225, 6, 0, 0.045)', vx: 0.12, vy: -0.15 },
-      { x: width * 0.15, y: height * 0.75, radius: 360, color: 'rgba(148, 163, 184, 0.025)', vx: -0.1, vy: 0.1 }
+      { x: width * 0.25, y: height * 0.3, radius: 420, color: 'rgba(204, 255, 0, 0.045)', vx: 0.2, vy: 0.12 },
+      { x: width * 0.75, y: height * 0.45, radius: 480, color: 'rgba(255, 255, 255, 0.018)', vx: -0.15, vy: 0.18 },
+      { x: width * 0.5, y: height * 0.85, radius: 500, color: 'rgba(204, 255, 0, 0.035)', vx: 0.12, vy: -0.15 },
+      { x: width * 0.15, y: height * 0.75, radius: 360, color: 'rgba(228, 226, 216, 0.02)', vx: -0.1, vy: 0.1 }
     ];
 
     const onMouseMove = (e) => {

@@ -79,30 +79,30 @@ export default function ResumeModal({ isOpen, onClose }) {
       >
         
         {/* ========================================================================= */}
-        {/* TOP COMMAND BAR (SLIDE CONTROLS, DOWNLOAD, VIEW TABS) */}
+        {/* TOP COMMAND BAR (ACID BRUTALIST RESUME CONTROLS) */}
         {/* ========================================================================= */}
-        <div className="p-3 sm:p-4 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 bg-black/95 z-20 font-mono text-xs">
+        <div className="p-3 sm:p-4 border-b border-[#2a2d39] flex flex-wrap items-center justify-between gap-3 bg-[#0e0f12] z-20 font-mono text-xs">
           
           <div className="flex items-center space-x-3">
-            <span className="w-2.5 h-2.5 rounded-sm bg-red-500 animate-pulse" />
+            <span className="w-2.5 h-2.5 bg-[#ccff00] animate-pulse" />
             <div>
-              <span className="font-clash font-extrabold text-sm sm:text-base text-white uppercase tracking-wider block">
+              <span className="font-anton text-sm sm:text-base text-[#f4f3ee] uppercase tracking-wider block">
                 OFFICIAL RESUME DOSSIER // AYUSH SHUKLA
               </span>
-              <span className="text-[10px] text-slate-400 hidden sm:block">
-                VERIFIED B.TECH CSE • FULL-STACK SYSTEMS ARCHITECT
+              <span className="text-[10px] text-[#8a8d98] hidden sm:block">
+                ABESEC B.TECH CSE (CGPA 7.89) • FULL-STACK ARCHITECT
               </span>
             </div>
           </div>
 
           {/* VIEW MODE TABS: DOSSIER vs EMBEDDED ORIGINAL PDF */}
-          <div className="flex items-center bg-white/10 rounded-lg p-1 border border-white/15">
+          <div className="flex items-center bg-[#14161c] border border-[#2a2d39] p-1">
             <button
               onClick={() => { playTacticalClick(); setViewMode('dossier'); }}
-              className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-all flex items-center space-x-1.5 ${
+              className={`px-3 py-1.5 font-mono text-xs font-bold transition-all flex items-center space-x-1.5 ${
                 viewMode === 'dossier'
-                  ? 'bg-red-600 text-white shadow-md'
-                  : 'text-slate-300 hover:text-white'
+                  ? 'bg-[#ccff00] text-black shadow-md'
+                  : 'text-[#8a8d98] hover:text-white'
               }`}
             >
               <FileText className="w-3.5 h-3.5" />
@@ -111,10 +111,10 @@ export default function ResumeModal({ isOpen, onClose }) {
 
             <button
               onClick={() => { playTacticalClick(); setViewMode('pdf'); }}
-              className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold transition-all flex items-center space-x-1.5 ${
+              className={`px-3 py-1.5 font-mono text-xs font-bold transition-all flex items-center space-x-1.5 ${
                 viewMode === 'pdf'
-                  ? 'bg-red-600 text-white shadow-md'
-                  : 'text-slate-300 hover:text-white'
+                  ? 'bg-[#ccff00] text-black shadow-md'
+                  : 'text-[#8a8d98] hover:text-white'
               }`}
             >
               <Eye className="w-3.5 h-3.5" />
@@ -130,7 +130,7 @@ export default function ResumeModal({ isOpen, onClose }) {
               href="/Ayush_Shukla_Resume.pdf"
               download="Ayush_Shukla_Resume.pdf"
               onClick={playTacticalClick}
-              className="px-3 py-1.5 rounded-lg bg-white hover:bg-red-600 text-black hover:text-white font-clash text-xs font-bold uppercase flex items-center space-x-1.5 transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+              className="px-3.5 py-1.5 bg-[#ccff00] hover:bg-white text-black font-anton text-xs uppercase flex items-center space-x-1.5 transition-all shadow-[2px_2px_0px_#fff]"
               title="Download Original PDF"
             >
               <Download className="w-3.5 h-3.5" />
@@ -143,7 +143,7 @@ export default function ResumeModal({ isOpen, onClose }) {
               target="_blank"
               rel="noreferrer"
               onClick={playTacticalClick}
-              className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-200 border border-white/15 transition-all"
+              className="p-1.5 bg-[#14161c] hover:bg-[#ccff00] hover:text-black text-[#eae7dd] border border-[#2a2d39] transition-all"
               title="Open PDF in New Window"
             >
               <ExternalLink className="w-4 h-4" />
@@ -152,7 +152,7 @@ export default function ResumeModal({ isOpen, onClose }) {
             {/* Print button */}
             <button
               onClick={handlePrint}
-              className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-200 border border-white/15 transition-all"
+              className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 bg-[#14161c] hover:bg-[#ccff00] hover:text-black text-[#eae7dd] border border-[#2a2d39] transition-all"
               title="Print Document"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -162,7 +162,7 @@ export default function ResumeModal({ isOpen, onClose }) {
             {/* Slide Down & Close Button */}
             <button
               onClick={handleSmoothClose}
-              className="p-1.5 rounded-lg bg-red-600/30 hover:bg-red-600 border border-red-500/50 text-white transition-colors"
+              className="p-1.5 bg-[#14161c] hover:bg-[#ccff00] hover:text-black border border-[#2a2d39] text-[#eae7dd] transition-colors"
               title="Slide Down & Close"
             >
               <X className="w-5 h-5" />
@@ -174,7 +174,7 @@ export default function ResumeModal({ isOpen, onClose }) {
         {/* ========================================================================= */}
         {/* SLIDEABLE & SCROLLABLE MAIN BODY */}
         {/* ========================================================================= */}
-        <div className="flex-1 overflow-y-auto bg-slate-100 text-slate-900 p-4 sm:p-8 select-text">
+        <div className="flex-1 overflow-y-auto bg-[#0e0f12] text-slate-100 p-4 sm:p-8 select-text">
           
           {viewMode === 'pdf' ? (
             /* EMBEDDED ORIGINAL PDF VIEWER */

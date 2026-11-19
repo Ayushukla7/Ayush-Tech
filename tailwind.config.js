@@ -7,6 +7,18 @@ export default {
   theme: {
     extend: {
       colors: {
+        acid: {
+          lime: '#ccff00',
+          limeBright: '#d8ff33',
+          limeDark: '#9ef01a',
+          dark: '#0e0f12',
+          charcoal: '#14161c',
+          card: '#191b22',
+          paper: '#e4e2d8',
+          cream: '#f4f3ee',
+          border: '#2a2d39',
+          borderLight: 'rgba(255, 255, 255, 0.12)',
+        },
         dark: {
           950: '#06070a',
           900: '#0a0c12',
@@ -32,6 +44,10 @@ export default {
         }
       },
       fontFamily: {
+        bebas: ['"Bebas Neue"', 'sans-serif'],
+        anton: ['"Anton"', 'sans-serif'],
+        space: ['"Space Grotesk"', 'sans-serif'],
+        spacemono: ['"Space Mono"', 'monospace'],
         clash: ['"Clash Display"', 'sans-serif'],
         syne: ['"Syne"', 'sans-serif'],
         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
