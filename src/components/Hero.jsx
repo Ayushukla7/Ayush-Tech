@@ -20,16 +20,16 @@ export default function Hero({ onOpenResume }) {
         {/* ========================================================================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* LEFT 7 COLS: GIANT EDITORIAL CONDENSED "ACID BRUTAL" TITLE */}
+          {/* LEFT 7 COLS: GIANT EDITORIAL CONDENSED "AYUSH SHUKLA" TITLE */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
             
-            {/* GIANT ACID BRUTAL POSTER DISPLAY TYPOGRAPHY (EXACT AS REFERENCE POSTER) */}
+            {/* GIANT AYUSH SHUKLA POSTER DISPLAY TYPOGRAPHY (EXACT AS REFERENCE POSTER) */}
             <div className="space-y-0 leading-none">
               <h1 className="font-bebas text-[7rem] sm:text-[10.5rem] md:text-[13rem] lg:text-[15rem] tracking-tight text-[#eae7dd] uppercase select-none distressed-title leading-[0.76]">
-                ACID
+                AYUSH
               </h1>
               <h1 className="font-bebas text-[7rem] sm:text-[10.5rem] md:text-[13rem] lg:text-[15rem] tracking-tight text-[#ccff00] uppercase select-none distressed-title leading-[0.76]">
-                BRUTAL
+                SHUKLA
               </h1>
             </div>
 
@@ -74,7 +74,7 @@ export default function Hero({ onOpenResume }) {
               <div className="relative w-full overflow-hidden bg-transparent">
                 <img 
                   src="/ayush-hero.jpg" 
-                  alt="Ayush Shukla – ACID BRUTAL Editorial Portrait"
+                  alt="Ayush Shukla – AYUSH SHUKLA Editorial Portrait"
                   className="w-full h-auto object-cover block select-none"
                   loading="eager"
                 />
