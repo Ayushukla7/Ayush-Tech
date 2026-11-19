@@ -98,35 +98,30 @@ export default function Hero({ onOpenResume }) {
           {/* RIGHT 5 COLS: ACID GREEN DISC AVATAR & OFF-WHITE INTRODUCTION CARD */}
           <div className="lg:col-span-5 space-y-6">
             
-            {/* 1. TOP AVATAR WITH NEON ACID GREEN DISC (EXACT AS IMAGE) */}
+            {/* 1. TOP EDITORIAL ARTWORK PORTRAIT (EXACT POSTER AESTHETIC) */}
             <div className="relative flex items-center justify-end">
-              <div className="relative">
+              <div className="relative group">
                 
-                {/* VIBRANT ACID LIME CIRCLE DISC BACKDROP */}
-                <div className="w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-[#ccff00] relative overflow-hidden flex items-center justify-center shadow-[0_0_50px_rgba(204,255,0,0.3)]">
-                  
-                  {/* GLITCH HORIZONTAL SLICE BARS */}
-                  <div className="absolute top-1/4 inset-x-0 h-1 bg-[#0e0f12] z-10 pointer-events-none" />
-                  <div className="absolute bottom-1/3 inset-x-0 h-2 bg-[#0e0f12] z-10 pointer-events-none" />
-                  <div className="absolute top-2/3 right-0 w-16 h-1 bg-[#0e0f12] z-10 pointer-events-none" />
-
-                  {/* DUOTONE MONOCHROME DEVELOPER SILHOUETTE AVATAR */}
-                  <div className="w-full h-full relative flex items-end justify-center">
-                    <svg className="w-52 h-52 text-[#0e0f12]" viewBox="0 0 200 200" fill="currentColor">
-                      {/* Stylized head, neck, and jacket silhouette */}
-                      <path d="M100 35 C78 35, 62 50, 62 74 C62 90, 72 105, 84 112 C74 118, 55 125, 42 140 C32 152, 28 170, 25 200 L175 200 C172 170, 168 152, 158 140 C145 125, 126 118, 116 112 C128 105, 138 90, 138 74 C138 50, 122 35, 100 35 Z" />
-                      {/* Cool hair & glasses cut detail */}
-                      <circle cx="86" cy="74" r="9" fill="#ccff00" />
-                      <circle cx="114" cy="74" r="9" fill="#ccff00" />
-                      <line x1="95" y1="74" x2="105" y2="74" stroke="#ccff00" strokeWidth="3" />
-                    </svg>
-                  </div>
-
+                {/* HIGH-IMPACT EDITORIAL BRUTALIST PORTRAIT CARD */}
+                <div className="relative w-64 sm:w-72 md:w-80 rounded-none border-2 border-[#2a2d39] group-hover:border-[#ccff00] overflow-hidden bg-[#0e0f12] shadow-[6px_6px_0px_#ccff00] transition-all">
+                  <img 
+                    src="/ayush-hero.jpg" 
+                    alt="Ayush Shukla – Software Developer & Full-Stack Architect"
+                    className="w-full h-auto object-cover block transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="eager"
+                  />
+                  {/* Subtle inner border overlay */}
+                  <div className="absolute inset-0 border border-white/10 pointer-events-none" />
                 </div>
 
-                {/* TECHNICAL ID TAG (AS IN IMAGE: ID: AB/2026/05) */}
-                <div className="absolute -bottom-3 right-0 font-mono text-[10px] text-[#ccff00] font-bold bg-[#0e0f12] border border-[#2a2d39] px-2 py-0.5 tracking-wider shadow-md">
+                {/* TECHNICAL ID TAG (AS IN POSTER: ID: AS/2026/01) */}
+                <div className="absolute -bottom-3 right-2 font-mono text-[10px] text-[#ccff00] font-bold bg-[#0e0f12] border border-[#2a2d39] px-2.5 py-0.5 tracking-wider shadow-md">
                   ID: AS/2026/01
+                </div>
+
+                {/* TOP LEFT BRUTALIST LABEL */}
+                <div className="absolute -top-2.5 -left-2.5 font-mono text-[9px] text-black font-extrabold bg-[#ccff00] px-2 py-0.5 uppercase tracking-widest shadow-[2px_2px_0px_#000]">
+                  ARCHITECT // 01
                 </div>
 
               </div>
