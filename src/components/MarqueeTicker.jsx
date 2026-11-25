@@ -3,7 +3,7 @@ import { BrutalStar } from './AcidIcons';
 
 export default function MarqueeTicker() {
   const items = [
-    'ACID BRUTAL DEV',
+    'AYUSH SHUKLA // FULL-STACK DEV',
     '350+ DSA PROBLEMS (JAVA/C++)',
     'HR PULSE: -35% SERVER LATENCY',
     'WORKRADAR: 0–100 RISK ENGINE',
